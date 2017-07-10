@@ -26,8 +26,17 @@
 
   <!-- Google Font -->
   <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Source+Sans+Pro:300,400,600,700,300italic,400italic,600italic">
+
+        <!-- Fonts -->
+        <!--<link href="https://fonts.googleapis.com/css?family=Raleway:100,600" rel="stylesheet" type="text/css">
+          -->  
+        <!-- Styles -->
+
+        <style>
+
+        </style>
 </head>
-<body class="hold-transition login-page">
+<body class="hold-transition login-page" >
 <div class="login-box">
   <div class="login-logo">
   <img src="../imagenes/gastos.png" class="text-center" style="width:200px; height: 200px;">
