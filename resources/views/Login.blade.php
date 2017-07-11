@@ -39,7 +39,6 @@
 <body class="hold-transition login-page" >
 <div class="login-box">
   <div class="login-logo">
-  <img src="{{asset("/public/imagenes/gastos.png")}}" class="text-center" style="width:200px; height: 200px;">
   <br>
     <b>Control de Gastos</b>
   </div>
