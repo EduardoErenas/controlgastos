@@ -527,7 +527,7 @@ if (! function_exists('mix')) {
      */
     function mix($path, $manifestDirectory = '')
     {
-        static $manifests = [];
+        static $manifest;
 
         if (! starts_with($path, '/')) {
             $path = "/{$path}";
@@ -537,22 +537,16 @@ if (! function_exists('mix')) {
             $manifestDirectory = "/{$manifestDirectory}";
         }
 
-        $manifestKey = $manifestDirectory ? $manifestDirectory : '/';
-
         if (file_exists(public_path($manifestDirectory.'/hot'))) {
             return new HtmlString("//localhost:8080{$path}");
         }
 
-        if (in_array($manifestKey, $manifests)) {
-            $manifest = $manifests[$manifestKey];
-        } else {
+        if (! $manifest) {
             if (! file_exists($manifestPath = public_path($manifestDirectory.'/mix-manifest.json'))) {
                 throw new Exception('The Mix manifest does not exist.');
             }
 
-            $manifests[$manifestKey] = $manifest = json_decode(
-                file_get_contents($manifestPath), true
-            );
+            $manifest = json_decode(file_get_contents($manifestPath), true);
         }
 
         if (! array_key_exists($path, $manifest)) {
@@ -604,7 +598,7 @@ if (! function_exists('public_path')) {
      */
     function public_path($path = '')
     {
-        return app()->make('path.public').($path ? DIRECTORY_SEPARATOR.ltrim($path, DIRECTORY_SEPARATOR) : $path);
+        return app()->make('path.public').($path ? DIRECTORY_SEPARATOR.$path : $path);
     }
 }
 

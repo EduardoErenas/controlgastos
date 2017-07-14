@@ -375,15 +375,9 @@ trait ValidatesAttributes
     {
         $this->requireParameterCount(1, $parameters, 'different');
 
-        foreach ($parameters as $parameter) {
-            $other = Arr::get($this->data, $parameter);
+        $other = Arr::get($this->data, $parameters[0]);
 
-            if (is_null($other) || $value === $other) {
-                return false;
-            }
-        }
-
-        return true;
+        return isset($other) && $value !== $other;
     }
 
     /**

@@ -155,16 +155,4 @@ class ParamTest extends \PHPUnit_Framework_TestCase
             $node
         );
     }
-
-    public function testVariadic() {
-        $node = $this->createParamBuilder('test')
-            ->makeVariadic()
-            ->getNode()
-        ;
-
-        $this->assertEquals(
-            new Node\Param('test', null, null, false, true),
-            $node
-        );
-    }
 }

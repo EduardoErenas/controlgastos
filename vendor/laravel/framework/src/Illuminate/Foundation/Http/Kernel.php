@@ -124,9 +124,7 @@ class Kernel implements KernelContract
             $response = $this->renderException($request, $e);
         }
 
-        $this->app['events']->dispatch(
-            new Events\RequestHandled($request, $response)
-        );
+        event(new Events\RequestHandled($request, $response));
 
         return $response;
     }
