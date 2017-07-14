@@ -3,7 +3,7 @@
 <head>
   <meta charset="utf-8">
   <meta http-equiv="X-UA-Compatible" content="IE=edge">
-  <title>AdminLTE 2 | Dashboard</title>
+  <title>Control de Gatos | Dashboard</title>
   <!-- Tell the browser to be responsive to screen width -->
   <meta content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no" name="viewport">
   <link rel="stylesheet" href="{{asset("css/AdminLTE.css")}}">
@@ -23,11 +23,11 @@
 
   <header class="main-header">
     <!-- Logo -->
-    <a href="{{url('')}}" class="logo">
+    <a href="{{url('')}}" class="logo" style="text-decoration: none;">
       <!-- mini logo for sidebar mini 50x50 pixels -->
-      <span class="logo-mini"><b>A</b>LT</span>
+      <span class="logo-mini"><b></b>CG</span>
       <!-- logo for regular state and mobile devices -->
-      <span class="logo-lg"><b>Admin</b>LTE</span>
+      <span class="logo-lg"><b>Control</b> Gastos</span>
     </a>
     <!-- Header Navbar: style can be found in header.less -->
     <nav class="navbar navbar-static-top">
@@ -39,47 +39,7 @@
       <div class="navbar-custom-menu">
         <ul class="nav navbar-nav">
           <!-- Notifications: style can be found in dropdown.less -->
-          <li class="dropdown notifications-menu">
-            <a href="#" class="dropdown-toggle" data-toggle="dropdown">
-              <i class="fa fa-bell-o"></i>
-              <span class="label label-warning">10</span>
-            </a>
-            <ul class="dropdown-menu">
-              <li class="header">Avisos</li>
-              <li>
-                <!-- inner menu: contains the actual data -->
-                <ul class="menu">
-                  <li>
-                    <a href="#">
-                      <i class="fa fa-users text-aqua"></i> Promoción de cumpleaños
-                    </a>
-                  </li>
-                  <li>
-                    <a href="#">
-                      <i class="fa fa-warning text-yellow"></i> 
-                      Ejemplo de otro aviso o notificación
-                    </a>
-                  </li>
-                  <li>
-                    <a href="#">
-                      <i class="fa fa-users text-red"></i> Vence en 3 días
-                      </a>
-                  </li>
-                  <li>
-                    <a href="#">
-                      <i class="fa fa-shopping-cart text-green"></i> Promociones
-                    </a>
-                  </li>
-                  <li>
-                    <a href="#">
-                      <i class="fa fa-user text-red"></i> Nuevos productos
-                    </a>
-                  </li>
-                </ul>
-              </li>
-              <li class="footer"><a href="#">View all</a></li>
-            </ul>
-          </li>
+          
           <!-- User Account: style can be found in dropdown.less -->
           <li class="dropdown user user-menu">
             <a href="#" class="dropdown-toggle" data-toggle="dropdown">
@@ -92,17 +52,17 @@
                 <img src="images/user2-160x160.jpg" class="img-circle" alt="User Image">
 
                 <p>
-                  Alexander Pierce - Web Developer
-                  <small>Member since Nov. 2012</small>
+                  Nombre Apellido - oficio
+                  <small>Miembro desde Nov. 2012</small>
                 </p>
               </li>
               <!-- Menu Footer-->
               <li class="user-footer">
                 <div class="pull-left">
-                  <a href="#" class="btn btn-default btn-flat">Perfíl</a>
+                  <a href="{{url('/perfil')}}" class="btn btn-default btn-flat">Perfíl</a>
                 </div>
                 <div class="pull-right">
-                  <a href="{{url('login')}}" class="btn btn-default btn-flat">Salir</a>
+                  <a href="{{url('/login')}}" class="btn btn-default btn-flat">Salir</a>
                 </div>
               </li>
             </ul>
@@ -121,55 +81,54 @@
           <img src="images/user2-160x160.jpg" class="img-circle" alt="User Image">
         </div>
         <div class="pull-left info">
-          <p>Luis Santillán </p>
-          <a href="#"><i class="fa fa-circle text-success"></i> Conectado</a>
+          <p>Nombre Usuario </p>
+          
         </div>
       </div>
-      <!-- search form -->
-      <form action="#" method="get" class="sidebar-form">
-        <div class="input-group">
-          <input type="text" name="q" class="form-control" placeholder="Search...">
-              <span class="input-group-btn">
-                <button type="submit" name="search" id="search-btn" class="btn btn-flat"><i class="fa fa-search"></i>
-                </button>
-              </span>
-        </div>
-      </form>
-      <!-- /.search form -->
+      
       <!-- sidebar menu: : style can be found in sidebar.less -->
       <ul class="sidebar-menu">
         <li class="header">MENÚ PRINCIPAL</li>
-        <li class="treeview">
-          <a href="#">
-            <i class="fa fa-dashboard"></i> <span>Menú TIPO 1</span>
-            <span class="pull-right-container">
-              <i class="fa fa-angle-left pull-right"></i>
-            </span>
+        
+        <li>
+          <a href="{{url('/inicio')}}">
+            <i class="fa fa-home"></i> <span>Inicio</span>
           </a>
-          <ul class="treeview-menu">
-            <li class="active"><a href="{{url('blank')}}"><i class="fa fa-circle-o"></i>Blanco</a></li>
-            <li><a href="{{url('blankPrimary')}}"><i class="fa fa-circle-o"></i> Blanco Primary</a></li>
-          </ul>
-        </li>
-        <li class="treeview">
-          <a href="#">
-            <i class="fa fa-files-o"></i>
-            <span>Menú TIPO 2</span>
-            <span class="pull-right-container">
-              <span class="label label-primary pull-right">4</span>
-            </span>
-          </a>
-          <ul class="treeview-menu">
-            <li><a href="{{url('formularioGeneral')}}"><i class="fa fa-circle-o"></i> Form General</a></li>
-            <li><a href="{{url('tablaDatos')}}"><i class="fa fa-circle-o"></i>Tabla Datos</a></li>
-          </ul>
         </li>
         <li>
-          <a href="{{url('vistaAngular')}}">
-            <i class="fa fa-th"></i> <span>Vista Angular</span>
-            <span class="pull-right-container">
-              <small class="label pull-right bg-green">new</small>
-            </span>
+          <a href="{{url('/perfil')}}">
+            <i class="fa fa-user"></i> <span>Perfil</span>
+            
+          </a>
+        </li>
+        <li>
+          <a href="{{url('/ingresos')}}">
+            <i class="fa fa-money"></i> <span>Ingresos</span>
+            
+          </a>
+        </li>
+        <li>
+          <a href="{{url('/gastos')}}">
+            <i class="fa fa-credit-card-alt"></i> <span>Gastos</span>
+            
+          </a>
+        </li>
+        <li>
+          <a href="{{url('/pagos')}}">
+            <i class=" fa fa-list-alt"></i> <span>Pagos</span>
+            
+          </a>
+        </li>
+        <li>
+          <a href="{{url('/reportes')}}">
+            <i class="fa fa-bar-chart"></i> <span>Reportes</span>
+            
+          </a>
+        </li>
+        <li>
+          <a href="{{url('/configuraciones')}}">
+            <i class="fa fa-cog"></i> <span>Configuraciones</span>
+            
           </a>
         </li>
       </ul>
@@ -195,7 +154,7 @@
     <div class="pull-right hidden-xs">
       <b>Versión</b> 1.0
     </div>
-    <strong>Copyright &copy; 2017 <a href="#">Empresa</a>.</strong> Todos los Derechos Reservados.
+    <strong>Copyright &copy; 2017 <a href="{{url('/')}}">Control de Gastos</a>.</strong> Todos los Derechos Reservados.
   </footer>
 </div>
 <script src="{{asset("js/jquery-3.1.1.min.js")}}"></script>
