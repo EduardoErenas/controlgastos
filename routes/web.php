@@ -18,9 +18,7 @@ Route::get('/getAlumnos', 'ejemploController@getAlumnos');
 //Rutas de la Web
 
 
-Route::get('/', function () {
-    return view('home');
-});
+
 
 Route::get('/blank', function () {
     return view('blank');
@@ -45,6 +43,9 @@ Route::get('/tablaDatos', function () {
 });
 
 //INICIO
+Route::get('/', function () {
+    return view('home');
+});
 
 // PERFIL 
 Route::get('/perfil', function () {

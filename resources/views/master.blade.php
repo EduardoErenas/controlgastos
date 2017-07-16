@@ -91,7 +91,7 @@
         <li class="header">MENÚ PRINCIPAL</li>
         
         <li>
-          <a href="{{url('/inicio')}}">
+          <a href="{{url('/')}}">
             <i class="fa fa-home"></i> <span>Inicio</span>
           </a>
         </li>
