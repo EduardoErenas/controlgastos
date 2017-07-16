@@ -7,12 +7,13 @@
 	<meta content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no" name="viewport">
 	<style>
 		body{
-			background-color: rgb(15, 55, 168);
+			background-color: #e3f2fd;
 		}
 		.panel{
-			margin-top: 8%;
+			margin-top: 15%;
 			padding: 0% 1% 0% 1%;
-			border: 1px solid darkblue;
+			border: 2px #e0f7fa;
+			border-radius: 10px;
 		}
 		.top{
 			margin-top: 10px;
@@ -49,17 +50,14 @@
 							</div>
 				  		</div>
 				  		<div class="form-group">
-				  			<a class="btn btn-info">RE-CAPTCHA</a>
-				  		</div>
-				  		<div class="form-group">
-				  			<button class="btn btn-primary btn-lg btn-block">Iniciar Sesión</button>
+				  			<button class="btn btn-primary btn-lg ">Iniciar Sesión</button>
 				  		</div>
 				  	</form>
 				  	<div class="panel-footer fondo">
 				  		<div class="form-group">
 						    <a class="pull-right" href="#" data-target="#forgetPassword" data-toggle="modal">¿Olvidaste la contraseña?</a>
 						    <input id="checkbox1" type="checkbox" name="remember">
-						    <label for="checkbox1">Recordar</label> 
+						    <label for="checkbox1">Recordarme</label> 
 						</div>
 						<div class="form-group"> <!-- Mensajes de alerta -->
 							<!-- <div class="alert alert-danger" role="alert">
