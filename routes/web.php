@@ -43,3 +43,35 @@ Route::get('/formularioGeneral', 'ejemploController@index');
 Route::get('/tablaDatos', function () {
     return view('tablaDatos');
 });
+
+//INICIO
+
+// PERFIL 
+Route::get('/perfil', function () {
+    return view('perfil');
+});
+
+//INGRESOS
+Route::get('/ingresos', function () {
+    return view('ingresos');
+});
+
+//GASTOS
+Route::get('/gastos', function () {
+    return view('gastos');
+});
+
+//PAGOS
+Route::get('/pagos', function () {
+    return view('pagos');
+});
+
+//REPORTES
+Route::get('/reportes', function () {
+    return view('reportes');
+});
+
+//CONFIGURACIONES
+Route::get('/configuraciones', function () {
+    return view('configuraciones');
+});
