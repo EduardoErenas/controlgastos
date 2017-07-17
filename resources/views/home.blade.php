@@ -66,7 +66,7 @@
         </div>
         <!-- ./col -->
       </div>
-      <h3 class="text-center" style="background: rgba(120,47,85,0.6);">GENERAL</h3>
+      <h3 class="text-center" style="background: rgba(120,47,85,0.6); height: 40px; margin-top: 0px; color: white">GENERAL</h3>
       <div class="row">
         <div class="col-lg-6">
             <div class="box">
@@ -127,20 +127,30 @@
           </div>
         </div>
         <div class="col-lg-3">
-          
-            <div class="info-box-content">
-              <span class="info-box-text">Inventory</span>
-              <span class="info-box-number">5,200</span>
+            <div class="info-box bg-yellow">
+            <span class="info-box-icon"><i class="ion ion-ios-pricetag-outline"></i></span>
 
-              <div class="progress">
-                <div class="progress-bar" style="width: 50%"></div>
-              </div>
-              <span class="progress-description">
-                    50% Increase in 30 Days
-                  </span>
+            <div class="info-box-content">
+              <span class="info-box-text">Ultimo Ingreso</span>
+              <span class="info-box-number">$ 5,200</span> 
+               <span class="info-box-number">12/06/2017</span>
             </div>
         </div>
+        </div>
+        <div class="col-lg-3">
+          <div class="info-box bg-green">
+            <span class="info-box-icon"><i class="ion ion-ios-heart-outline"></i></span>
+            <div class="info-box-content">
+              <span class="info-box-text">Fondo Actual</span>
+              <span class="info-box-number">$ 530.00</span>
+            </div>
+            <!-- /.info-box-content -->
+          </div>
+          <!-- /.info-box -->
+
+        </div>
       </div>
+     
         <div class="modal fade" id="modal-default">
           <div class="modal-dialog">
             <div class="modal-content">
