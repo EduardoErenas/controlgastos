@@ -1,77 +1,86 @@
 @extends('master')
 
-@section('titulo')
-<h1>
-    Sistema Administrativo
-    <small>Principal</small>
-</h1>
-<ol class="breadcrumb">
-    <li><a href="#"><i class="fa fa-dashboard"></i> Principal</a></li>
-    <li class="active">Home</li>
-</ol>
-@stop
-
 @section('contenido')
+  <div class="callout callout-info">
+    <div class="content-header" style="padding-top: 0px !important">
+      <h1>Ingresos <small></small></h1>
+    </div> 
+  </div>
+
 	<div class="row">
-        <div class="col-lg-3 col-xs-6">
-          <!-- small box -->
-          <div class="small-box bg-aqua">
-            <div class="inner">
-              <h3>150</h3>
-
-              <p>New Orders</p>
-            </div>
-            <div class="icon">
-              <i class="ion ion-bag"></i>
-            </div>
-            <a href="#" class="small-box-footer">More info <i class="fa fa-arrow-circle-right"></i></a>
-          </div>
+    <div class="col-sm-4">
+      <div class="box box-primary">
+        <div class="box-header with-border">
+          <h3 class="box-title">Registrar Ingreso</h3> 
         </div>
-        <!-- ./col -->
-        <div class="col-lg-3 col-xs-6">
-          <!-- small box -->
-          <div class="small-box bg-green">
-            <div class="inner">
-              <h3>53<sup style="font-size: 20px">%</sup></h3>
+        <form class="">
+          <div class="box-body">
 
-              <p>Bounce Rate</p>
+            <div class="form-group">
+              <label>Descripcion</label>  
+              <input type="text" class="form-control" name="descri" required placeholder="Descripcion">
             </div>
-            <div class="icon">
-              <i class="ion ion-stats-bars"></i>
+            <div class="form-group">
+              <label class="">Cantidad</label>    
+              <input type="number" class="form-control" name="cantidad" required placeholder="$100.00">
             </div>
-            <a href="#" class="small-box-footer">More info <i class="fa fa-arrow-circle-right"></i></a>
+              
           </div>
-        </div>
-        <!-- ./col -->
-        <div class="col-lg-3 col-xs-6">
-          <!-- small box -->
-          <div class="small-box bg-yellow">
-            <div class="inner">
-              <h3>44</h3>
 
-              <p>User Registrations</p>
+          <div class="box-footer">
+            <div class="row">
+              <div class="col-sm-12">
+                <button type="submit" class="btn btn-primary pull-right">Aceptar</button>
+              </div>
             </div>
-            <div class="icon">
-              <i class="ion ion-person-add"></i>
-            </div>
-            <a href="#" class="small-box-footer">More info <i class="fa fa-arrow-circle-right"></i></a>
+              
+            
           </div>
-        </div>
-        <!-- ./col -->
-        <div class="col-lg-3 col-xs-6">
-          <!-- small box -->
-          <div class="small-box bg-red">
-            <div class="inner">
-              <h3>65</h3>
-
-              <p>Unique Visitors</p>
-            </div>
-            <div class="icon">
-              <i class="ion ion-pie-graph"></i>
-            </div>
-            <a href="#" class="small-box-footer">More info <i class="fa fa-arrow-circle-right"></i></a>
-          </div>
-        </div>
-        <!-- ./col -->
+        </form>
       </div>
+    </div>
+
+    <div class="col-sm-8">
+      <div class="box box-success">
+        <div class="box-header with-border">
+          <h3 class="box-title">Lista de Ingresos</h3> 
+        </div>
+        <div class="box-body">
+          <div class="table-responsive">
+            <table class="table table-hover">
+              <thead>
+                <th class="text-center">ID</th>
+                <th class="text-center">Descripcion</th>
+                <th class="text-center">Total</th>
+                <th class="text-center">Restante</th>
+                <th class="text-center">fecha</th>
+                <th class="text-center">Estatus</th>
+                <th class="text-center">Opciones</th>
+              </thead>
+              <tbody>
+                <tr>
+                  <td class="text-center">1</td>
+                  <td class="text-center">Sueldo</td>
+                  <td class="text-center">10000</td>
+                  <td class="text-center">9000</td>
+                  <td class="text-center">2017-07-17</td>
+                  <td class="text-center">Activo</td>
+                  <td class="text-center">
+                    <a href="#" class="btn btn-primary btn-xs">
+                      <span class="glyphicon glyphicon-pencil" aria-hidden="true"></span>
+                    </a>
+                    <a href="#" class="btn btn-danger btn-xs">
+                      <span class="glyphicon glyphicon-remove" aria-hidden="true"></span>
+                    </a>
+                  </td>
+                </tr>
+                <tr>
+                
+              </tbody>
+            </table>
+          </div>
+        </div>
+      </div>
+    </div>      
+  </div>
 @stop

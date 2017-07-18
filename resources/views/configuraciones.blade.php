@@ -1,77 +1,90 @@
 @extends('master')
 
-@section('titulo')
-<h1>
-    Sistema Administrativo
-    <small>Principal</small>
-</h1>
-<ol class="breadcrumb">
-    <li><a href="#"><i class="fa fa-dashboard"></i> Principal</a></li>
-    <li class="active">Home</li>
-</ol>
-@stop
-
 @section('contenido')
-	<div class="row">
-        <div class="col-lg-3 col-xs-6">
-          <!-- small box -->
-          <div class="small-box bg-aqua">
-            <div class="inner">
-              <h3>150</h3>
+	<div class="callout callout-info">
+    <div class="content-header"  style="padding-top: 0px !important">
+      <h1>Configuraciones <small></small></h1>
+    </div> 
+  </div>
 
-              <p>New Orders</p>
-            </div>
-            <div class="icon">
-              <i class="ion ion-bag"></i>
-            </div>
-            <a href="#" class="small-box-footer">More info <i class="fa fa-arrow-circle-right"></i></a>
-          </div>
+  <div class="row">
+    <div class="col-sm-12">
+      <div class="box box-primary">
+        <div class="box-header with-border">
+          <h3 class="box-title">Cambiar Contraseña</h3> 
         </div>
-        <!-- ./col -->
-        <div class="col-lg-3 col-xs-6">
-          <!-- small box -->
-          <div class="small-box bg-green">
-            <div class="inner">
-              <h3>53<sup style="font-size: 20px">%</sup></h3>
+        
+        <div class="box-body">
+          <form class="form-horizontal">
+            <div class="form-group">
+              <label  class="col-sm-2 control-label">Contraseña Actual</label>
 
-              <p>Bounce Rate</p>
+              <div class="col-sm-10">
+                <input type="password" class="form-control" name="pass" placeholder="Contraseña Actual" required >
+              </div>
             </div>
-            <div class="icon">
-              <i class="ion ion-stats-bars"></i>
-            </div>
-            <a href="#" class="small-box-footer">More info <i class="fa fa-arrow-circle-right"></i></a>
-          </div>
-        </div>
-        <!-- ./col -->
-        <div class="col-lg-3 col-xs-6">
-          <!-- small box -->
-          <div class="small-box bg-yellow">
-            <div class="inner">
-              <h3>44</h3>
+            <div class="form-group">
+              <label  class="col-sm-2 control-label">Contraseña Nueva</label>
 
-              <p>User Registrations</p>
+              <div class="col-sm-10">
+                <input type="password" class="form-control" name="newpas" placeholder="Contraseña Nueva" required >
+              </div>
             </div>
-            <div class="icon">
-              <i class="ion ion-person-add"></i>
-            </div>
-            <a href="#" class="small-box-footer">More info <i class="fa fa-arrow-circle-right"></i></a>
-          </div>
-        </div>
-        <!-- ./col -->
-        <div class="col-lg-3 col-xs-6">
-          <!-- small box -->
-          <div class="small-box bg-red">
-            <div class="inner">
-              <h3>65</h3>
+            <div class="form-group">
+              <label  class="col-sm-2 control-label">Repetir Contraseña</label>
 
-              <p>Unique Visitors</p>
+              <div class="col-sm-10">
+                <input type="password" class="form-control" name="repas"  placeholder="Repetir Contraseña" required> 
+              </div>
             </div>
-            <div class="icon">
-              <i class="ion ion-pie-graph"></i>
+            
+            <div class=" row">
+              <div class="col-md-12">
+                <button type="submit" class="btn btn-primary pull-right">Aceptar</button>
+              </div>
             </div>
-            <a href="#" class="small-box-footer">More info <i class="fa fa-arrow-circle-right"></i></a>
-          </div>
+            
+          </form>     
         </div>
-        <!-- ./col -->
+  
       </div>
+    </div>
+
+    
+  </div>
+
+  <div class="row">
+    <div class="col-sm-12">
+      <div class="box box-primary">
+        <div class="box-header with-border">
+          <h3 class="box-title">Cambiar Algoritmo</h3> 
+        </div>
+        
+        <div class="box-body">
+          <form class="form-horizontal">
+            <div class="form-group">
+              <label  class="col-sm-2 control-label">Contraseña Actual</label>
+
+              <div class="col-sm-10">
+                <select class="form-control" name="algo" required>
+                  <option value="1">Prioridad</option>
+                  <option value="2">Opcion 2</option>
+                </select>
+              </div>
+            </div>
+            
+            <div class=" row">
+              <div class="col-md-12">
+                <button type="submit" class="btn btn-primary pull-right">Aceptar</button>
+              </div>
+            </div>
+            
+          </form>     
+        </div>
+  
+      </div>
+    </div>
+
+    
+  </div>
 @stop

@@ -16,7 +16,27 @@
     [ng\:cloak], [ng-cloak], [data-ng-cloak], [x-ng-cloak], .ng-cloak, x-ng-cloak, .ng-hide {
         display:none !important;
     }
+    input[type=number]::-webkit-outer-spin-button,
+
+    input[type=number]::-webkit-inner-spin-button {
+
+      -webkit-appearance: none;
+
+      margin: 0;
+
+    }
+
+
+    input[type=number] {
+
+      -moz-appearance:textfield;
+
+    }  
   </style>
+  <link rel="stylesheet" href="{{asset("css/bootstrap-datepicker.min.css")}}">
+  <link rel="stylesheet" href="{{asset("css/bootstrap-datepicker.min.css")}}">
+  <link rel="stylesheet" href="{{asset("css/bootstrap-colorpicker.min.css")}}">
+  
 </head>
 <body class="hold-transition skin-blue-light fixed sidebar-mini" ng-app="principalBase">
 <div class="wrapper">
@@ -165,10 +185,20 @@
 <script src="{{asset("js/jquery.slimscroll.min.js")}}"></script>
 <script src="{{asset("js/sweetalert.min.js")}}"></script>
 <script src="{{asset("js/jquery-ui.min.js")}}"></script>
+
+<!--DatePicker-->
+<script src="{{asset("js/bootstrap-datepicker.js")}}"></script>
+<script src="{{asset("js/bootstrap-colorpicker.min.js")}}"></script>
+
 <!-- Resolve conflict in jQuery UI tooltip with Bootstrap tooltip -->
 @stack('scripts')
 <script>
   $.widget.bridge('uibutton', $.ui.button);
 </script>
+  <script type="text/javascript">  
+    $('#datepicker').datepicker({
+      autoclose: true
+    })
+  </script>
 </body>
 </html>
