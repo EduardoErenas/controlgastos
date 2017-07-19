@@ -53,9 +53,8 @@ Route::get('/perfil', function () {
 });
 
 //INGRESOS
-Route::get('/ingresos', function () {
-    return view('ingresos');
-});
+Route::get('/ingresos', 'ingresoController@registrar');
+
 
 //GASTOS
 Route::get('/gastos', function () {

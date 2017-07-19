@@ -17,6 +17,17 @@
           <div class="box-body">
 
             <div class="form-group">
+              <label class="">Categoria</label> 
+
+              <select class="form-control" name="cantidad" required>
+                @foreach($categorias as $a)  
+                  <option value='{{$a->cat_id}}'>{{$a->cat_description}}</option>
+                @endforeach                
+              </select>
+
+              <!--<input type="number" class="form-control" name="cantidad" required placeholder="$100.00">-->
+            </div>
+            <div class="form-group">
               <label>Descripcion</label>  
               <input type="text" class="form-control" name="descri" required placeholder="Descripcion">
             </div>
@@ -50,21 +61,30 @@
             <table class="table table-hover">
               <thead>
                 <th class="text-center">ID</th>
+                <th class="text-center">Categoria</th>
                 <th class="text-center">Descripcion</th>
                 <th class="text-center">Total</th>
                 <th class="text-center">Restante</th>
-                <th class="text-center">fecha</th>
+                <th class="text-center">Fecha Registro</th>
                 <th class="text-center">Estatus</th>
                 <th class="text-center">Opciones</th>
               </thead>
               <tbody>
+                @foreach($ingresos as $a)
                 <tr>
-                  <td class="text-center">1</td>
-                  <td class="text-center">Sueldo</td>
-                  <td class="text-center">10000</td>
-                  <td class="text-center">9000</td>
-                  <td class="text-center">2017-07-17</td>
-                  <td class="text-center">Activo</td>
+                  <td class="text-center">{{$a->in_id}}</td>
+                  <td class="text-center">{{$a->cat_description}}</td>
+                  <td class="text-center">{{$a->in_description}}</td>
+                  <td class="text-center">{{$a->in_amount}}</td>
+                  <td class="text-center">{{$a->in_restante}}</td>
+                  <td class="text-center">{{$a->in_created}}</td>
+                  <td class="text-center">
+                    @if($a->in_status==1)
+                      Activo
+                    @else
+                      Inactivo
+                    @endif
+                  </td>
                   <td class="text-center">
                     <a href="#" class="btn btn-primary btn-xs">
                       <span class="glyphicon glyphicon-pencil" aria-hidden="true"></span>
@@ -74,7 +94,7 @@
                     </a>
                   </td>
                 </tr>
-                <tr>
+              @endforeach
                 
               </tbody>
             </table>
