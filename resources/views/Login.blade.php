@@ -2,6 +2,7 @@
 <html lang="en">
 <head>
 	<meta charset="UTF-8">
+	<form action="{{url('/')}}" method="get"> 
 	<title>Iniciar Sesión</title>
 	<link rel="stylesheet" href="css/bootstrap.min.css">
 	<meta content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no" name="viewport">
