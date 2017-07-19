@@ -7,6 +7,7 @@
   <!-- Tell the browser to be responsive to screen width -->
   <meta content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no" name="viewport">
   <link rel="stylesheet" href="{{asset("css/AdminLTE.css")}}">
+    <link rel="stylesheet" href="{{asset("css/morris.css")}}">
   <link rel="stylesheet" href="{{asset("css/bootstrap.min.css")}}">
   <link rel="stylesheet" href="{{asset("css/_all-skins.min.css")}}">
   <link rel="stylesheet" href="{{asset("css/sweetalert.min.css")}}">
@@ -178,6 +179,7 @@
   </footer>
 </div>
 <script src="{{asset("js/jquery-3.1.1.min.js")}}"></script>
+<script src="{{asset("js/morris.min.js")}}"></script>
 <script src="{{asset("js/angular.min.js")}}"></script>
 <script src="{{asset("app/app.js")}}"></script>
 <script src="{{asset("js/bootstrap.min.js")}}"></script>
