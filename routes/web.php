@@ -52,9 +52,9 @@ Route::get('/perfil', function () {
     return view('perfil');
 });
 
-//INGRESOS
+//INGRESOS 
 Route::get('/ingresos', 'ingresoController@registrar');
-
+Route::post('/guardarIngreso','ingresoController@guardar'); 
 
 //GASTOS
 Route::get('/gastos', function () {

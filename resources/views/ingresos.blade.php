@@ -1,11 +1,12 @@
 @extends('master')
-
+ 
 @section('contenido')
+@include('flash::message')
   <div class="callout callout-info">
     <div class="content-header" style="padding-top: 0px !important">
       <h1>Ingresos <small></small></h1>
     </div> 
-  </div>
+  </div> 
 
 	<div class="row">
     <div class="col-sm-4">
@@ -13,13 +14,14 @@
         <div class="box-header with-border">
           <h3 class="box-title">Registrar Ingreso</h3> 
         </div>
-        <form class="">
+        <form action="{{url('/guardarIngreso')}}" method="post">
+          <input id="token" type="hidden" name="_token" value="{{csrf_token()}}">
           <div class="box-body">
 
             <div class="form-group">
               <label class="">Categoria</label> 
 
-              <select class="form-control" name="cantidad" required>
+              <select class="form-control" name="categoria" required>
                 @foreach($categorias as $a)  
                   <option value='{{$a->cat_id}}'>{{$a->cat_description}}</option>
                 @endforeach                
@@ -29,11 +31,11 @@
             </div>
             <div class="form-group">
               <label>Descripcion</label>  
-              <input type="text" class="form-control" name="descri" required placeholder="Descripcion">
+              <input type="text" class="form-control" name="descripcion" required placeholder="Descripcion">
             </div>
             <div class="form-group">
               <label class="">Cantidad</label>    
-              <input type="number" class="form-control" name="cantidad" required placeholder="$100.00">
+              <input type="number" class="form-control" name="monto" required placeholder="$100.00">
             </div>
               
           </div>
@@ -103,4 +105,10 @@
       </div>
     </div>      
   </div>
+
+<script type="text/javascript">
+  setTimeout(function(){
+    $(".alert").fadeOut(1500);
+  },1500);
+</script> 
 @stop
