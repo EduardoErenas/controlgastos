@@ -67,7 +67,7 @@
           <li class="dropdown user user-menu">
             <a href="#" class="dropdown-toggle" data-toggle="dropdown">
               <img src="images/user2-160x160.jpg" class="user-image" alt="User Image">
-              <span class="hidden-xs">Nombre de Usuario</span>
+              <span class="hidden-xs">{{Auth::user()->name}}</span>
             </a>
             <ul class="dropdown-menu">
               <!-- User image -->
@@ -75,8 +75,8 @@
                 <img src="images/user2-160x160.jpg" class="img-circle" alt="User Image">
 
                 <p>
-                  {{Auth::id()}} - oficio
-                  <small>Miembro desde Nov. 2012</small>
+                  {{Auth::user()->name}} - {{Auth::user()->usu_occupation}}
+                  <small>Miembro desde {{substr((Auth::user()->created_at), 0, 10)}}</small>
                 </p>
               </li>
               <!-- Menu Footer-->
@@ -110,7 +110,7 @@
           <img src="images/user2-160x160.jpg" class="img-circle" alt="User Image">
         </div>
         <div class="pull-left info">
-          <p>Nombre Usuario </p>
+          <p>{{Auth::user()->name}} </p>
           
         </div>
       </div>
