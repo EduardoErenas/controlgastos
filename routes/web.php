@@ -47,7 +47,6 @@ Route::get('/tablaDatos', function () {
 Route::group(['middleware' => ['auth']], function () {
     //INICIO
 	Route::get('/', 'HomeController@index');
-
 	Route::get('/home', 'HomeController@index')->name('home');
 
 	// PERFIL 
@@ -57,6 +56,7 @@ Route::group(['middleware' => ['auth']], function () {
 
 	//INGRESOS
 	Route::get('/ingresos', 'ingresoController@registrar');
+	Route::post('/guardarIngreso','ingresoController@guardar'); 
 
 
 	//GASTOS
