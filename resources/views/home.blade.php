@@ -76,7 +76,7 @@
           </div>
         </div>
         <div class="col-sm-6">
-          <img src="images/ingre.jpg" class="img-responsive img-rounded" alt="User Image">
+         
         </div>
       </div>
         
