@@ -79,7 +79,7 @@
                   <td class="text-center">{{$a->in_description}}</td>
                   <td class="text-center">{{$a->in_amount}}</td>
                   <td class="text-center">{{$a->in_restante}}</td>
-                  <td class="text-center">{{$a->in_created}}</td>
+                  <td class="text-center">{{$a->created_at}}</td>
                   <td class="text-center">
                     @if($a->in_status==1)
                       Activo

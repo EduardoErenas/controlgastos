@@ -43,10 +43,6 @@ Route::get('/tablaDatos', function () {
 });
 */
 
-//INICIO
-Route::get('/', function () {
-    return view('inicio');
-});
 //***************** GRUPO DE MIDDLEWARE ******************
 
 Route::group(['middleware' => ['auth']], function () {
