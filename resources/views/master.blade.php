@@ -120,7 +120,7 @@
         <li class="header">MENÚ PRINCIPAL</li>
         
         <li>
-          <a href="{{url('/')}}">
+          <a href="{{url('/home')}}">
             <i class="fa fa-home"></i> <span>Inicio</span>
           </a>
         </li>

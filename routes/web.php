@@ -42,39 +42,45 @@ Route::get('/tablaDatos', function () {
     return view('tablaDatos');
 });
 
-//INICIO
-Route::get('/', function () {
-    return view('inicio');
+//***************** GRUPO DE MIDDLEWARE ******************
+
+Route::group(['middleware' => ['auth']], function () {
+    //INICIO
+	Route::get('/', 'HomeController@index');
+
+	Route::get('/home', 'HomeController@index')->name('home');
+
+	// PERFIL 
+	Route::get('/perfil', function () {
+	    return view('perfil');
+	});
+
+	//INGRESOS
+	Route::get('/ingresos', 'ingresoController@registrar');
+
+
+	//GASTOS
+	Route::get('/gastos', function () {
+	    return view('gastos');
+	});
+
+	//PAGOS
+	Route::get('/pagos', function () {
+	    return view('pagos');
+	});
+
+	//REPORTES
+	Route::get('/reportes', function () {
+	    return view('reportes');
+	});
+
+	//CONFIGURACIONES
+	Route::get('/configuraciones', function () {
+	    return view('configuraciones');
+	});
 });
 
-// PERFIL 
-Route::get('/perfil', function () {
-    return view('perfil');
-});
 
-//INGRESOS
-Route::get('/ingresos', 'ingresoController@registrar');
-
-
-//GASTOS
-Route::get('/gastos', function () {
-    return view('gastos');
-});
-
-//PAGOS
-Route::get('/pagos', function () {
-    return view('pagos');
-});
-
-//REPORTES
-Route::get('/reportes', function () {
-    return view('reportes');
-});
-
-//CONFIGURACIONES
-Route::get('/configuraciones', function () {
-    return view('configuraciones');
-});
 Auth::routes();
 
-Route::get('/home', 'HomeController@index')->name('home');
+
