@@ -5,11 +5,6 @@
     <div class="" ">
      <h3 class="text-center" style="background: rgba(120,47,85,0.6);padding: 10px; border-radius: 3px;">GENERAL</h3>
     </div> 
-  
-<ol class="breadcrumb">
-    <li><a href="#"><i class="fa fa-dashboard"></i> Principal</a></li>
-    <li class="active">Home</li>
-</ol>
 @stop
 
 @section('contenido')
@@ -58,7 +53,7 @@
       
       <div class="row">
 
-        <div class="col-lg-3 col-sm-6 col-xs-12">
+        <div class="col-lg-4 col-sm-6 col-xs-12">
             <div class="info-box bg-red">
             <span class="info-box-icon"><i class="ion ion-ios-pricetag-outline"></i></span>
 
@@ -70,7 +65,7 @@
         </div>
         
         </div>
-        <div class="col-lg-3 col-sm-6 col-xs-12">
+        <div class="col-lg-4 col-sm-6 col-xs-12">
           <div class="info-box bg-green">
             <span class="info-box-icon"><i class="ion ion-ios-heart-outline"></i></span>
             <div class="info-box-content">

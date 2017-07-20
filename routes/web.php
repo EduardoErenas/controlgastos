@@ -44,7 +44,7 @@ Route::get('/tablaDatos', function () {
 
 //INICIO
 Route::get('/', function () {
-    return view('home');
+    return view('inicio');
 });
 
 // PERFIL 
@@ -75,3 +75,6 @@ Route::get('/reportes', function () {
 Route::get('/configuraciones', function () {
     return view('configuraciones');
 });
+Auth::routes();
+
+Route::get('/home', 'HomeController@index')->name('home');
