@@ -11,7 +11,7 @@
     <div class="col-sm-12">
       <div class="box box-success">
         <div class="box-header with-border">
-          <h3 class="box-title">Lista de Ingresos</h3> 
+          <h3 class="box-title">Lista de Pagos</h3> 
         </div>
         <div class="box-body">
           <div class="table-responsive">

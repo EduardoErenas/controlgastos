@@ -53,7 +53,7 @@
       
       <div class="row">
 
-        <div class="col-lg-3 col-sm-6 col-xs-12">
+        <div class="col-lg-4 col-sm-6 col-xs-12">
             <div class="info-box bg-red">
             <span class="info-box-icon"><i class="ion ion-ios-pricetag-outline"></i></span>
 
@@ -65,8 +65,8 @@
         </div>
         
         </div>
-        <div class="col-lg-3 col-sm-6 col-xs-12">
-          <div class="info-box bg-yellow">
+        <div class="col-lg-4 col-sm-6 col-xs-12">
+          <div class="info-box bg-green">
             <span class="info-box-icon"><i class="ion ion-ios-heart-outline"></i></span>
             <div class="info-box-content">
               <span class="info-box-text">Fondo Actual</span>
