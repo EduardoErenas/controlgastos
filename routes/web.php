@@ -19,7 +19,7 @@ Route::get('/getAlumnos', 'ejemploController@getAlumnos');
 
 
 
-
+/*
 Route::get('/blank', function () {
     return view('blank');
 });
@@ -41,6 +41,7 @@ Route::get('/formularioGeneral', 'ejemploController@index');
 Route::get('/tablaDatos', function () {
     return view('tablaDatos');
 });
+*/
 
 //***************** GRUPO DE MIDDLEWARE ******************
 
