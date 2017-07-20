@@ -5,11 +5,6 @@
     <div class="" ">
      <h3 class="text-center" style="background: rgba(120,47,85,0.6);padding: 10px; border-radius: 3px;">GENERAL</h3>
     </div> 
-  
-<ol class="breadcrumb">
-    <li><a href="#"><i class="fa fa-dashboard"></i> Principal</a></li>
-    <li class="active">Home</li>
-</ol>
 @stop
 
 @section('contenido')
@@ -58,7 +53,7 @@
       
       <div class="row">
 
-        <div class="col-lg-3 col-sm-6 col-xs-12">
+        <div class="col-lg-4 col-sm-6 col-xs-12">
             <div class="info-box bg-red">
             <span class="info-box-icon"><i class="ion ion-ios-pricetag-outline"></i></span>
 
@@ -70,7 +65,7 @@
         </div>
         
         </div>
-        <div class="col-lg-3 col-sm-6 col-xs-12">
+        <div class="col-lg-4 col-sm-6 col-xs-12">
           <div class="info-box bg-green">
             <span class="info-box-icon"><i class="ion ion-ios-heart-outline"></i></span>
             <div class="info-box-content">
@@ -80,5 +75,33 @@
             <!-- /.info-box-content -->
           </div>
         </div>
+        <div class="col-sm-6">
+          <img src="images/ingre.jpg" class="img-responsive img-rounded" alt="User Image">
+        </div>
       </div>
+        
+      
+
+      <script type="text/javascript">
+        new Morris.Line({
+  // ID of the element in which to draw the chart.
+  element: 'myfirstchart',
+  // Chart data records -- each entry in this array corresponds to a point on
+  // the chart.
+  data: [
+    { year: '2008', value: 20 },
+    { year: '2009', value: 10 },
+    { year: '2010', value: 5 },
+    { year: '2011', value: 5 },
+    { year: '2012', value: 20 }
+  ],
+  // The name of the data record attribute that contains x-values.
+  xkey: 'year',
+  // A list of names of data record attributes that contain y-values.
+  ykeys: ['value'],
+  // Labels for the ykeys -- will be displayed when you hover over the
+  // chart.
+  labels: ['Value']
+});
+      </script>
 @stop

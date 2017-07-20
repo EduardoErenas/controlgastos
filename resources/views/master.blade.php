@@ -3,6 +3,7 @@
 <head>
   <meta charset="utf-8">
   <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="csrf-token" content="{{ csrf_token() }}">
   <title>Control de Gatos | Dashboard</title>
   <!-- Tell the browser to be responsive to screen width -->
   <meta content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no" name="viewport">
@@ -13,6 +14,7 @@
   <link rel="stylesheet" href="{{asset("css/sweetalert.min.css")}}">
   <link rel="stylesheet" href="{{asset("css/font-awesome.min.css")}}">
   <link rel="stylesheet" href="{{asset("css/ionicons.min.css")}}">
+
   <style type="text/css">
     [ng\:cloak], [ng-cloak], [data-ng-cloak], [x-ng-cloak], .ng-cloak, x-ng-cloak, .ng-hide {
         display:none !important;
@@ -73,7 +75,7 @@
                 <img src="images/user2-160x160.jpg" class="img-circle" alt="User Image">
 
                 <p>
-                  Nombre Apellido - oficio
+                  {{Auth::id()}} - oficio
                   <small>Miembro desde Nov. 2012</small>
                 </p>
               </li>
@@ -83,7 +85,13 @@
                   <a href="{{url('/perfil')}}" class="btn btn-default btn-flat">Perfíl</a>
                 </div>
                 <div class="pull-right">
-                  <a href="{{url('/login')}}" class="btn btn-default btn-flat">Salir</a>
+                  <a href="{{ route('logout') }}" class="btn btn-default btn-flat" onclick="event.preventDefault(); document.getElementById('logout-form').submit();">
+                      Salir
+                  </a>
+                  <form id="logout-form" action="{{ route('logout') }}" method="POST" style="display: none;">
+                      {{ csrf_field() }}
+                  </form>
+                  
                 </div>
               </li>
             </ul>
