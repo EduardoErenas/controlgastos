@@ -44,7 +44,7 @@ Route::get('/tablaDatos', function () {
 */
 
 //***************** GRUPO DE MIDDLEWARE ******************
-
+ 
 Route::group(['middleware' => ['auth']], function () {
     //INICIO
 	Route::get('/', 'HomeController@index');
@@ -58,7 +58,7 @@ Route::group(['middleware' => ['auth']], function () {
 	//INGRESOS
 	Route::get('/ingresos', 'ingresoController@registrar');
 	Route::post('/guardarIngreso','ingresoController@guardar'); 
-
+	Route::get('/eliminarIngreso/{id}','ingresoController@eliminar');
 
 	//GASTOS
 	Route::get('/gastos', 'GastoController@registrar');
