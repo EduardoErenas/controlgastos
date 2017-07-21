@@ -61,9 +61,8 @@ Route::group(['middleware' => ['auth']], function () {
 
 
 	//GASTOS
-	Route::get('/gastos', function () {
-	    return view('gastos');
-	});
+	Route::get('/gastos', 'GastoController@registrar');
+	Route::post('/guardarGasto','GastoController@guardar');
 
 	//PAGOS
 	Route::get('/pagos', function () {

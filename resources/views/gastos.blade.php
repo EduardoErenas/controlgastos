@@ -6,6 +6,7 @@
       <h1>Gastos <small></small></h1>
     </div> 
   </div>
+  @include('flash::message')
 
   <div class="row">
     <div class="col-sm-4">
@@ -13,7 +14,8 @@
         <div class="box-header with-border">
           <h3 class="box-title">Registrar Gastos</h3> 
         </div>
-        <form class="">
+        <form class="" action="{{url('/guardarGasto')}}" method="post">
+          <input id="token" type="hidden" name="_token" value="{{csrf_token()}}">
           <div class="box-body">
 
             <div class="form-group">
@@ -21,13 +23,23 @@
               <input type="text" class="form-control" name="descri" required placeholder="Descripcion">
             </div>
             <div class="form-group">
+              <label class="">Cantidad</label>    
+              <input type="number" class="form-control" name="cantidad" required placeholder="Cantidad">
+            </div>
+            <div class="form-group">
               <label class="">No. de Pagos</label>    
               <input type="number" class="form-control" name="pagos" required placeholder="#Pagos">
             </div>
             <div class="form-group">
-              <label class="">Total</label>    
-              <input type="number" class="form-control" name="total" required placeholder="Total">
+              <label class="">Categoria</label>
+              <select name="cat" required class="form-control">
+                @foreach($categorias as $a)  
+                  <option value='{{$a->cat_id}}'>{{$a->cat_description}}</option>
+                @endforeach
+              </select>    
+              
             </div>
+            
             <div class="form-group">
               <label class="">Frecuencia</label>
               <select name="frecuen" required class="form-control">
@@ -35,6 +47,7 @@
                 <option value="1">Semanal</option>
                 <option value="2">Quincenal</option>
                 <option value="3">Mensual</option>
+                <option value="3">Unico</option>
               </select>    
               
             </div>
@@ -78,10 +91,10 @@
                 <th class="text-center">ID</th>
                 <th class="text-center">Concepto</th>
                 <th class="text-center">#Pagos</th>
+                <th class="text-center">Categoria</th>
                 <th class="text-center">Frecuencia</th>
                 <th class="text-center">fecha</th>
                 <th class="text-center">Estatus</th>
-                <th class="text-center">Detalle</th>
                 <th class="text-center">Opciones</th>
               </thead>
               <tbody>
@@ -89,10 +102,10 @@
                   <td class="text-center">1</td>
                   <td class="text-center">Pañales</td>
                   <td class="text-center">2/10</td>
+                  <td class="text-center">D</td>
                   <td class="text-center">Mensual</td>
                   <td class="text-center">2017-07-17</td>
                   <td class="text-center">Activo</td>
-                  <td class="text-center">D</td>
                   <td class="text-center">
                     <a href="#" class="btn btn-primary btn-xs">
                       <span class="glyphicon glyphicon-pencil" aria-hidden="true"></span>
@@ -112,6 +125,10 @@
     </div>      
   </div>
 
- 
+<script type="text/javascript">
+  setTimeout(function(){
+    $(".alert").fadeOut(1500);
+  },1500);
+</script>  
 
 @stop
