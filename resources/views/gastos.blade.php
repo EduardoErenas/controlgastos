@@ -98,14 +98,21 @@
                 <th class="text-center">Opciones</th>
               </thead>
               <tbody>
-                <tr>
-                  <td class="text-center">1</td>
-                  <td class="text-center">Pañales</td>
-                  <td class="text-center">2/10</td>
-                  <td class="text-center">D</td>
+                @foreach($gastos as $g) 
+                <tr> 
+                  <td class="text-center">{{$g->ga_id}}</td>
+                  <td class="text-center">{{$g->ga_description}}</td>
+                  <td class="text-center">{{$g->ga_numpagos}}</td>
+                  <td class="text-center">{{$g->cat_description}}</td>
                   <td class="text-center">Mensual</td>
-                  <td class="text-center">2017-07-17</td>
-                  <td class="text-center">Activo</td>
+                  <td class="text-center">{{$g->ga_dia}}-{{$g->ga_mes}}-{{$g->ga_ano}}</td>
+                  <td class="text-center">
+                    @if($g->ga_status==1)
+                      Activo
+                    @else
+                      Inactivo
+                    @endif
+                  </td>
                   <td class="text-center">
                     <a href="#" class="btn btn-primary btn-xs">
                       <span class="glyphicon glyphicon-pencil" aria-hidden="true"></span>
@@ -115,6 +122,7 @@
                     </a>
                   </td>
                 </tr>
+                @endforeach
                 <tr>
                 
               </tbody>

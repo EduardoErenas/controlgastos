@@ -3,20 +3,22 @@
 namespace App\Http\Controllers;
 
 use Illuminate\Http\Request; 
+use Illuminate\Support\Facades\Auth;
 use App\Gastos;
-use App\Ingresos_cliente;
+use App\Gastos_Cliente;
 use App\Categoria_Gasto;
+use App\Usuarios_Gastos;
 use DB;
-
 
 class GastoController extends Controller{
     
     public function registrar(){
         $categorias = Categoria_Gasto::all();
-        //$ingresos = Ingresos_cliente::all(); 
-        //dd($categorias);
-        
-        return view('gastos',compact('categorias'));
+        $gastos = DB::table('vw_gastos_cliente')
+        ->where('vw_gastos_cliente.usu_id', '=', Auth::id())
+        ->get(); 
+       
+        return view('gastos',compact('gastos','categorias'));
     }
 
     public function guardar(Request $datos){
@@ -31,10 +33,16 @@ class GastoController extends Controller{
             $gasto->ga_dia=substr($datos->input('corte'),3,2);
             $gasto->ga_prioridad=$datos->input('prio');
 
-            
             $gasto->save();
 
-            //dd($gasto->ga_ano=substr($datos->input('corte'),6,9));
+            $gasto_user= Gastos::all();
+            $gasto_user=$gasto_user->last();
+
+            $usuario_gasto = new Usuarios_Gastos();
+            $usuario_gasto->usu_id=Auth::id();
+            $usuario_gasto->ga_id=$gasto_user->ga_id;
+
+            $usuario_gasto->save();
 
             flash('!Se guardaron exitosamente los datos del Gasto ')->success();
 
