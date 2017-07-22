@@ -5,20 +5,20 @@ namespace App\Http\Controllers;
 use Illuminate\Http\Request; 
 use Illuminate\Support\Facades\Auth;
 use App\Gastos;
-use App\Gastos_Cliente;
 use App\Categoria_Gasto;
-use App\Usuarios_Gastos;
+use App\Frecuencia_Gasto;
 use DB;
 
 class GastoController extends Controller{
     
     public function registrar(){
         $categorias = Categoria_Gasto::all();
-        $gastos = DB::table('vw_gastos_cliente')
-        ->where('vw_gastos_cliente.usu_id', '=', Auth::id())
+        $frecuencia = Frecuencia_Gasto::all();
+        $gastos = DB::table('gasto')
+        ->where('usu_id', '=', Auth::id())
         ->get(); 
        
-        return view('gastos',compact('gastos','categorias'));
+        return view('gastos',compact('gastos','categorias', 'frecuencia'));
     }
 
     public function guardar(Request $datos){
@@ -37,12 +37,6 @@ class GastoController extends Controller{
 
             $gasto_user= Gastos::all();
             $gasto_user=$gasto_user->last();
-
-            $usuario_gasto = new Usuarios_Gastos();
-            $usuario_gasto->usu_id=Auth::id();
-            $usuario_gasto->ga_id=$gasto_user->ga_id;
-
-            $usuario_gasto->save();
 
             flash('!Se guardaron exitosamente los datos del Gasto ')->success();
 

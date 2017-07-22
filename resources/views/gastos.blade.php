@@ -43,26 +43,36 @@
             <div class="form-group">
               <label class="">Frecuencia</label>
               <select name="frecuen" required class="form-control">
-                <option value="0">Seleccionar Frecuencia</option>
-                <option value="1">Semanal</option>
-                <option value="2">Quincenal</option>
-                <option value="3">Mensual</option>
-                <option value="3">Unico</option>
+                @foreach($frecuencia as $f)  
+                  <option value='{{$f->ft_id}}'>{{$f->ft_description}}</option>
+                @endforeach
+                
               </select>    
               
             </div>
             <div class="form-group">
-                <label>Corte</label>
+                <label>Fecha Inicio</label>
                 <div class="input-group date">
                   <div class="input-group-addon">
                     <i class="fa fa-calendar"></i>
                   </div>
-                  <input class="form-control pull-right" required name="corte" id="datepicker" type="text">
+                  <input class="form-control pull-right" required name="inicio" id="datepicker" type="text">
                 </div>
             </div>
             <div class="form-group">
-              <label class="">Prioridad</label>    
-              <input type="number" class="form-control" name="prio" required placeholder="Prioridad">
+              <label class="">Prioridad</label>
+              <select name="prio" required class="form-control">
+                <option value="1">1</option>
+                <option value="2">2</option>
+                <option value="3">3</option>
+                <option value="4">4</option>
+                <option value="5">5</option>
+                <option value="6">6</option>
+                <option value="7">7</option>
+                <option value="8">8</option>
+                <option value="9">9</option>
+                <option value="10">10</option>
+              </select>    
             </div>
              
           </div>
