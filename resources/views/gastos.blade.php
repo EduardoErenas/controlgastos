@@ -124,10 +124,10 @@
                     @endif
                   </td>
                   <td class="text-center">
-                    <a href="#" class="btn btn-primary btn-xs">
+                    <a href="{{url('/editarGasto')}}/{{$g->ga_id}}" class="btn btn-primary btn-xs">
                       <span class="glyphicon glyphicon-pencil" aria-hidden="true"></span>
                     </a>
-                    <a href="#" class="btn btn-danger btn-xs">
+                    <a href="{{url('/eliminarGasto')}}/{{$g->ga_id}}" class="btn btn-danger btn-xs">
                       <span class="glyphicon glyphicon-remove" aria-hidden="true"></span>
                     </a>
                   </td>
