@@ -103,7 +103,7 @@
                 <th class="text-center">#Pagos</th>
                 <th class="text-center">Categoria</th>
                 <th class="text-center">Frecuencia</th>
-                <th class="text-center">fecha</th>
+                <th class="text-center">Inicia</th>
                 <th class="text-center">Estatus</th>
                 <th class="text-center">Opciones</th>
               </thead>
@@ -114,7 +114,7 @@
                   <td class="text-center">{{$g->ga_description}}</td>
                   <td class="text-center">{{$g->ga_numpagos}}</td>
                   <td class="text-center">{{$g->cat_description}}</td>
-                  <td class="text-center">Mensual</td>
+                  <td class="text-center">{{$g->ft_description}}</td>
                   <td class="text-center">{{$g->ga_dia}}-{{$g->ga_mes}}-{{$g->ga_ano}}</td>
                   <td class="text-center">
                     @if($g->ga_status==1)

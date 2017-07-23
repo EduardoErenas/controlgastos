@@ -16,6 +16,9 @@ class GastoController extends Controller{
         $frecuencia = Frecuencia_Gasto::all();
         $gastos = DB::table('gasto')
         ->where('usu_id', '=', Auth::id())
+        ->join('category_gasto', 'category_gasto.cat_id', '=', 'gasto.cat_id')
+        ->join('frecuency_type', 'frecuency_type.ft_id', '=', 'gasto.ft_id')
+        ->select('gasto.ga_id', 'gasto.ga_description', 'gasto.ga_numpagos', 'category_gasto.cat_description', 'frecuency_type.ft_description', 'gasto.ga_status', 'gasto.ga_dia', 'gasto.ga_mes', 'gasto.ga_ano')
         ->get(); 
        
         return view('gastos',compact('gastos','categorias', 'frecuencia'));
@@ -23,20 +26,20 @@ class GastoController extends Controller{
 
     public function guardar(Request $datos){
     	try{
+            
             $gasto = new Gastos();
+            $gasto->usu_id=Auth::id();
             $gasto->ga_description=$datos->input('descri');
             $gasto->ga_amount=$datos->input('cantidad');
             $gasto->ga_numpagos=$datos->input('pagos');
             $gasto->cat_id=$datos->input('cat');
-            $gasto->ga_ano=substr($datos->input('corte'),6,9);
-            $gasto->ga_mes=substr($datos->input('corte'),0,2);
-            $gasto->ga_dia=substr($datos->input('corte'),3,2);
+            $gasto->ft_id=$datos->input('frecuen');
+            $gasto->ga_ano=substr($datos->input('inicio'),6,9);
+            $gasto->ga_mes=substr($datos->input('inicio'),0,2);
+            $gasto->ga_dia=substr($datos->input('inicio'),3,2);
             $gasto->ga_prioridad=$datos->input('prio');
 
             $gasto->save();
-
-            $gasto_user= Gastos::all();
-            $gasto_user=$gasto_user->last();
 
             flash('!Se guardaron exitosamente los datos del Gasto ')->success();
 
