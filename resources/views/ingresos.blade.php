@@ -35,7 +35,7 @@
             </div>
             <div class="form-group">
               <label class="">Cantidad</label>    
-              <input type="number" class="form-control" name="monto" required placeholder="$100.00">
+              <input type="number" class="form-control" name="monto" min='1' required placeholder="$100.00">
             </div>
               
           </div>
@@ -90,7 +90,7 @@
                     @endif
                   </td>
                   <td class="text-center">
-                    <a href="#" class="btn btn-primary btn-xs">
+                    <a href="{{url('/editarIngreso')}}/{{$a->in_id}}" class="btn btn-primary btn-xs">
                       <span class="glyphicon glyphicon-pencil" aria-hidden="true"></span>
                     </a>
                     <a href="{{url('/eliminarIngreso')}}/{{$a->in_id}}" class="btn btn-danger btn-xs">
