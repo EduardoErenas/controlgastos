@@ -50,17 +50,30 @@ Route::group(['middleware' => ['auth']], function () {
 	Route::get('/', 'HomeController@index');
 	Route::get('/home', 'HomeController@index')->name('home');
 
+/*<<<<<<< HEAD
 	// PERFIL 
 	Route::get('/perfil', 'perfilController@inicio');
 	Route::post('/editarperfil/{id}', 'perfilController@editarperfil');
+=======*/
+	// PERFIL  
+	Route::get('/perfil', 'perfilController@inicio');
+	Route::post('/editarperfil/{id}', 'perfilController@editarperfil');
+	});
+
+//>>>>>>> origin/master
 	//INGRESOS
 	Route::get('/ingresos', 'ingresoController@registrar');
-	Route::post('/guardarIngreso','ingresoController@guardar'); 
+	Route::post('/guardarIngreso','ingresoController@guardar');
+	Route::get('/editarIngreso/{id}','ingresoController@editar');
+	Route::post('/actualizarIngreso/{id}','ingresoController@actualizar');
 	Route::get('/eliminarIngreso/{id}','ingresoController@eliminar');
 
 	//GASTOS
 	Route::get('/gastos', 'GastoController@registrar');
 	Route::post('/guardarGasto','GastoController@guardar');
+	Route::get('/editarGasto/{id}', 'GastoController@editar');
+	Route::post('/actualizarGasto/{ga_id}', 'GastoController@actualizar');
+	Route::get('/eliminarGasto/{id}', 'GastoController@eliminar');
 
 	//PAGOS
 	Route::get('/pagos', function () {

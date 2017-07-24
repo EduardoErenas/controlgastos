@@ -18,23 +18,51 @@ class ingresoController extends Controller{
         $ingresos = Ingresos_cliente::where('usu_id',Auth::id())->get(); 
         
         return view('ingresos',compact('ingresos','categorias'));
-    } 
+    }
+
+    public function editar($id){
+        try{
+            $ingreso=DB::table('ingreso')
+                ->where('in_id', '=', $id)
+                ->first();
+
+            $categorias =Categoria_Ingreso::all();
+
+            return view('/editarIngreso', compact('ingreso','categorias'));
+
+        }catch(\Illuminate\Database\QueryException $e){
+            flash('Error nose puede Editar ingreso, intenta de nuevo ')->error();
+
+            return redirect ('/ingresos');
+        }
+    }
+    
+    public function actualizar($in_id,Request $datos){
+       // try{
+            $ingreso = Ingresos::find($in_id);
+            $ingreso ->in_description = $datos->input('descripcion');
+            $ingreso ->in_amount = $datos->input('monto');
+            $ingreso ->cat_id = $datos->input('categoria');
+            $ingreso->save();
+
+         //   flash('!Se actualizo Ingreso exitosamente¡')->success();
+
+        //}catch(\Illuminate\Database\QueryException $e){
+          //  flash('Error al actualizar Ingreso, intenta de nuevo¡')->error();
+       // }
+
+        return redirect ('/ingresos');
+    }
 
     public function guardar(Request $datos){
     	try{
             $ingreso = new Ingresos();
+            $ingreso->usu_id=Auth::id();
             $ingreso->in_description=$datos->input('descripcion');
             $ingreso->in_amount=$datos->input('monto');
             $ingreso->in_restante=$datos->input('monto');
             $ingreso->cat_id=$datos->input('categoria');
             $ingreso->save();
-
-            $lastInsertedId = $ingreso->id;
-
-            $usu_ingreso = new Usuario_ingreso();
-            $usu_ingreso->usu_id=Auth::id();
-            $usu_ingreso->in_id=$lastInsertedId;
-            $usu_ingreso->save();
 
             flash('!Se guardaron exitosamente los datos del Ingreso ')->success();
 
@@ -44,7 +72,7 @@ class ingresoController extends Controller{
         }
     	 
     	return redirect('/ingresos');
-    }
+    } 
 
     public function eliminar($id){
         try{
