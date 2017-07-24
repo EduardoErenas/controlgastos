@@ -58,7 +58,7 @@ Route::group(['middleware' => ['auth']], function () {
 	// PERFIL  
 	Route::get('/perfil', 'perfilController@inicio');
 	Route::post('/editarperfil/{id}', 'perfilController@editarperfil');
-	});
+	
 
 //>>>>>>> origin/master
 	//INGRESOS
