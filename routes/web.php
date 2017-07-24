@@ -51,10 +51,8 @@ Route::group(['middleware' => ['auth']], function () {
 	Route::get('/home', 'HomeController@index')->name('home');
 
 	// PERFIL 
-	Route::get('/perfil', function () {
-	    return view('perfil');
-	});
-
+	Route::get('/perfil', 'perfilController@inicio');
+	Route::post('/editarperfil/{id}', 'perfilController@editarperfil');
 	//INGRESOS
 	Route::get('/ingresos', 'ingresoController@registrar');
 	Route::post('/guardarIngreso','ingresoController@guardar'); 
