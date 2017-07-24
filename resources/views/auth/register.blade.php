@@ -40,26 +40,15 @@
     </style>
 </head>
 <body>
-<nav class="navbar navbar-default navbar-static-top">
-    <div class="container">
-                <div class="navbar-header navbar">
 
-                    <!-- Collapsed Hamburger -->
-                    <!-- Branding Image -->
-                    <a class="navbar-brand" href="{{ url('/') }}">
-                        <h4>Control de Gastos</h4>
-                    </a>
-                </div>
-                <div class="collapse navbar-collapse" id="app-navbar-collapse">
-                    <ul class="nav navbar-nav">
-                        &nbsp;
-                    </ul>
-                    <ul class="nav navbar-nav navbar-right">
-                            <li><a class="navbar-static-top " href="{{ route('login') }}"><h5>Login</h5></a></li>
-                        </ul>
-                </div>
+    <div class="container-fluid" style="background-color: #f1f1f1; padding: 10px; margin-bottom: 15px;">
+        <div class="row">
+            <div class="col-md-12">
+                <a href="{{ route('login') }}" class="pull-right" style="margin-right: 15px; font-weight: bold;">Login</a>
+            </div>
+        </div>
     </div>
-</nav>
+
 <div class="container">
     <div class="row">
         <div class="col-md-8 col-md-offset-2">

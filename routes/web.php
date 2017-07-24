@@ -84,6 +84,7 @@ Route::group(['middleware' => ['auth']], function () {
 	    return view('configuraciones');
 	});
 	Route::post('/editarContraseña/{id}', 'UsuarioController@editarContraseña');
+	Route::post('/editarAlgoritmo/{id}', 'UsuarioController@editarAlgoritmo');
 });
 
 Auth::routes();

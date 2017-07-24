@@ -15,7 +15,8 @@ use App\ejemplo;
 
 class UsuarioController extends Controller{
 
-    public function editarContraseña(Request $datos,$idusuario){
+    public function editarContraseña(Request $datos,$idusuario)
+    {
         $user= User::Find($idusuario);
          
         if (Hash::check($datos->input('contra'), Auth::user()->password)) 
@@ -34,5 +35,10 @@ class UsuarioController extends Controller{
              flash('!Esto está mal '.Auth::user()->password)->error();
         }
         return redirect('configuraciones');   
+    }
+    public function editarAlgoritmo(Request $datos, $idusuario)
+    {
+        $user= User::Find($idusuario);
+        
     }
 }

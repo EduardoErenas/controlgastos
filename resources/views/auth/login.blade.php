@@ -15,7 +15,7 @@
             background-color: #e3f2fd;
         }
         .panel{
-            margin-top: 8%;
+            margin-top: 20%;
             height: 100%;
             width: 100%; 
             padding: 0% 1% 0% 1%;
@@ -44,26 +44,6 @@
     </style>
 </head>
 <body>
-<nav class="navbar navbar-default navbar-static-top">
-    <div class="container">
-                <div class="navbar-header navbar">
-
-                    <!-- Collapsed Hamburger -->
-                    <!-- Branding Image -->
-                    <a class="navbar-brand" href="{{ url('/') }}">
-                        <h4>Control de Gastos</h4>
-                    </a>
-                </div>
-                <div class="collapse navbar-collapse" id="app-navbar-collapse">
-                    <ul class="nav navbar-nav">
-                        &nbsp;
-                    </ul>
-                    <ul class="nav navbar-nav navbar-right">
-                            <li><a class="navbar-static-top " href="{{ route('register') }}"><h5>Registrate</h5></a></li>
-                        </ul>
-                </div>
-    </div>
-</nav>
     <div class="container">
         <div class="row">
             <div class="col-xs-12 col-md-6 col-md-offset-3">
@@ -117,6 +97,7 @@
                         <div class="panel-footer fondo">
                             <div class="row">
                                 <div class="col-md-12">
+                                    <a href="{{ route('register') }}" class="pull-left">Registrate</a>
                                     <button type="submit" class="btn btn-primary pull-right">
                                         Aceptar
                                     </button>
