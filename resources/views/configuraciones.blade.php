@@ -1,6 +1,8 @@
 @extends('master')
 
 @section('contenido')
+@include('flash::message')
+
 	<div class="callout callout-info">
     <div class="content-header"  style="padding-top: 0px !important">
       <h1>Configuraciones <small></small></h1>
@@ -21,7 +23,7 @@
               <label  class="col-sm-2 control-label">Contraseña Actual</label>
 
               <div class="col-sm-10">
-                <input type="password" class="form-control" name="pass" placeholder="Contraseña Actual" required >
+                <input type="password" class="form-control" name="contra"  >
               </div>
             </div>
             <div class="form-group">
@@ -63,7 +65,7 @@
         <div class="box-body">
           <form class="form-horizontal">
             <div class="form-group">
-              <label  class="col-sm-2 control-label">Contraseña Actual</label>
+              <label  class="col-sm-2 control-label">Algoritmo Actual</label>
 
               <div class="col-sm-10">
                 <select class="form-control" name="algo" required>
@@ -87,4 +89,9 @@
 
     
   </div>
+  <script type="text/javascript">
+  setTimeout(function(){
+    $(".alert").fadeOut(1500);
+  },1500);
+</script> 
 @stop

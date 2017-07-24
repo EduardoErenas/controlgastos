@@ -1,5 +1,5 @@
 @extends('master')
-@include('flash::message')
+
 @section('titulo')
 <h1>
     Perfil de Usuario
@@ -8,6 +8,7 @@
 @stop
 
 @section('contenido')
+@include('flash::message')
 	    <div class="row">
         <div class="col-md-3">
 
