@@ -31,6 +31,7 @@ class perfilController extends Controller{
     } 
 
     public function editarperfil(Request $datos,$idusuario){
+        try{
              $user= User::Find($idusuario);
              $user->name=$datos->input('nombre');
              $user->email=$datos->input('email');
@@ -46,8 +47,11 @@ class perfilController extends Controller{
              
              $user->save(); 
 
-             flash('!Se guardaron exitosamente los datos del Ingreso ')->success();
-             return redirect('perfil');
+            flash('!Se guardaron exitosamente los datos del Perfil ')->success();
+         }catch(\Illuminate\Database\QueryException $e){
+            flash('Error al actualizar Perfil, intenta de nuevo¡')->error();
+        }
+        return redirect('perfil');
         
     }
 

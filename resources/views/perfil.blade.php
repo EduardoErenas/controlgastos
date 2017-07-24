@@ -1,12 +1,12 @@
 @extends('master')
 
+
 @section('titulo')
 <h1>
     Perfil de Usuario
-</h1>
+</h1> 
 
-@stop
-
+@stop 
 @section('contenido')
 @include('flash::message')
 	    <div class="row">
