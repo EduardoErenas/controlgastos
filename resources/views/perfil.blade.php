@@ -69,22 +69,44 @@
                     </div>
                   </div>
                   <div class="form-group">
-                    <label for="inputName" class="col-sm-2 control-label">Sexo</label>
-                    <div class="col-sm-10">
-                     @if(Auth::user()->usu_sex==1)
-                      <input type="text" class="form-control" id="inputName" placeholder="Sexo" readonly value="Masculino">
-                     @else
-                     <input type="text" class="form-control" id="inputName" placeholder="Sexo" readonly value="Femenino">
-                     @endif
-                    </div>
-                  </div>
-                  <div class="form-group">
                     <label for="inputExperience" class="col-sm-2 control-label">Profesion</label>
 
                     <div class="col-sm-10">
                       <input type="text" class="form-control" id="inputName" placeholder="Profesion" readonly value="{{Auth::user()->usu_occupation}}">
                     </div>
                   </div>
+                  <div class="form-group">
+                    <label for="inputoaddress" class="col-sm-2 control-label">Direccion</label>
+
+                    <div class="col-sm-10">
+                      <input type="text" class="form-control" id="inputoaddress" placeholder="Direccion" readonly value="{{Auth::user()->usu_address}}">
+                    </div>
+                  </div>
+                  <div class="form-group">
+                    <label for="inputcity" class="col-sm-2 control-label">Ciudad</label>
+
+                    <div class="col-sm-10">
+                      <input type="text" class="form-control" id="inputcity" placeholder="Ciudad" readonly value="{{Auth::user()->usu_city}}">
+                    </div>
+                  </div>
+                  <div class="form-group">
+                    <label for="inputstate" class="col-sm-2 control-label">Estado</label>
+
+                    <div class="col-sm-10">
+                      <input type="text" class="form-control" id="inputstate" placeholder="Estado" readonly value="{{Auth::user()->usu_state}}">
+                    </div>
+                  </div>
+                  <div class="form-group">
+                    <label for="inputsexo" class="col-sm-2 control-label">Sexo</label>
+                    <div class="col-sm-10">                    
+                     @if(Auth::user()->usu_sex==1)
+                      <input type="text" class="form-control" id="inputsexo" placeholder="Sexo" readonly value="Masculino">
+                     @else
+                     <input type="text" class="form-control" id="inputsexo" placeholder="Sexo" readonly value="Femenino">
+                     @endif
+                    </div>
+                  </div>
+                  
                   
                 </form>
               </div>
@@ -118,21 +140,45 @@
                     </div>
                   </div>
                   <div class="form-group">
-                    <label for="inputName" class="col-sm-2 control-label">Sexo</label>
-                   
-                    <div class="col-sm-10">
-                     @if(Auth::user()->usu_sex==1)
-                      <input type="text" class="form-control" id="inputName" name="sexo" placeholder="Sexo" required value="Masculino">
-                       @else
-                       <input type="text" class="form-control" id="inputName" name="sexo" placeholder="Sexo" required value="Femenino">
-                       @endif
-                    </div>
-                  </div>
-                  <div class="form-group">
                     <label for="inputExperience" class="col-sm-2 control-label">Profesion</label>
 
                     <div class="col-sm-10">
-                      <input type="text" class="form-control" id="inputName" name="ocupacion" placeholder="Profesion" required value="{{Auth::user()->usu_occupation}}">
+                      <input type="text" class="form-control" id="inputExperience" name="ocupacion" placeholder="Profesion" required value="{{Auth::user()->usu_occupation}}">
+                    </div>
+                  </div>
+                  <div class="form-group">
+                    <label for="inputoaddress" class="col-sm-2 control-label">Direccion</label>
+
+                    <div class="col-sm-10">
+                      <input type="text" class="form-control" id="inputoaddress" name="Direccion" placeholder="Direccion" required value="{{Auth::user()->usu_address}}">
+                    </div>
+                  </div>
+                  <div class="form-group">
+                    <label for="inputcity" class="col-sm-2 control-label">Ciudad</label>
+
+                    <div class="col-sm-10">
+                      <input type="text" class="form-control" id="inputcity" name="Ciudad" placeholder="Ciudad" required value="{{Auth::user()->usu_city}}">
+                    </div>
+                  </div>
+                  <div class="form-group">
+                    <label for="inputstate" class="col-sm-2 control-label">Estado</label>
+
+                    <div class="col-sm-10">
+                      <input type="text" class="form-control" id="inputstate" name="Estado" placeholder="Estado" required value="{{Auth::user()->usu_state}}">
+                    </div>
+                  </div>
+                  <div class="form-group">   
+                    <label class="col-sm-2 control-label" for="sexo">Sexo:</label> 
+                    <div class="col-sm-10">
+                      <select class="form-control"  name="sexo">
+                       @if(Auth::user()->usu_sex==0)
+                       <option value="0" selected="">Femenino</option>
+                       <option value="1" >Masculino</option>
+                        @else
+                       <option value="0" >Femenino</option>
+                       <option value="1" selected="">Masculino</option>
+                       @endif
+                      </select>
                     </div>
                   </div>
                   <div class="form-group">

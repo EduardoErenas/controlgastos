@@ -31,25 +31,16 @@ class perfilController extends Controller{
     } 
 
     public function editarperfil(Request $datos,$idusuario){
-    	     $sex=0;
              $user= User::Find($idusuario);
-             if($datos->input('sexo')=='Masculino'){
-                $sex=1;
-             }
-            
-             
-             
              $user->name=$datos->input('nombre');
              $user->email=$datos->input('email');
              $user->password=Auth::user()->password;
-             if($datos->input('sexo')=='Masculino') 
-             
              $user->usu_age=$datos->input('edad');
              $user->usu_occupation=$datos->input('ocupacion');
-             $user->usu_address=Auth::user()->usu_address;
-             $user->usu_city=Auth::user()->usu_city;
-             $user->usu_state=Auth::user()->usu_state;
-             $user->usu_sex=$sex;
+             $user->usu_address=$datos->input('Direccion');
+             $user->usu_city=$datos->input('Ciudad');
+             $user->usu_state=$datos->input('Estado');
+             $user->usu_sex=$datos->input('sexo');
              $user->usu_type=Auth::user()->usu_type;
              $user->usu_status=Auth::user()->usu_status;
              
