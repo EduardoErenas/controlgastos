@@ -54,31 +54,6 @@ class GastoController extends Controller{
 
             $gasto->save();
 
-            $ultimoGasto= Gastos::all();
-            $ultimoGasto=$ultimoGasto->last();
-
-            $pago = new Pagos(); 
-            switch ($frecuencia) {
-                case 1:
-                    $pago->usu_id=Auth::id();
-                    $pago->ga_id=$ultimoGasto->ga_id;
-                    break;
-                case 2:
-                    ;
-                    break;
-                case 3:
-                    ;
-                    break;
-                case 4:
-                    ;
-                    break;
-                case 5:
-                    ;
-                    break;
-            }
-
-
-
             flash('!Se guardaron exitosamente los datos del Gasto ')->success();
             
 
@@ -138,6 +113,15 @@ class GastoController extends Controller{
             DB::table('gasto')
             ->where('ga_id', $id)
             ->update(['ga_status' => 0]);
+
+            $pagos = DB::table('pago')
+            ->where('pa_id', '=' , $id)
+            ->get();
+
+            
+            DB::table('pago')
+            ->where('ga_id', $id)
+            ->update(['pa_estatus' => 0]);   
 
             flash('!Se Elimino Gasto exitosamente¡')->success();
 
