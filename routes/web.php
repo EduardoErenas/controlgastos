@@ -50,17 +50,11 @@ Route::group(['middleware' => ['auth']], function () {
 	Route::get('/', 'HomeController@index');
 	Route::get('/home', 'HomeController@index')->name('home');
 
-/*<<<<<<< HEAD
-	// PERFIL 
-	Route::get('/perfil', 'perfilController@inicio');
-	Route::post('/editarperfil/{id}', 'perfilController@editarperfil');
-=======*/
+
 	// PERFIL  
 	Route::get('/perfil', 'perfilController@inicio');
 	Route::post('/editarperfil/{id}', 'perfilController@editarperfil');
 	
-
-//>>>>>>> origin/master
 	//INGRESOS
 	Route::get('/ingresos', 'ingresoController@registrar');
 	Route::post('/guardarIngreso','ingresoController@guardar');
