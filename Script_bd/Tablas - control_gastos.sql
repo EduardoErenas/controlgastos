@@ -177,11 +177,12 @@ inner join users u on u.id = i.usu_id
 inner join category_ingreso ci on ci.cat_id = i.cat_id
 where i.in_status<>0;
 
-SELECT * from pago 
-INNER JOIN gasto ON gasto.ga_id = pago.ga_id
+create or replace view vw_pagos_cliente as
+SELECT p.pa_id, p.usu_id, p.pa_numpago, p.pa_fecha_pagar, p.pa_monto, gasto.ga_description, gasto.ga_prioridad from pago p
+INNER JOIN gasto ON gasto.ga_id = p.ga_id
 INNER JOIN category_gasto ON category_gasto.cat_id = gasto.cat_id
-WHERE DATEDIFF(pa_fecha_pagar,'2017-12-4')<5
-ORDER BY pago.pa_fecha_pagar,gasto.ga_prioridad;
+WHERE DATEDIFF(pa_fecha_pagar, CURDATE())<5
+ORDER BY p.pa_fecha_pagar,gasto.ga_prioridad;
 
 	delimiter $$
 	CREATE TRIGGER tg_pagos after insert on gasto for each row
