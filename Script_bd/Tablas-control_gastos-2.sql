@@ -183,7 +183,7 @@
 	INNER JOIN category_gasto ON category_gasto.cat_id = gasto.cat_id
 	WHERE DATEDIFF(pa_fecha_pagar, CURDATE())<5 AND p.pa_estatus=1
 	ORDER BY p.pa_fecha_pagar,gasto.ga_prioridad;
-    
+	
 
 	-- Trigger para insertas pagos dependiendo el gasto insertado
 	delimiter $$
