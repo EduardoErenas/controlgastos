@@ -219,6 +219,7 @@
     $('#datepicker').datepicker({
       autoclose: true
     })
+     @yield('javascriptC')
   </script>
 </body>
 </html>

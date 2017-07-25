@@ -30,16 +30,7 @@ class GastoController extends Controller{
 
     public function guardar(Request $datos){
     	try{
-            $dia = substr($datos->input('inicio'),3,2);
-            $frecuencia = $datos->input('frecuen');
-
-            if( $frecuencia==4){
-                if($dia>15)
-                    $dia=30;
-                else
-                    $dia=15;
-            }    
- 
+              
             $gasto = new Gastos();
             $gasto->usu_id=Auth::id();
             $gasto->ga_description=$datos->input('descri');
@@ -49,9 +40,8 @@ class GastoController extends Controller{
             $gasto->ft_id=$datos->input('frecuen');
             $gasto->ga_ano=substr($datos->input('inicio'),6,9);
             $gasto->ga_mes=substr($datos->input('inicio'),0,2);
-            $gasto->ga_dia=$dia;
-            $gasto->ga_prioridad=$datos->input('prio');
-
+            $gasto->ga_dia=substr($datos->input('inicio'),3,2);
+            $gasto->ga_prioridad=$datos->input('prio'); 
             $gasto->save();
 
             flash('!Se guardaron exitosamente los datos del Gasto ')->success();
@@ -84,26 +74,25 @@ class GastoController extends Controller{
     }
 
     public function actualizar($ga_id, Request $datos){
-        //try{
+        try{
             $gasto = Gastos::find($ga_id);
             $gasto->ga_description=$datos->input('descri');
             $gasto->ga_amount=$datos->input('cantidad');
             $gasto->ga_numpagos=$datos->input('pagos');
             $gasto->cat_id=$datos->input('cat');
             $gasto->ft_id=$datos->input('frecuen');
-            $gasto->ga_ano=substr($datos->input('inicio'),5,9);
-            $gasto->ga_mes=substr($datos->input('inicio'),-1,2);
-            $gasto->ga_dia=substr($datos->input('inicio'),2,2);
+            $gasto->ga_ano=substr($datos->input('inicio'),6,9);
+            $gasto->ga_mes=substr($datos->input('inicio'),0,2);
+            $gasto->ga_dia=substr($datos->input('inicio'),3,2);
             $gasto->ga_prioridad=$datos->input('prio');
-
             $gasto->save();
 
-        //    flash('!Se Actualizaron exitosamente los datos del Gasto ')->success();            
+            flash('!Se Actualizaron exitosamente los datos del Gasto ')->success();            
 
-        //}catch(\Illuminate\Database\QueryException $e){
-        //    flash('Error al Actualizar Gasto, intenta de nuevo ')->error();
+        }catch(\Illuminate\Database\QueryException $e){
+            flash('Error al Actualizar Gasto, intenta de nuevo ')->error();
 
-        //}
+        }
         
         return redirect('/gastos');
     }

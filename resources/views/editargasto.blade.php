@@ -67,7 +67,7 @@
                   <div class="input-group-addon">
                     <i class="fa fa-calendar"></i>
                   </div>
-                  <input class="form-control pull-right" required name="inicio" id="datepicker" type="text" value="{{$gasto->ga_mes}}/{{$gasto->ga_dia}}/{{$gasto->ga_ano}}">
+                  <input class="form-control pull-right" required name="inicio" id="datepicker" type="text" >
                 </div>
             </div>
             <div class="form-group">
@@ -103,10 +103,8 @@
     </div>     
   </div>
 
-<script type="text/javascript">
-  //var dia = ''+$gasto->ga_dia+'';
-  //console.log(dia);
-  //$('#datepicker').datepicker("setDate", new Date(($gasto->ga_ano) , ($gasto->ga_mes) , ($gasto->ga_dia)) );
-</script>  
+@stop
 
+@section('javascriptC')
+    $('#datepicker').datepicker("setDate", new Date(({{$gasto->ga_ano}}) , ({{($gasto->ga_mes)-1}}) , ({{$gasto->ga_dia}})) );
 @stop
