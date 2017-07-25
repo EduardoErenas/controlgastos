@@ -182,7 +182,7 @@ SELECT p.pa_id, p.usu_id, p.pa_numpago, p.pa_fecha_pagar, p.pa_monto, gasto.ga_d
 INNER JOIN gasto ON gasto.ga_id = p.ga_id 
 INNER JOIN category_gasto ON category_gasto.cat_id = gasto.cat_id 
 WHERE DATEDIFF(pa_fecha_pagar, CURDATE())<5 AND p.pa_estatus=1 
-ORDER BY p.pa_fecha_pagar,gasto.ga_prioridad 
+ORDER BY p.pa_fecha_pagar,gasto.ga_prioridad ;
 
 	delimiter $$
 	CREATE TRIGGER tg_pagos after insert on gasto for each row

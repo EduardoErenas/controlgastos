@@ -98,3 +98,8 @@
       </div>
       <!-- /.row -->
 @stop
+<script type="text/javascript">
+    var arreglo=<?echo json_encode($meses);?>;
+
+    console.log(arreglo);
+</script>
