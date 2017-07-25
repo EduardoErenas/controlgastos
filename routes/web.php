@@ -70,9 +70,7 @@ Route::group(['middleware' => ['auth']], function () {
 	Route::get('/eliminarGasto/{id}', 'GastoController@eliminar');
 
 	//PAGOS
-	Route::get('/pagos', function () {
-	    return view('pagos');
-	});
+	Route::get('/gastos', 'PagoController@mostrar');
 
 	//REPORTES
 	Route::get('/reportes', function () {

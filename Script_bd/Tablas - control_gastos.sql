@@ -177,6 +177,12 @@ inner join users u on u.id = i.usu_id
 inner join category_ingreso ci on ci.cat_id = i.cat_id
 where i.in_status<>0;
 
+SELECT * from pago 
+INNER JOIN gasto ON gasto.ga_id = pago.ga_id
+INNER JOIN category_gasto ON category_gasto.cat_id = gasto.cat_id
+WHERE DATEDIFF(pa_fecha_pagar,'2017-12-4')<5
+ORDER BY pago.pa_fecha_pagar,gasto.ga_prioridad;
+
 	delimiter $$
 	CREATE TRIGGER tg_pagos after insert on gasto for each row
 	BEGIN
@@ -198,8 +204,9 @@ where i.in_status<>0;
 				insert into pago(usu_id,ga_id,pa_numpago,pa_fecha_pagar,pa_monto) values(NEW.usu_id,NEW.ga_id,1,_date,NEW.ga_amount);
 			WHEN 2 THEN -- diario
 				WHILE _x <= _num DO
-					insert into pago(usu_id,ga_id,pa_numpago,pa_fecha_pagar,pa_monto) values(NEW.usu_id,NEW.ga_id,_x,DATE_ADD(_date, INTERVAL _x DAY),_monto);
-				SET _x = _x + 1;
+					insert into pago(usu_id,ga_id,pa_numpago,pa_fecha_pagar,pa_monto) values(NEW.usu_id,NEW.ga_id,_x,_date,_monto);
+					SET _date = DATE_ADD(_date, INTERVAL 1 DAY);
+					SET _x = _x + 1;
 				END WHILE;
 			WHEN 3 THEN -- semanal
 				WHILE _x <= _num DO

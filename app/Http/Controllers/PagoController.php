@@ -10,7 +10,7 @@ use DB;
 
 class PagoController extends Controller{
     
-    public function registrar(){
+    public function mostrar(){
         $categorias = Categoria_Ingreso::all();
         $ingresos = Ingresos_cliente::where('usu_id',Auth::id())->get(); 
         
