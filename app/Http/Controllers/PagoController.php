@@ -19,16 +19,16 @@ class PagoController extends Controller{
 
     public function pagar($id){
         try{
-            DB::table('ingreso')
-            ->where('in_id', $id)
-            ->update(['in_status' => 0]);
+            DB::table('pago')
+            ->where('pa_id', $id)
+            ->update(['pa_estatus' => 2]);
 
-            flash('!Se Elimino Ingreso exitosamente¡')->success();
+            flash('!Se Pago Pago exitosamente¡')->success();
 
         }catch(\Illuminate\Database\QueryException $e){
-            flash('Error al Eliminar Ingreso, intenta de nuevo¡')->error();
+            flash('Error al Pagar Pago, intenta de nuevo¡')->error();
         }
 
-        return redirect ('/ingresos');
+        return redirect ('/pagos');
     }
 }
