@@ -91,4 +91,7 @@ Route::group(['middleware' => ['auth']], function () {
 	});
 });
 
+
+//routes administrador
+Route::get('/administrador', 'administradorController@home');
 Auth::routes();
