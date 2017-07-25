@@ -25,19 +25,22 @@
                 <th class="text-center">Opciones</th>
               </thead>
               <tbody>
-                <tr>
-                  <td class="text-center">1</td>
-                  <td class="text-center">Pañales</td>
-                  <td class="text-center">3/10</td>
-                  <td class="text-center">2017-07-17</td>
-                  <td class="text-center">5</td>
+                @foreach($pagos as $p)
+                  <tr>
+                  <td class="text-center">{{$p->pa_id}}</td>
+                  <td class="text-center">{{$p->ga_description}}</td>
+                  <td class="text-center">{{$p->pa_numpago}} /10</td>
+                  <td class="text-center">{{$p->pa_fecha_pagar}}</td>
+                  <td class="text-center">{{$p->ga_prioridad}}</td>
                   <td class="text-center">
-                    <a href="#" class="btn btn-primary btn-xs">
+                    <a href="{{url('/pagar')}}/{{$p->pa_id}}" class="btn btn-primary btn-xs">
                       <span class="glyphicon glyphicon-ok" aria-hidden="true"></span>
                     </a>
                   </td>
                 </tr>
-                <tr>
+                @endforeach
+                
+                
                 
               </tbody>
             </table>

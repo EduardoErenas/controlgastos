@@ -5,16 +5,16 @@ namespace App\Http\Controllers;
 use Illuminate\Http\Request; 
 use Illuminate\Support\Facades\Auth;
 use App\Pagos;
+use App\Pagos_cliente;
 use DB;
 
 
 class PagoController extends Controller{
     
     public function mostrar(){
-        $categorias = Categoria_Ingreso::all();
-        $ingresos = Ingresos_cliente::where('usu_id',Auth::id())->get(); 
+        $pagos = Pagos_cliente::where('usu_id', '=', Auth::id())->get();
         
-        return view('ingresos',compact('ingresos','categorias'));
+        return view('pagos', compact('pagos'));
     }
 
     public function pagar($id){
@@ -31,5 +31,4 @@ class PagoController extends Controller{
 
         return redirect ('/ingresos');
     }
-
 }
