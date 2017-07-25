@@ -19,6 +19,7 @@
               <thead>
                 <th class="text-center">ID</th>
                 <th class="text-center">Concepto</th>
+                <th class="text-center">Monto</th>
                 <th class="text-center">#Pago</th>
                 <th class="text-center">Fecha Maxima</th>
                 <th class="text-center">Prioridad</th>
@@ -29,7 +30,8 @@
                   <tr>
                   <td class="text-center">{{$p->pa_id}}</td>
                   <td class="text-center">{{$p->ga_description}}</td>
-                  <td class="text-center">{{$p->pa_numpago}} /10</td>
+                  <td class="text-center">${{$p->pa_monto}}</td>
+                  <td class="text-center">{{$p->pa_numpago}}/{{$p->ga_numpagos}}</td>
                   <td class="text-center">{{$p->pa_fecha_pagar}}</td>
                   <td class="text-center">{{$p->ga_prioridad}}</td>
                   <td class="text-center">
