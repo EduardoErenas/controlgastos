@@ -6,6 +6,7 @@
       <h1>Pagos <small></small></h1>
     </div> 
   </div>
+  @include('flash::message')
 
   <div class="row">
     <div class="col-sm-12">
@@ -51,4 +52,10 @@
       </div>
     </div>      
   </div>
+  
+<script type="text/javascript">
+  setTimeout(function(){
+    $(".alert").fadeOut(1500);
+  },1500);
+</script>
 @stop

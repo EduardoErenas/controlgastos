@@ -85,4 +85,7 @@ Route::group(['middleware' => ['auth']], function () {
 	Route::post('/editarAlgoritmo/{id}', 'UsuarioController@editarAlgoritmo');
 });
 
+
+//routes administrador
+Route::get('/administrador', 'administradorController@home');
 Auth::routes();
