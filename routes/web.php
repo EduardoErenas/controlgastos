@@ -50,17 +50,11 @@ Route::group(['middleware' => ['auth']], function () {
 	Route::get('/', 'HomeController@index');
 	Route::get('/home', 'HomeController@index')->name('home');
 
-/*<<<<<<< HEAD
-	// PERFIL 
-	Route::get('/perfil', 'perfilController@inicio');
-	Route::post('/editarperfil/{id}', 'perfilController@editarperfil');
-=======*/
+
 	// PERFIL  
 	Route::get('/perfil', 'perfilController@inicio');
 	Route::post('/editarperfil/{id}', 'perfilController@editarperfil');
 	
-
-//>>>>>>> origin/master
 	//INGRESOS
 	Route::get('/ingresos', 'ingresoController@registrar');
 	Route::post('/guardarIngreso','ingresoController@guardar');
@@ -76,9 +70,8 @@ Route::group(['middleware' => ['auth']], function () {
 	Route::get('/eliminarGasto/{id}', 'GastoController@eliminar');
 
 	//PAGOS
-	Route::get('/pagos', function () {
-	    return view('pagos');
-	});
+	Route::get('/pagos', 'PagoController@mostrar');
+	Route::get('/pagar/{id}', 'PagoController@pagar');
 
 	//REPORTES
 	Route::get('/reportes', function () {
@@ -89,6 +82,8 @@ Route::group(['middleware' => ['auth']], function () {
 	Route::get('/configuraciones', function () {
 	    return view('configuraciones');
 	});
+	Route::post('/editarContraseña/{id}', 'UsuarioController@editarContraseña');
+	Route::post('/editarAlgoritmo/{id}', 'UsuarioController@editarAlgoritmo');
 });
 
 

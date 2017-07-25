@@ -15,7 +15,9 @@
             background-color: #e3f2fd;
         }
         .panel{
-            margin-top: 15%;
+            margin-top: 20%;
+            height: 100%;
+            width: 100%; 
             padding: 0% 1% 0% 1%;
             border: 2px #e0f7fa;
             border-radius: 10px;
@@ -25,6 +27,19 @@
         }
         .fondo{
             background-color: white;
+        }
+        .navbar{
+            font-weight: bold;
+            display: block;
+        }
+        .navbar{
+            background-color: lightblue;
+        }
+        h4{
+            font-weight: bold;
+        }
+        h5{
+            font-weight: bold;
         }
     </style>
 </head>
@@ -82,6 +97,7 @@
                         <div class="panel-footer fondo">
                             <div class="row">
                                 <div class="col-md-12">
+                                    <a href="{{ route('register') }}" class="pull-left">Registrate</a>
                                     <button type="submit" class="btn btn-primary pull-right">
                                         Aceptar
                                     </button>

@@ -206,6 +206,14 @@
 <script src="{{asset("js/sweetalert.min.js")}}"></script>
 <script src="{{asset("js/jquery-ui.min.js")}}"></script>
 
+<script src="{{asset("js/graficas.js")}}"></script>
+<script src="{{asset("js/jquery.min.js")}}"></script>
+<script src="{{asset("js/Chart.js")}}"></script>
+<script src="{{asset("js/fastclick.js")}}"></script>
+<script src="{{asset("js/adminlte.min.js")}}"></script>
+<script src="{{asset("js/demo.js")}}"></script>
+
+
 <!--DatePicker-->
 <script src="{{asset("js/bootstrap-datepicker.js")}}"></script>
 <script src="{{asset("js/bootstrap-colorpicker.min.js")}}"></script>
@@ -219,6 +227,7 @@
     $('#datepicker').datepicker({
       autoclose: true
     })
+     @yield('javascriptC')
   </script>
 </body>
 </html>
