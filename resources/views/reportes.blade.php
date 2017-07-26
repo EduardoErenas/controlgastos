@@ -127,7 +127,6 @@
     var arrayGastosData = [];
     var arrayCatGastos = [];
     
-     
     // map para obtener datos de ingresos
     arreglo.map(function(mes, index){
       arrayLabels.push(mes.mes_name);
