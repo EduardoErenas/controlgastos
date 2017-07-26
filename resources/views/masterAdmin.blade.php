@@ -135,29 +135,22 @@
           </a>
         </li>
         <li>
-          <a href="{{url('/perfil')}}">
+          <a href="{{url('/perfiladministrador')}}">
             <i class="fa fa-user"></i> <span>Perfil</span>
             
           </a>
         </li>
         <li>
-          <a href="{{url('/ingresos')}}">
+          <a href="{{url('/listaUsuarios')}}">
             <i class="fa fa-users"></i> <span>Usuarios</span>
             
           </a>
         </li>
-        <li class="treeview">
-          <a href="#">
-            <i class="fa  fa-user-plus"></i>
-            <span>Nuevo Registro</span>
-            <span class="pull-right-container">
-              <i class="fa fa-angle-left pull-right"></i>
-            </span>
+        <li>
+          <a href="{{url('/reportes')}}">
+            <i class="fa fa-user"></i> <span>Nuevo Registro</span>
+            
           </a>
-          <ul class="treeview-menu">
-            <li><a href="pages/charts/chartjs.html"><i class="fa fa-circle-o"></i> Nuevo Usuario</a></li>
-            <li><a href="pages/charts/morris.html"><i class="fa fa-circle-o"></i> Nuevo Administrador</a></li>
-          </ul>
         </li>
        
         <li>
