@@ -22,7 +22,7 @@ class reportesController extends Controller{
 
         $gastos = DB::select( DB::raw("select mes_id,mes_name,sum(if(month(created_at)=mes_id,ga_amount,0)) as total from gasto right  join mes on mes.mes_id = month(created_at) and year(created_at)=year(now()) and gasto.usu_id = '$id' and gasto.ga_status in (1,2) group by 1,2;") );
 
-        
+        $gastosCat = DB::select( DB::raw("select ct.cat_id,ct.cat_description,sum(if(ct.cat_id = ga.cat_id,ga_amount,0)) as total from gasto ga right join category_gasto ct on ct.cat_id = ga.cat_id and year(ga.created_at)=year(now()) and ga.usu_id = '$id' and ga.ga_status in (1,2) group by 1,2;") );
 
 
         
