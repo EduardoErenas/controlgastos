@@ -26,11 +26,11 @@ class reportesController extends Controller{
 
 
         
-        dd($gastos);
+        //dd($gastos);
         
         //$ingresos = Ingresos_cliente::where('usu_id',Auth::id())->get(); 
         
-        return view('reportes',compact('meses', 'categoriasIngresos'));
+        return view('reportes',compact('meses', 'categoriasIngresos', 'gastos'));
     }
 
 }

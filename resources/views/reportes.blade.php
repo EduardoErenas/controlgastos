@@ -46,7 +46,7 @@
             </div>
             <div class="box-body">
               <div class="chart">
-                <canvas id="barChart" style="height:230px"></canvas>
+                <canvas id="barChart2" style="height:230px"></canvas>
               </div>
             </div>
             <!-- /.box-body -->
@@ -80,9 +80,13 @@
     var arreglo=<?echo json_encode($meses);?>;
     var catIngresos = <?echo json_encode($categoriasIngresos); ?>; 
     var gastos = <?echo json_encode($gastos); ?>;
+    // arrays ingresos
     var arrayLabels = [];
     var arrayData = [];
     var arrayCatIngre = [];
+    //arrays gastos
+    var arrayGastosLabels = [];
+    var arrayGastosData = [];
     
     // map para obtener datos de ingresos
     arreglo.map(function(mes, index){
@@ -107,7 +111,10 @@
     });
 
     // map para obtener los datos de gastos
-
+    gastos.map(function(mes, index){
+      arrayGastosLabels.push(mes.mes_name);
+      arrayGastosData.push(mes.total);
+    });
 
     console.log(arreglo);
     console.log(arrayLabels);
@@ -307,4 +314,58 @@
     //Create pie or douhnut chart
     // You can switch between pie and douhnut using the method below.
     pieChart.Doughnut(PieData, pieOptions)
+
+    //GASTOS
+    var areaChartData2 = {
+      labels  : arrayLabels,
+      datasets: [
+        {
+          label               : 'Electronics',
+          fillColor           : 'rgba(210, 214, 222, 1)',
+          strokeColor         : 'rgba(210, 214, 222, 1)',
+          pointColor          : 'rgba(210, 214, 222, 1)',
+          pointStrokeColor    : '#c1c7d1',
+          pointHighlightFill  : '#fff',
+          pointHighlightStroke: 'rgba(220,220,220,1)',
+          data                : arrayData
+        }
+      ]
+    }
+
+    var barChartCanvas2                   = $('#barChart2').get(0).getContext('2d')
+    var barChart2                         = new Chart(barChartCanvas2)
+    var barChartData2                     = areaChartData2
+    barChartData2.datasets[0].fillColor   = '#00a65a'
+    barChartData2.datasets[0].strokeColor = '#00a65a'
+    barChartData2.datasets[0].pointColor  = '#00a65a'
+    var barChartOptions2                  = {
+      //Boolean - Whether the scale should start at zero, or an order of magnitude down from the lowest value
+      scaleBeginAtZero        : true,
+      //Boolean - Whether grid lines are shown across the chart
+      scaleShowGridLines      : true,
+      //String - Colour of the grid lines
+      scaleGridLineColor      : 'rgba(0,0,0,.05)',
+      //Number - Width of the grid lines
+      scaleGridLineWidth      : 1,
+      //Boolean - Whether to show horizontal lines (except X axis)
+      scaleShowHorizontalLines: true,
+      //Boolean - Whether to show vertical lines (except Y axis)
+      scaleShowVerticalLines  : true,
+      //Boolean - If there is a stroke on each bar
+      barShowStroke           : true,
+      //Number - Pixel width of the bar stroke
+      barStrokeWidth          : 2,
+      //Number - Spacing between each of the X value sets
+      barValueSpacing         : 5,
+      //Number - Spacing between data sets within X values
+      barDatasetSpacing       : 1,
+      //String - A legend template
+      legendTemplate          : '<ul class="<%=name.toLowerCase()%>-legend"><% for (var i=0; i<datasets.length; i++){%><li><span style="background-color:<%=datasets[i].fillColor%>"></span><%if(datasets[i].label){%><%=datasets[i].label%><%}%></li><%}%></ul>',
+      //Boolean - whether to make the chart responsive
+      responsive              : true,
+      maintainAspectRatio     : true
+    }
+
+    barChartOptions2.datasetFill = false
+    barChart2.Bar(barChartData2, barChartOptions2)
 @stop
