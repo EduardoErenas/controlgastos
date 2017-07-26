@@ -24,13 +24,15 @@ class reportesController extends Controller{
 
         $gastosCat = DB::select( DB::raw("select ct.cat_id,ct.cat_description,sum(if(ct.cat_id = ga.cat_id,ga_amount,0)) as total from gasto ga right join category_gasto ct on ct.cat_id = ga.cat_id and year(ga.created_at)=year(now()) and ga.usu_id = '$id' and ga.ga_status in (1,2) group by 1,2;") );
 
+        $ingresoGasto = DB::select( DB::raw("select mes_id,mes_name,sum(if(month(ing.created_at)=mes_id,in_amount,0)) as igresos,sum(if(month(gasto.created_at)=mes_id,ga_amount,0)) as Gastos from mes left  join gasto on mes.mes_id = month(gasto.created_at) and year(gasto.created_at)=year(now()) and gasto.usu_id = '$id' and gasto.ga_status in (1,2) left join ingreso ing on mes.mes_id = month(ing.created_at) and year(ing.created_at)=year(now()) and ing.usu_id = '$id' and ing.in_status in (1,2) group by 1,2;") );
+
 
         
         //dd($gastos);
         
         //$ingresos = Ingresos_cliente::where('usu_id',Auth::id())->get(); 
         
-        return view('reportes',compact('meses', 'categoriasIngresos', 'gastos', 'gastosCat'));
+        return view('reportes',compact('meses', 'categoriasIngresos', 'gastos', 'gastosCat', 'ingresoGasto'));
     }
 
 }
