@@ -233,7 +233,7 @@
       labels  : arrayLabels,
       datasets: [
         {
-          label               : 'Electronics',
+          label               : 'Ingresos',
           fillColor           : 'rgba(210, 214, 222, 1)',
           strokeColor         : 'rgba(210, 214, 222, 1)',
           pointColor          : 'rgba(210, 214, 222, 1)',
@@ -317,10 +317,10 @@
 
     //GASTOS
     var areaChartData2 = {
-      labels  : arrayLabels,
+      labels  : arrayGastosLabels,
       datasets: [
         {
-          label               : arrayGastosLabels,
+          label               : 'Gastos',
           fillColor           : 'rgba(210, 214, 222, 1)',
           strokeColor         : 'rgba(210, 214, 222, 1)',
           pointColor          : 'rgba(210, 214, 222, 1)',
