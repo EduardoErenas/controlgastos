@@ -168,6 +168,12 @@
           <a href="{{url('/configuraciones')}}">
             <i class="fa fa-cog"></i> <span>Configuraciones</span>
             
+          </a> 
+        </li>
+        <li>
+          <a href="{{url('/configuraciones')}}">
+            <i class="fa fa-list"></i> <span>Catalogo</span>
+            
           </a>
         </li>
       </ul>

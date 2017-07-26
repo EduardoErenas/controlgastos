@@ -76,6 +76,16 @@ Route::group(['middleware' => ['auth']], function () {
 	//REPORTES
 	Route::get('/reportes', 'reportesController@mostrar');
 
+	//CATALOGOS
+	Route::get('/catalogos', 'CatalogosController@registrar');
+	Route::post('/guardarCatIngreso','CatalogosController@guardarCatIngreso');
+	Route::post('/guardarCatGasto','CatalogosController@guardarCatGasto');
+	Route::get('/editarCatIngreso/{id}','CatalogosController@editarCatIngreso');
+	Route::get('/editarCatGasto/{id}','CatalogosController@editarCatGasto');
+	Route::post('/actualizarCatIngreso/{id}','CatalogosController@actualizarCatIngreso');
+	Route::post('/actualizarCatGasto/{id}','CatalogosController@actualizarCatGasto');
+	Route::get('/eliminarCatIngreso/{id}','CatalogosController@eliminarCatIngreso');
+	Route::get('/eliminarCatGasto/{id}','CatalogosController@eliminarCatGasto');
 
 	//CONFIGURACIONES
 	Route::get('/configuraciones', function () {
