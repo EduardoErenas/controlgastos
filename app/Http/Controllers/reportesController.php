@@ -10,7 +10,6 @@ use App\Usuario_ingreso;
 use App\Ingresos_cliente;
 use App\Categoria_Ingreso;
 use DB;
-use App\ejemplo;
 
 class reportesController extends Controller{
     

@@ -206,12 +206,11 @@
 <script src="{{asset("js/sweetalert.min.js")}}"></script>
 <script src="{{asset("js/jquery-ui.min.js")}}"></script>
 
-<script src="{{asset("js/graficas.js")}}"></script>
-<script src="{{asset("js/jquery.min.js")}}"></script>
+
 <script src="{{asset("js/Chart.js")}}"></script>
 <script src="{{asset("js/fastclick.js")}}"></script>
 <script src="{{asset("js/adminlte.min.js")}}"></script>
-<script src="{{asset("js/demo.js")}}"></script>
+
 
 
 <!--DatePicker-->
@@ -220,14 +219,18 @@
 
 <!-- Resolve conflict in jQuery UI tooltip with Bootstrap tooltip -->
 @stack('scripts')
-<script>
-  $.widget.bridge('uibutton', $.ui.button);
-</script>
+
   <script type="text/javascript">  
     $('#datepicker').datepicker({
       autoclose: true
+    });
+    //$(document).on('ready',function(){
+      @yield('javascriptC')
+    //});
+    $(function () {
+      @yield('javascriptC')
     })
-     @yield('javascriptC')
+    
   </script>
 </body>
 </html>
