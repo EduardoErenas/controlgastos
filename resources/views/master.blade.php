@@ -67,9 +67,9 @@
           <li class="dropdown user user-menu">
             <a href="#" class="dropdown-toggle" data-toggle="dropdown">
               @if(Auth::user()->usu_sex==1)
-                <img src="images/usuario/h.png" class="user-image" alt="User Image">
+                <img src="{{asset('images/usuario/h.png')}}" class="user-image" alt="User Image">
               @else
-                <img src="images/usuario/m.png" class="user-image" alt="User Image">
+                <img src="{{asset('images/usuario/m.png')}}" class="user-image" alt="User Image">
               @endif
               
               <span class="hidden-xs">{{Auth::user()->name}}</span>
@@ -113,9 +113,9 @@
       <div class="user-panel">
         <div class="pull-left image">
           @if(Auth::user()->usu_sex==1)
-                <img src="images/usuario/h.png" class="img-circle" alt="User Image">
+                <img src="{{asset('images/usuario/h.png')}}" class="img-circle" alt="User Image">
           @else
-                <img src="images/usuario/m.png" class="img-circle" alt="User Image">
+                <img src="{{asset('images/usuario/m.png')}}" class="img-circle" alt="User Image">
           @endif
           
         </div>
