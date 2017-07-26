@@ -395,13 +395,13 @@
       datasets: [
         {
           label               : 'Ingresos',
-          fillColor           : 'rgba(210, 214, 222, 1)',
-          strokeColor         : 'rgba(210, 214, 222, 1)',
-          pointColor          : 'rgba(210, 214, 222, 1)',
+          fillColor           : 'rgba(0, 14, 222, 1)',
+          strokeColor         : 'rgba(0, 14, 222, 1)',
+          pointColor          : 'rgba(0, 14, 222, 1)',
           pointStrokeColor    : '#c1c7d1',
           pointHighlightFill  : '#fff',
           pointHighlightStroke: 'rgba(220,220,220,1)',
-          data                : arrayIngGasI
+          data                : arrayData
         },
         {
           label               : 'Gastos',
@@ -411,7 +411,7 @@
           pointStrokeColor    : 'rgba(60,141,188,1)',
           pointHighlightFill  : '#fff',
           pointHighlightStroke: 'rgba(60,141,188,1)',
-          data                : arrayIngGasG
+          data                : arrayGastosData
         }
       ]
     }
