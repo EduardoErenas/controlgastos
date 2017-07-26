@@ -117,7 +117,7 @@
     var catIngresos = <?echo json_encode($categoriasIngresos); ?>; 
     var gastos = <?echo json_encode($gastos); ?>;
     var catGastos = <?echo json_encode($gastosCat); ?>;
-    var ingresoGasto = <?echo json_encode($ingresoGasto); ?>;
+    
     // arrays ingresos
     var arrayLabels = [];
     var arrayData = [];
@@ -126,10 +126,7 @@
     var arrayGastosLabels = [];
     var arrayGastosData = [];
     var arrayCatGastos = [];
-    //arrays ingresoGastos
-    var arrayMesesIngGas = [];
-    var arrayIngGasI = [];
-    var arrayIngGasG = [];
+    
      
     // map para obtener datos de ingresos
     arreglo.map(function(mes, index){
@@ -175,14 +172,6 @@
       arrayCatGastos.push(datos);
     });
 
-    //map para obtener ingresos vs gastos
-    ingresoGasto.map(function(ingG, index){
-      arrayMesesIngGas.push(ingG.mes_name);
-      arrayIngGasI.push(ingG.igresos);
-      arrayIngGasG.push(ingG.Gastos);
-    });
-
-    
     //colores aleatorios
     function aleatorio(inferior,superior){ 
        numPosibilidades = superior - inferior 
@@ -191,25 +180,10 @@
        return parseInt(inferior) + aleat 
     }
 
-    console.log(arrayIngGasI);
-    console.log(arrayIngGasG);
-
-    
-
 </script>
 
 @section('javascriptC')
-  var arreglo=<?echo json_encode($meses);?>;
-    var arrayLabels = [];
-    var arrayData = [];
-
-    arreglo.map(function(mes, index){
-      arrayLabels.push(mes.mes_name);
-      arrayData.push(mes.total);
-    });
-
-    
-
+  
     var areaChartData = {
       labels  : arrayLabels,
       datasets: [
@@ -391,7 +365,7 @@
     var areaChart3       = new Chart(areaChartCanvas3)
 
     var areaChartData3 = {
-      labels  : arrayMesesIngGas,
+      labels  : arrayLabels,
       datasets: [
         {
           label               : 'Ingresos',
