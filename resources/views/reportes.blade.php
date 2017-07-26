@@ -8,7 +8,7 @@
     </div>
   </div>
       <div class="row">
-        <div class="col-md-6">
+        <div class="col-md-12">
           <!-- BAR CHART -->
           <div class="box box-success">
             <div class="box-header with-border">
@@ -32,16 +32,130 @@
           <!-- LINE CHART -->
          
         </div>
+        <div class="col-md-12">
+          <!-- BAR CHART -->
+          <div class="box box-success">
+            <div class="box-header with-border">
+              <h3 class="box-title">Gastos</h3>
+
+              <div class="box-tools pull-right">
+                <button type="button" class="btn btn-box-tool" data-widget="collapse"><i class="fa fa-minus"></i>
+                </button>
+                <button type="button" class="btn btn-box-tool" data-widget="remove"><i class="fa fa-times"></i></button>
+              </div>
+            </div>
+            <div class="box-body">
+              <div class="chart">
+                <canvas id="barChart" style="height:230px"></canvas>
+              </div>
+            </div>
+            <!-- /.box-body -->
+          </div>
+          <!-- /.box -->
+
+          <!-- LINE CHART -->
+         
+        </div>
+        <div class="col-md-6">
+          <div class="box box-danger">
+            <div class="box-header with-border">
+              <h3 class="box-title">Ingresos con categorias</h3>
+
+              <div class="box-tools pull-right">
+                <button type="button" class="btn btn-box-tool" data-widget="collapse"><i class="fa fa-minus"></i>
+                </button>
+                <button type="button" class="btn btn-box-tool" data-widget="remove"><i class="fa fa-times"></i></button>
+              </div>
+            </div>
+            <div class="box-body">
+              <canvas id="pieChart" style="height:250px"></canvas>
+            </div>
+            <!-- /.box-body -->
+          </div>
+        </div>
       </div>
       <!-- /.row -->
 @stop
 <script type="text/javascript">
     var arreglo=<?echo json_encode($meses);?>;
+    var catIngresos = <?echo json_encode($categoriasIngresos); ?>; 
+    var gastos = <?echo json_encode($gastos); ?>;
+    var arrayLabels = [];
+    var arrayData = [];
+    var arrayCatIngre = [];
+    
+    // map para obtener datos de ingresos
+    arreglo.map(function(mes, index){
+      arrayLabels.push(mes.mes_name);
+      arrayData.push(mes.total);
+    });
+
+    // map para obtener los datos de las categorias de ingresos
+    catIngresos.map(function(catIng){
+      hexadecimal = new Array("0","1","2","3","4","5","6","7","8","9","A","B","C","D","E","F") 
+      color_aleatorio = "#"; 
+      for (i=0;i<6;i++){ 
+         posarray = aleatorio(0,hexadecimal.length) 
+         color_aleatorio += hexadecimal[posarray] 
+      } 
+      var datos = {
+        value : catIng.total,
+        color : color_aleatorio,
+        label : catIng.cat_description
+      };
+      arrayCatIngre.push(datos);
+    });
+
+    // map para obtener los datos de gastos
+
 
     console.log(arreglo);
+    console.log(arrayLabels);
+    console.log(arrayData);
+    console.log(arrayCatIngre);
+
+    function aleatorio(inferior,superior){ 
+       numPosibilidades = superior - inferior 
+       aleat = Math.random() * numPosibilidades 
+       aleat = Math.floor(aleat) 
+       return parseInt(inferior) + aleat 
+    }
+
+    /*var pieChartCanvas = $('#pieChart').get(0).getContext('2d')
+    var pieChart       = new Chart(pieChartCanvas)
+    var PieData        = arrayCatIngre;
+    var pieOptions     = {
+      //Boolean - Whether we should show a stroke on each segment
+      segmentShowStroke    : true,
+      //String - The colour of each segment stroke
+      segmentStrokeColor   : '#fff',
+      //Number - The width of each segment stroke
+      segmentStrokeWidth   : 2,
+      //Number - The percentage of the chart that we cut out of the middle
+      percentageInnerCutout: 50, // This is 0 for Pie charts
+      //Number - Amount of animation steps
+      animationSteps       : 100,
+      //String - Animation easing effect
+      animationEasing      : 'easeOutBounce',
+      //Boolean - Whether we animate the rotation of the Doughnut
+      animateRotate        : true,
+      //Boolean - Whether we animate scaling the Doughnut from the centre
+      animateScale         : false,
+      //Boolean - whether to make the chart responsive to window resizing
+      responsive           : true,
+      // Boolean - whether to maintain the starting aspect ratio or not when responsive, if set to false, will take up entire container
+      maintainAspectRatio  : true,
+      //String - A legend template
+      legendTemplate       : '<ul class="<%=name.toLowerCase()%>-legend"><% for (var i=0; i<segments.length; i++){%><li><span style="background-color:<%=segments[i].fillColor%>"></span><%if(segments[i].label){%><%=segments[i].label%><%}%></li><%}%></ul>'
+    }
+    //Create pie or douhnut chart
+    // You can switch between pie and douhnut using the method below.
+    pieChart.Doughnut(PieData, pieOptions)
+
+    */
 
     /*var areaChartData = {
-      labels  : ['January', 'February', 'March', 'April', 'May', 'June', 'July'],
+      labels  : arrayLabels,
       datasets: [
         {
           label               : 'Electronics',
@@ -51,7 +165,7 @@
           pointStrokeColor    : '#c1c7d1',
           pointHighlightFill  : '#fff',
           pointHighlightStroke: 'rgba(220,220,220,1)',
-          data                : [65, 59, 80, 81, 56, 55, 40]
+          data                : arrayData
         }
       ]
     }
@@ -95,8 +209,21 @@
 </script>
 
 @section('javascriptC')
-  var areaChartData = {
-      labels  : ['January', 'February', 'March', 'April', 'May', 'June', 'July'],
+  var arreglo=<?echo json_encode($meses);?>;
+    var arrayLabels = [];
+    var arrayData = [];
+
+    arreglo.map(function(mes, index){
+      arrayLabels.push(mes.mes_name);
+      arrayData.push(mes.total);
+    });
+
+    console.log(arreglo);
+    console.log(arrayLabels);
+    console.log(arrayData);
+
+    var areaChartData = {
+      labels  : arrayLabels,
       datasets: [
         {
           label               : 'Electronics',
@@ -106,7 +233,7 @@
           pointStrokeColor    : '#c1c7d1',
           pointHighlightFill  : '#fff',
           pointHighlightStroke: 'rgba(220,220,220,1)',
-          data                : [65, 59, 80, 81, 56, 55, 40]
+          data                : arrayData
         }
       ]
     }
@@ -147,4 +274,37 @@
 
     barChartOptions.datasetFill = false
     barChart.Bar(barChartData, barChartOptions)
+
+    //categorias de Ingresos grafica
+
+    var pieChartCanvas = $('#pieChart').get(0).getContext('2d')
+    var pieChart       = new Chart(pieChartCanvas)
+    var PieData        = arrayCatIngre;
+    var pieOptions     = {
+      //Boolean - Whether we should show a stroke on each segment
+      segmentShowStroke    : true,
+      //String - The colour of each segment stroke
+      segmentStrokeColor   : '#fff',
+      //Number - The width of each segment stroke
+      segmentStrokeWidth   : 2,
+      //Number - The percentage of the chart that we cut out of the middle
+      percentageInnerCutout: 50, // This is 0 for Pie charts
+      //Number - Amount of animation steps
+      animationSteps       : 100,
+      //String - Animation easing effect
+      animationEasing      : 'easeOutBounce',
+      //Boolean - Whether we animate the rotation of the Doughnut
+      animateRotate        : true,
+      //Boolean - Whether we animate scaling the Doughnut from the centre
+      animateScale         : false,
+      //Boolean - whether to make the chart responsive to window resizing
+      responsive           : true,
+      // Boolean - whether to maintain the starting aspect ratio or not when responsive, if set to false, will take up entire container
+      maintainAspectRatio  : true,
+      //String - A legend template
+      legendTemplate       : '<ul class="<%=name.toLowerCase()%>-legend"><% for (var i=0; i<segments.length; i++){%><li><span style="background-color:<%=segments[i].fillColor%>"></span><%if(segments[i].label){%><%=segments[i].label%><%}%></li><%}%></ul>'
+    }
+    //Create pie or douhnut chart
+    // You can switch between pie and douhnut using the method below.
+    pieChart.Doughnut(PieData, pieOptions)
 @stop

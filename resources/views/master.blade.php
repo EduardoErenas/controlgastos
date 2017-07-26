@@ -228,8 +228,12 @@
       @yield('javascriptC')
     //});
     $(function () {
+      
+    });
+
+    $(document).on('ready',function(){
       @yield('javascriptC')
-    })
+    });
     
   </script>
 </body>
