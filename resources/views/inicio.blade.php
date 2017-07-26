@@ -1,13 +1,14 @@
 @extends('master')
 
 @section('titulo')
-
-    <div class="" ">
-     <h3 class="text-center" style="background: rgba(120,47,85,0.6);padding: 10px; border-radius: 3px;">GENERAL</h3>
-    </div> 
 @stop
 
 @section('contenido')
+  <div class="callout callout-info" style="background: rgba(120,47,85,0.6) !important;border-color: rgba(120,47,85,1) !important;">
+    <div class="content-header" style="padding-top: 0px !important">
+      <h1>GENERAL <small></small></h1>
+    </div> 
+  </div> 
 	<div class="row">
         <div class="col-lg-4 col-xs-12 col-sm-4">
           <!-- small box -->
