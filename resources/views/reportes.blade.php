@@ -73,6 +73,23 @@
             <!-- /.box-body -->
           </div>
         </div>
+        <div class="col-md-6">
+          <div class="box box-danger">
+            <div class="box-header with-border">
+              <h3 class="box-title">Gastos con categorias</h3>
+
+              <div class="box-tools pull-right">
+                <button type="button" class="btn btn-box-tool" data-widget="collapse"><i class="fa fa-minus"></i>
+                </button>
+                <button type="button" class="btn btn-box-tool" data-widget="remove"><i class="fa fa-times"></i></button>
+              </div>
+            </div>
+            <div class="box-body">
+              <canvas id="pieChart2" style="height:250px"></canvas>
+            </div>
+            <!-- /.box-body -->
+          </div>
+        </div>
       </div>
       <!-- /.row -->
 @stop
@@ -80,6 +97,7 @@
     var arreglo=<?echo json_encode($meses);?>;
     var catIngresos = <?echo json_encode($categoriasIngresos); ?>; 
     var gastos = <?echo json_encode($gastos); ?>;
+    var catGastos = <?echo json_encode($gastosCat); ?>;
     // arrays ingresos
     var arrayLabels = [];
     var arrayData = [];
@@ -87,6 +105,7 @@
     //arrays gastos
     var arrayGastosLabels = [];
     var arrayGastosData = [];
+    var arrayCatGastos = [];
     
     // map para obtener datos de ingresos
     arreglo.map(function(mes, index){
@@ -114,6 +133,22 @@
     gastos.map(function(mes, index){
       arrayGastosLabels.push(mes.mes_name);
       arrayGastosData.push(mes.total);
+    });
+
+    //map para obtener los datos de las categorias de los Gastos
+    catGastos.map(function(catGas){
+      hexadecimal = new Array("0","1","2","3","4","5","6","7","8","9","A","B","C","D","E","F") 
+      color_aleatorio = "#"; 
+      for (i=0;i<6;i++){ 
+         posarray = aleatorio(0,hexadecimal.length) 
+         color_aleatorio += hexadecimal[posarray] 
+      } 
+      var datos = {
+        value : catGas.total,
+        color : color_aleatorio,
+        label : catGas.cat_description
+      };
+      arrayCatGastos.push(datos);
     });
 
     console.log(arreglo);
@@ -368,4 +403,37 @@
 
     barChartOptions2.datasetFill = false
     barChart2.Bar(barChartData2, barChartOptions2)
+
+    // categorias gastos grafica
+
+    var pieChartCanvas2 = $('#pieChart2').get(0).getContext('2d')
+    var pieChart2       = new Chart(pieChartCanvas2)
+    var PieData2        = arrayCatGastos;
+    var pieOptions2     = {
+      //Boolean - Whether we should show a stroke on each segment
+      segmentShowStroke    : true,
+      //String - The colour of each segment stroke
+      segmentStrokeColor   : '#fff',
+      //Number - The width of each segment stroke
+      segmentStrokeWidth   : 2,
+      //Number - The percentage of the chart that we cut out of the middle
+      percentageInnerCutout: 50, // This is 0 for Pie charts
+      //Number - Amount of animation steps
+      animationSteps       : 100,
+      //String - Animation easing effect
+      animationEasing      : 'easeOutBounce',
+      //Boolean - Whether we animate the rotation of the Doughnut
+      animateRotate        : true,
+      //Boolean - Whether we animate scaling the Doughnut from the centre
+      animateScale         : false,
+      //Boolean - whether to make the chart responsive to window resizing
+      responsive           : true,
+      // Boolean - whether to maintain the starting aspect ratio or not when responsive, if set to false, will take up entire container
+      maintainAspectRatio  : true,
+      //String - A legend template
+      legendTemplate       : '<ul class="<%=name.toLowerCase()%>-legend"><% for (var i=0; i<segments.length; i++){%><li><span style="background-color:<%=segments[i].fillColor%>"></span><%if(segments[i].label){%><%=segments[i].label%><%}%></li><%}%></ul>'
+    }
+    //Create pie or douhnut chart
+    // You can switch between pie and douhnut using the method below.
+    pieChart2.Doughnut(PieData2, pieOptions2)
 @stop

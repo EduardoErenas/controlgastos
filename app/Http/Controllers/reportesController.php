@@ -30,7 +30,7 @@ class reportesController extends Controller{
         
         //$ingresos = Ingresos_cliente::where('usu_id',Auth::id())->get(); 
         
-        return view('reportes',compact('meses', 'categoriasIngresos', 'gastos'));
+        return view('reportes',compact('meses', 'categoriasIngresos', 'gastos', 'gastosCat'));
     }
 
 }
