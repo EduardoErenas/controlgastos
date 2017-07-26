@@ -1,4 +1,4 @@
-@extends('master')
+@extends('master') 
  
 @section('contenido')
 @include('flash::message')
@@ -56,7 +56,7 @@
     <div class="col-sm-8">
       <div class="box box-success">
         <div class="box-header with-border">
-          <h3 class="box-title">Lista de Ingresos</h3> 
+          <h3 class="box-title">Lista de Ingresos Activos</h3> 
         </div>
         <div class="box-body">
           <div class="table-responsive">
@@ -71,6 +71,10 @@
                 <th class="text-center">Estatus</th>
                 <th class="text-center">Opciones</th>
               </thead>
+              @if(sizeof($ingresos)==0)
+                  <td></td><td></td><td></td><td></td><td>Sin Ingresos</td><td></td><td></td><td></td><td></td>
+              @else
+              
               <tbody>
                 @foreach($ingresos as $a)
                 <tr>
@@ -101,11 +105,68 @@
               @endforeach
                 
               </tbody>
+              @endif
             </table>
           </div>
         </div>
       </div>
-    </div>      
+    </div>
+
+    <div class="col-sm-8">
+      <div class="box box-warning">
+        <div class="box-header with-border">
+          <h3 class="box-title">Lista de Ingresos Agotados</h3> 
+        </div>
+        <div class="box-body">
+          <div class="table-responsive">
+            <table class="table table-hover">
+              <thead>
+                <th class="text-center">ID</th>
+                <th class="text-center">Categoria</th>
+                <th class="text-center">Descripcion</th>
+                <th class="text-center">Total</th>
+                <th class="text-center">Restante</th>
+                <th class="text-center">Fecha Registro</th>
+                <th class="text-center">Estatus</th>
+                <th class="text-center">Opciones</th>
+              </thead>
+              @if(sizeof($agotados)==0)
+                  <td></td><td></td><td></td><td></td><td>Sin Ingresos</td><td></td><td></td><td></td><td></td>
+              @else
+              <tbody>
+                @foreach($agotados as $a)
+                <tr>
+                  <td class="text-center">{{$a->in_id}}</td>
+                  <td class="text-center">{{$a->cat_description}}</td>
+                  <td class="text-center">{{$a->in_description}}</td>
+                  <td class="text-center">{{$a->in_amount}}</td>
+                  <td class="text-center">{{$a->in_restante}}</td>
+                  <td class="text-center">{{$a->created_at}}</td>
+                  <td class="text-center">
+                    @if($a->in_status==1)
+                      Activo
+                    @elseif($a->in_status==2)
+                      Agotado
+                    @else
+                      {{$a->in_status}}
+                    @endif
+                  </td>
+                  <td class="text-center">
+                    <a href="{{url('/eliminarIngreso')}}/{{$a->in_id}}" class="btn btn-danger btn-xs">
+                      <span class="glyphicon glyphicon-remove" aria-hidden="true"></span>
+                    </a>
+                  </td>
+                </tr>
+              @endforeach
+                
+              </tbody>
+              @endif
+            </table>
+          </div>
+        </div>
+      </div>
+    </div>
+
   </div>
 
 <script type="text/javascript">

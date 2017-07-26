@@ -1,5 +1,5 @@
 @extends('master')
-
+ 
 @section('contenido')
 	<div class="callout callout-success">
     <div class="content-header"  style="padding-top: 0px !important">
@@ -24,11 +24,11 @@
             </div>
             <div class="form-group">
               <label class="">Cantidad</label>    
-              <input type="number" class="form-control" name="cantidad" required placeholder="Cantidad">
+              <input type="number" class="form-control" name="cantidad" min="1.00" required placeholder="Cantidad">
             </div>
             <div class="form-group">
               <label class="">No. de Pagos</label>    
-              <input type="number" class="form-control" name="pagos" required placeholder="#Pagos">
+              <input type="number" class="form-control" name="pagos" min="1" required placeholder="#Pagos">
             </div>
             <div class="form-group">
               <label class="">Categoria</label>
@@ -92,7 +92,7 @@
     <div class="col-sm-8">
       <div class="box box-success">
         <div class="box-header with-border">
-          <h3 class="box-title">Lista de Gastos</h3> 
+          <h3 class="box-title">Lista de Gastos Activos</h3> 
         </div>
         <div class="box-body">
           <div class="table-responsive">
@@ -101,26 +101,34 @@
                 <th class="text-center">ID</th>
                 <th class="text-center">Concepto</th>
                 <th class="text-center">#Pagos</th>
+                <th class="text-center">Total</th>
+                <th class="text-center">Restante</th>
                 <th class="text-center">Categoria</th>
                 <th class="text-center">Frecuencia</th>
                 <th class="text-center">Inicia</th>
                 <th class="text-center">Estatus</th>
                 <th class="text-center">Opciones</th>
               </thead>
+              @if(sizeof($gastos)==0)
+                  <td></td><td></td><td></td><td></td><td></td><td>Sin Gastos</td><td></td><td></td><td></td><td></td>
+              @else
+              
               <tbody>
                 @foreach($gastos as $g) 
                 <tr> 
                   <td class="text-center">{{$g->ga_id}}</td>
                   <td class="text-center">{{$g->ga_description}}</td>
-                  <td class="text-center">{{$g->ga_numpagos}}</td>
+                  <td class="text-center">{{$g->ga_pagoactual}}/{{$g->ga_numpagos}}</td>
+                  <td class="text-center">{{$g->ga_amount}}</td>
+                  <td class="text-center">{{$g->ga_restante}}</td>
                   <td class="text-center">{{$g->cat_description}}</td>
                   <td class="text-center">{{$g->ft_description}}</td>
                   <td class="text-center">{{$g->ga_dia}}-{{$g->ga_mes}}-{{$g->ga_ano}}</td>
                   <td class="text-center">
                     @if($g->ga_status==1)
                       Activo
-                    @else
-                      Inactivo
+                    @elseif($g->ga_status==2)
+                      Liquidado
                     @endif
                   </td>
                   <td class="text-center">
@@ -136,11 +144,73 @@
                 <tr>
                 
               </tbody>
+              @endif
             </table>
           </div>
         </div>
       </div>
-    </div>      
+    </div> 
+ 
+      <div class="col-sm-8">
+      <div class="box box-success">
+        <div class="box-header with-border">
+          <h3 class="box-title">Lista de Gastos Liquidados</h3> 
+        </div>
+        <div class="box-body">
+          <div class="table-responsive">
+            <table class="table table-hover">
+              <thead>
+                <th class="text-center">ID</th>
+                <th class="text-center">Concepto</th>
+                <th class="text-center">#Pagos</th>
+                <th class="text-center">Total</th>
+                <th class="text-center">Restante</th>
+                <th class="text-center">Categoria</th>
+                <th class="text-center">Frecuencia</th>
+                <th class="text-center">Inicia</th>
+                <th class="text-center">Estatus</th>
+                <th class="text-center">Opciones</th>
+              </thead>
+              @if(sizeof($liquidados)==0)
+                  <td></td><td></td><td></td><td></td><td></td><td>Sin Gastos</td><td></td><td></td><td></td><td></td>
+              @else
+                <tbody>
+                <tr>
+
+                  @foreach($liquidados as $g) 
+                 
+                  <td class="text-center">{{$g->ga_id}}</td>
+                  <td class="text-center">{{$g->ga_description}}</td>
+                  <td class="text-center">{{$g->ga_pagoactual}}/{{$g->ga_numpagos}}</td>
+                  <td class="text-center">{{$g->ga_amount}}</td>
+                  <td class="text-center">{{$g->ga_restante}}</td>
+                  <td class="text-center">{{$g->cat_description}}</td>
+                  <td class="text-center">{{$g->ft_description}}</td>
+                  <td class="text-center">{{$g->ga_dia}}-{{$g->ga_mes}}-{{$g->ga_ano}}</td>
+                  <td class="text-center">
+                    @if($g->ga_status==1)
+                      Activo
+                    @elseif($g->ga_status==2)
+                      Liquidado
+                    @endif
+                  </td>
+                  <td class="text-center">
+                    <a href="{{url('/eliminarGasto')}}/{{$g->ga_id}}" class="btn btn-danger btn-xs">
+                      <span class="glyphicon glyphicon-remove" aria-hidden="true"></span>
+                    </a>
+                  </td>
+                </tr>
+                @endforeach                
+                <tr>
+              </tbody>
+              @endif
+            </table>
+          </div>
+        </div>
+      </div>
+    </div>
+
+
   </div>
 
 <script type="text/javascript">

@@ -71,7 +71,7 @@ Route::group(['middleware' => ['auth']], function () {
 
 	//PAGOS
 	Route::get('/pagos', 'PagoController@mostrar');
-	Route::get('/pagar/{id}', 'PagoController@pagar');
+	Route::get('/pagar/{id}/{monto}', 'PagoController@pagar');
 
 	//REPORTES
 	Route::get('/reportes', 'reportesController@mostrar');

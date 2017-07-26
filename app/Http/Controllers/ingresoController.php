@@ -4,7 +4,7 @@ namespace App\Http\Controllers;
 
 use Illuminate\Http\Request; 
 use Illuminate\Support\Facades\Auth;
-use App\Ingresos;
+use App\Ingresos; 
 use App\Usuario_ingreso;
 use App\Ingresos_cliente;
 use App\Categoria_Ingreso;
@@ -15,9 +15,10 @@ class ingresoController extends Controller{
     
     public function registrar(){
         $categorias = Categoria_Ingreso::all();
-        $ingresos = Ingresos_cliente::where('usu_id',Auth::id())->get(); 
+        $ingresos = Ingresos_cliente::where('usu_id',Auth::id())->where('in_status',1)->get();
+        $agotados = Ingresos_cliente::where('usu_id',Auth::id())->where('in_status',2)->get();
         
-        return view('ingresos',compact('ingresos','categorias'));
+        return view('ingresos',compact('ingresos','categorias','agotados'));
     }
 
     public function editar($id){
