@@ -171,7 +171,7 @@
           </a> 
         </li>
         <li>
-          <a href="{{url('/configuraciones')}}">
+          <a href="{{url('/catalogos')}}">
             <i class="fa fa-list"></i> <span>Catalogo</span>
             
           </a>
