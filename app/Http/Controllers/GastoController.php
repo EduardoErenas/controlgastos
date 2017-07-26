@@ -1,4 +1,4 @@
-<?php 
+<?php   
 
 namespace App\Http\Controllers;
 
@@ -7,7 +7,7 @@ use Illuminate\Support\Facades\Auth;
 use App\Gastos;
 use App\Pagos;
 use App\Categoria_Gasto;
-use App\Frecuencia_Gasto;
+use App\Frecuencia_Gasto; 
 use DB;
 
 class GastoController extends Controller{
@@ -19,13 +19,23 @@ class GastoController extends Controller{
         ->where([
             ['ga_status', '=', '1'],
             ['usu_id', '=', Auth::id()],
+        ]) 
+        ->join('category_gasto', 'category_gasto.cat_id', '=', 'gasto.cat_id')
+        ->join('frecuency_type', 'frecuency_type.ft_id', '=', 'gasto.ft_id')
+        ->select('gasto.ga_id', 'gasto.ga_description', 'gasto.ga_numpagos','gasto.ga_pagoactual','gasto.ga_amount','gasto.ga_restante', 'category_gasto.cat_description', 'frecuency_type.ft_description', 'gasto.ga_status', 'gasto.ga_dia', 'gasto.ga_mes', 'gasto.ga_ano')
+        ->get();
+       
+       $liquidados = DB::table('gasto')
+        ->where([
+            ['ga_status', '=', '2'],
+            ['usu_id', '=', Auth::id()],
         ])
         ->join('category_gasto', 'category_gasto.cat_id', '=', 'gasto.cat_id')
         ->join('frecuency_type', 'frecuency_type.ft_id', '=', 'gasto.ft_id')
-        ->select('gasto.ga_id', 'gasto.ga_description', 'gasto.ga_numpagos', 'category_gasto.cat_description', 'frecuency_type.ft_description', 'gasto.ga_status', 'gasto.ga_dia', 'gasto.ga_mes', 'gasto.ga_ano')
-        ->get(); 
-       
-        return view('gastos',compact('gastos','categorias', 'frecuencia'));
+        ->select('gasto.ga_id', 'gasto.ga_description', 'gasto.ga_numpagos','gasto.ga_pagoactual','gasto.ga_amount', 'category_gasto.cat_description', 'frecuency_type.ft_description', 'gasto.ga_status', 'gasto.ga_dia', 'gasto.ga_mes', 'gasto.ga_ano')
+        ->get();
+
+        return view('gastos',compact('gastos','categorias', 'frecuencia','liquidados'));
     }
 
     public function guardar(Request $datos){
@@ -35,6 +45,7 @@ class GastoController extends Controller{
             $gasto->usu_id=Auth::id();
             $gasto->ga_description=$datos->input('descri');
             $gasto->ga_amount=$datos->input('cantidad');
+            $gasto->ga_restante=$datos->input('cantidad');
             $gasto->ga_numpagos=$datos->input('pagos');
             $gasto->cat_id=$datos->input('cat');
             $gasto->ft_id=$datos->input('frecuen');
