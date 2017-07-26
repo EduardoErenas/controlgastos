@@ -77,7 +77,12 @@
             <ul class="dropdown-menu">
               <!-- User image -->
               <li class="user-header">
-                <img src="images/user2-160x160.jpg" class="img-circle" alt="User Image">
+                
+                @if(Auth::user()->usu_sex==1)
+                  <img src="{{asset('images/usuario/h.png')}}" class="img-circle" alt="User Image">
+                @else
+                  <img src="{{asset('images/usuario/m.png')}}" class="img-circle" alt="User Image">
+                @endif
 
                 <p>
                   {{Auth::user()->name}} - {{Auth::user()->usu_occupation}}
