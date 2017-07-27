@@ -48,10 +48,10 @@
     <!-- Logo -->
     <a href="{{url('')}}" class="logo" style="text-decoration: none;">
       <!-- mini logo for sidebar mini 50x50 pixels -->
-      <span class="logo-mini"><b></b>Admin</span>
+      <span class="logo-mini"><b></b>CG</span>
       <!-- logo for regular state and mobile devices -->
-      <span class="logo-lg"><b>Gastos</b> Admin </span>
-    </a
+      <span class="logo-lg"><b>Control</b> Gastos</span>
+    </a>
     <!-- Header Navbar: style can be found in header.less -->
     <nav class="navbar navbar-static-top">
       <!-- Sidebar toggle button-->
@@ -67,9 +67,9 @@
           <li class="dropdown user user-menu">
             <a href="#" class="dropdown-toggle" data-toggle="dropdown">
               @if(Auth::user()->usu_sex==1)
-                <img src="images/usuario/h.png" class="user-image" alt="User Image">
+                <img src="{{asset('images/usuario/h.png')}}" class="user-image" alt="User Image">
               @else
-                <img src="images/usuario/m.png" class="user-image" alt="User Image">
+                <img src="{{asset('images/usuario/m.png')}}" class="user-image" alt="User Image">
               @endif
               
               <span class="hidden-xs">{{Auth::user()->name}}</span>
@@ -77,7 +77,12 @@
             <ul class="dropdown-menu">
               <!-- User image -->
               <li class="user-header">
-                <img src="images/user2-160x160.jpg" class="img-circle" alt="User Image">
+                
+                @if(Auth::user()->usu_sex==1)
+                  <img src="{{asset('images/usuario/h.png')}}" class="img-circle" alt="User Image">
+                @else
+                  <img src="{{asset('images/usuario/m.png')}}" class="img-circle" alt="User Image">
+                @endif
 
                 <p>
                   {{Auth::user()->name}} - {{Auth::user()->usu_occupation}}
@@ -113,9 +118,9 @@
       <div class="user-panel">
         <div class="pull-left image">
           @if(Auth::user()->usu_sex==1)
-                <img src="images/usuario/h.png" class="img-circle" alt="User Image">
+                <img src="{{asset('images/usuario/h.png')}}" class="img-circle" alt="User Image">
           @else
-                <img src="images/usuario/m.png" class="img-circle" alt="User Image">
+                <img src="{{asset('images/usuario/m.png')}}" class="img-circle" alt="User Image">
           @endif
           
         </div>
@@ -201,19 +206,36 @@
 <script src="{{asset("js/sweetalert.min.js")}}"></script>
 <script src="{{asset("js/jquery-ui.min.js")}}"></script>
 
+
+<script src="{{asset("js/Chart.js")}}"></script>
+<script src="{{asset("js/fastclick.js")}}"></script>
+<script src="{{asset("js/adminlte.min.js")}}"></script>
+
+
+
 <!--DatePicker-->
 <script src="{{asset("js/bootstrap-datepicker.js")}}"></script>
 <script src="{{asset("js/bootstrap-colorpicker.min.js")}}"></script>
 
 <!-- Resolve conflict in jQuery UI tooltip with Bootstrap tooltip -->
 @stack('scripts')
-<script>
-  $.widget.bridge('uibutton', $.ui.button);
-</script>
+
   <script type="text/javascript">  
     $('#datepicker').datepicker({
       autoclose: true
-    })
+    });
+    //$(document).on('ready',function(){
+      @yield('javascriptC')
+    //});
+    $(function () {
+      
+    });
+
+    $(document).on('ready',function(){
+      @yield('javascriptC')
+    });
+    
   </script>
 </body>
 </html>
+
