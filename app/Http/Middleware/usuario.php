@@ -20,6 +20,6 @@ class usuario
 
             return $next($request);
         }
-           return redirect('home');
+           return redirect('/login');
     }
 }
