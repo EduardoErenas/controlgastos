@@ -1,15 +1,15 @@
 @extends('masteradmin')
 
-
-@section('titulo')
-<h1>
-    Usuarios
-</h1> 
-
-@stop 
 @section('contenido')
-@include('flash::message')
-	    <div class="col-sm-12">
+
+  <div class="callout callout-info">
+    <div class="content-header" style="padding-top: 0px !important">
+      <h1>Usuarios del Sistema <small></small></h1>
+    </div> 
+  </div> 
+  @include('flash::message')
+  <div class="row">
+    <div class="col-sm-12">
       <div class="box box-success">
         <div class="box-header with-border">
           <h3 class="box-title">Lista de Usuarios Registrados</h3> 
@@ -74,9 +74,11 @@
         </div>
       </div>
     </div>
-      <script type="text/javascript">
-  setTimeout(function(){
-    $(".alert").fadeOut(1500);
-  },1500);
-</script>     
+  </div>
+	    
+  <script type="text/javascript">
+    setTimeout(function(){
+      $(".alert").fadeOut(1500);
+    },1500);
+  </script>     
 @stop
