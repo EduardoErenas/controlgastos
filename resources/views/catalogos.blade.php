@@ -1,13 +1,13 @@
 @extends('master')
  
 @section('contenido')
-@include('flash::message')
+
   <div class="callout callout-info">
     <div class="content-header" style="padding-top: 0px !important">
       <h1>Catálogos <small></small></h1>
     </div> 
   </div> 
-
+  @include('flash::message')
 	<div class="row">
     <div class="col-sm-4">
       <div class="box box-primary">
@@ -56,6 +56,9 @@
                 <th class="text-center">Opciones</th>
               </thead>
               <tbody>
+              @if(sizeof($catIngreso)==0)
+                  <tr><td colspan="5"><center><strong>Sin Categorias</strong></center></td></tr>
+              @else
                 @foreach($catIngreso as $c)
                 <tr>
                   <td class="text-center">{{$c->cat_id}}</td>
@@ -80,6 +83,7 @@
                   </td>
                 </tr>
               @endforeach
+            @endif
                 
               </tbody>
             </table>
@@ -135,6 +139,9 @@
                 <th class="text-center">Opciones</th>
               </thead>
               <tbody>
+              @if(sizeof($catGasto)==0)
+                  <tr><td colspan="5"><center><strong>Sin Categrias</strong></center></td></tr>
+              @else
                 @foreach($catGasto as $cg)
                 <tr>
                   <td class="text-center">{{$cg->cat_id}}</td>
@@ -159,7 +166,7 @@
                   </td>
                 </tr>
               @endforeach
-                
+            @endif   
               </tbody>
             </table>
           </div>

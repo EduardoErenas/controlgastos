@@ -110,7 +110,7 @@
                 <th class="text-center">Opciones</th>
               </thead>
               @if(sizeof($gastos)==0)
-                  <td></td><td></td><td></td><td></td><td></td><td>Sin Gastos</td><td></td><td></td><td></td><td></td>
+                  <tr><td colspan="10"><center><strong>Sin Gastos</strong></center></td></tr>
               @else
               
               <tbody>
@@ -172,30 +172,30 @@
                 <th class="text-center">Opciones</th>
               </thead>
               @if(sizeof($liquidados)==0)
-                  <td></td><td></td><td></td><td></td><td></td><td>Sin Gastos</td><td></td><td></td><td></td><td></td>
+                  <tr><td colspan="10"><center><strong>Sin Gastos</strong></center></td></tr>
               @else
                 <tbody>
-                <tr>
+                
 
-                  @foreach($liquidados as $g) 
-                 
-                  <td class="text-center">{{$g->ga_id}}</td>
-                  <td class="text-center">{{$g->ga_description}}</td>
-                  <td class="text-center">{{$g->ga_pagoactual}}/{{$g->ga_numpagos}}</td>
-                  <td class="text-center">{{$g->ga_amount}}</td>
-                  <td class="text-center">{{$g->ga_restante}}</td>
-                  <td class="text-center">{{$g->cat_description}}</td>
-                  <td class="text-center">{{$g->ft_description}}</td>
-                  <td class="text-center">{{$g->ga_dia}}-{{$g->ga_mes}}-{{$g->ga_ano}}</td>
+                  @foreach($liquidados as $l) 
+                 <tr>
+                  <td class="text-center">{{$l->ga_id}}</td>
+                  <td class="text-center">{{$l->ga_description}}</td>
+                  <td class="text-center">{{$l->ga_pagoactual}}/{{$l->ga_numpagos}}</td>
+                  <td class="text-center">{{$l->ga_amount}}</td>
+                  <td class="text-center">{{$l->ga_restante}}</td>
+                  <td class="text-center">{{$l->cat_description}}</td>
+                  <td class="text-center">{{$l->ft_description}}</td>
+                  <td class="text-center">{{$l->ga_dia}}-{{$l->ga_mes}}-{{$l->ga_ano}}</td>
                   <td class="text-center">
-                    @if($g->ga_status==1)
+                    @if($l->ga_status==1)
                       Activo
-                    @elseif($g->ga_status==2)
+                    @elseif($l->ga_status==2)
                       Liquidado
                     @endif
                   </td>
                   <td class="text-center">
-                    <a href="{{url('/eliminarGasto')}}/{{$g->ga_id}}" class="btn btn-danger btn-xs">
+                    <a href="{{url('/eliminarGasto')}}/{{$l->ga_id}}" class="btn btn-danger btn-xs">
                       <span class="glyphicon glyphicon-remove" aria-hidden="true"></span>
                     </a>
                   </td>

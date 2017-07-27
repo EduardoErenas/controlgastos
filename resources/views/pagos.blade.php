@@ -29,7 +29,7 @@
                 <th class="text-center">PAGAR</th>
               </thead>
               @if(sizeof($pagos)==0)
-                  <td></td><td></td><td></td><td></td><td>Sin Pagos</td><td></td><td></td><td></td><td></td>
+                  <tr><td colspan="9"><center><strong>Sin Pagos</strong></center></td></tr>
               @else
               <tbody>
                 @foreach($pagos as $p)
@@ -87,7 +87,7 @@
                 <th class="text-center">Estatus</th>
               </thead>
               @if(sizeof($liquidados)==0)
-                  <td></td><td></td><td></td><td></td><td>Sin Pagos</td><td></td><td></td><td></td><td></td>
+                  <tr><td colspan="9"><center><strong>Sin Pagos</strong></center></td></tr>
               @else
               <tbody>
                 @foreach($liquidados as $p)

@@ -1,13 +1,13 @@
 @extends('master') 
  
 @section('contenido')
-@include('flash::message')
+
   <div class="callout callout-info">
     <div class="content-header" style="padding-top: 0px !important">
       <h1>Ingresos <small></small></h1>
     </div> 
   </div> 
-
+  @include('flash::message')
 	<div class="row">
     <div class="col-sm-4">
       <div class="box box-primary">
@@ -72,7 +72,7 @@
                 <th class="text-center">Opciones</th>
               </thead>
               @if(sizeof($ingresos)==0)
-                  <td></td><td></td><td></td><td></td><td>Sin Ingresos</td><td></td><td></td><td></td><td></td>
+                  <tr><td colspan="8"><center><strong>Sin Ingresos</strong></center></td></tr>
               @else
               
               <tbody>
@@ -131,7 +131,7 @@
                 <th class="text-center">Opciones</th>
               </thead>
               @if(sizeof($agotados)==0)
-                  <td></td><td></td><td></td><td></td><td>Sin Ingresos</td><td></td><td></td><td></td><td></td>
+                  <tr><td colspan="8"><center><strong>Sin Ingresos</strong></center></td></tr>
               @else
               <tbody>
                 @foreach($agotados as $a)

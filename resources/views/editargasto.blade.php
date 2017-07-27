@@ -22,14 +22,8 @@
               <label>Descripcion</label>  
               <input type="text" class="form-control" name="descri" required placeholder="Descripcion" value="{{$gasto->ga_description}}">
             </div>
-            <div class="form-group">
-              <label class="">Cantidad</label>    
-              <input type="number" class="form-control" name="cantidad" required placeholder="Cantidad" value="{{$gasto->ga_amount}}">
-            </div>
-            <div class="form-group">
-              <label class="">No. de Pagos</label>    
-              <input type="number" class="form-control" name="pagos" required placeholder="#Pagos" value="{{$gasto->ga_numpagos}}">
-            </div>
+            
+            
             <div class="form-group">
               <label class="">Categoria</label>
               <select name="cat" required class="form-control">
@@ -45,34 +39,8 @@
             </div>
             
             <div class="form-group">
-              <label class="">Frecuencia</label>
-              <select name="frecuen" required class="form-control">
-                @foreach($frecuencia as $f)  
-                  <option value='{{$f->ft_id}}'>{{$f->ft_description}}</option>
-                @endforeach
-                @foreach($frecuencia as $f)
-                  @if($f->ft_id==$gasto->ft_id)
-                    <option value="{{$f->ft_id}}" selected="">{{$f->ft_description}}</option>
-                  @else
-                    <option value="{{$f->ft_id}}">{{$f->ft_description}}</option>
-                  @endif
-                @endforeach
-                
-              </select>    
-              
-            </div>
-            <div class="form-group">
-                <label>Fecha Inicio</label>
-                <div class="input-group date">
-                  <div class="input-group-addon">
-                    <i class="fa fa-calendar"></i>
-                  </div>
-                  <input class="form-control pull-right" required name="inicio" id="datepicker" type="text" >
-                </div>
-            </div>
-            <div class="form-group">
               <label class="">Prioridad</label>
-              <select name="prio" required class="form-control" value="{{$gasto->ga_prioridad}}">
+              <select name="prio" required class="form-control" id="prioridad" value="">
                 <option value="1">1</option>
                 <option value="2">2</option>
                 <option value="3">3</option>
@@ -103,8 +71,11 @@
     </div>     
   </div>
 
+
+
 @stop
 
 @section('javascriptC')
+    $('#prioridad').val({{$gasto->ga_prioridad}});
     $('#datepicker').datepicker("setDate", new Date(({{$gasto->ga_ano}}) , ({{($gasto->ga_mes)-1}}) , ({{$gasto->ga_dia}})) );
 @stop

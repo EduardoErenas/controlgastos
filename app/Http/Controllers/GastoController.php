@@ -24,6 +24,8 @@ class GastoController extends Controller{
         ->join('frecuency_type', 'frecuency_type.ft_id', '=', 'gasto.ft_id')
         ->select('gasto.ga_id', 'gasto.ga_description', 'gasto.ga_numpagos','gasto.ga_pagoactual','gasto.ga_amount','gasto.ga_restante', 'category_gasto.cat_description', 'frecuency_type.ft_description', 'gasto.ga_status', 'gasto.ga_dia', 'gasto.ga_mes', 'gasto.ga_ano')
         ->get();
+
+        //dd($gastos);
        
        $liquidados = DB::table('gasto')
         ->where([
@@ -32,7 +34,7 @@ class GastoController extends Controller{
         ])
         ->join('category_gasto', 'category_gasto.cat_id', '=', 'gasto.cat_id')
         ->join('frecuency_type', 'frecuency_type.ft_id', '=', 'gasto.ft_id')
-        ->select('gasto.ga_id', 'gasto.ga_description', 'gasto.ga_numpagos','gasto.ga_pagoactual','gasto.ga_amount', 'category_gasto.cat_description', 'frecuency_type.ft_description', 'gasto.ga_status', 'gasto.ga_dia', 'gasto.ga_mes', 'gasto.ga_ano')
+        ->select('gasto.ga_id', 'gasto.ga_description', 'gasto.ga_numpagos','gasto.ga_pagoactual','gasto.ga_amount', 'gasto.ga_restante','category_gasto.cat_description', 'frecuency_type.ft_description', 'gasto.ga_status', 'gasto.ga_dia', 'gasto.ga_mes', 'gasto.ga_ano')
         ->get();
 
         return view('gastos',compact('gastos','categorias', 'frecuencia','liquidados'));
@@ -88,13 +90,7 @@ class GastoController extends Controller{
         try{
             $gasto = Gastos::find($ga_id);
             $gasto->ga_description=$datos->input('descri');
-            $gasto->ga_amount=$datos->input('cantidad');
-            $gasto->ga_numpagos=$datos->input('pagos');
             $gasto->cat_id=$datos->input('cat');
-            $gasto->ft_id=$datos->input('frecuen');
-            $gasto->ga_ano=substr($datos->input('inicio'),6,9);
-            $gasto->ga_mes=substr($datos->input('inicio'),0,2);
-            $gasto->ga_dia=substr($datos->input('inicio'),3,2);
             $gasto->ga_prioridad=$datos->input('prio');
             $gasto->save();
 
