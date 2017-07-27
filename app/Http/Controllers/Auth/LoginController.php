@@ -37,7 +37,7 @@ class LoginController extends Controller
         if (Auth::user()->usu_type==0) {
             return redirect('/home');
         }else
-        return redirect('/administrador');
+            return redirect('/administrador');
     } 
 
     /**
