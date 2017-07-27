@@ -14,7 +14,7 @@
         <div class="box-header with-border">
           <h3 class="box-title">Registrar</h3> 
         </div>
-        <form action="{{url('/guardarIngreso')}}" method="post">
+        <form class="form-horizontal" action="{{url('/registrarUA')}}" method="post">
           <input id="token" type="hidden" name="_token" value="{{csrf_token()}}">
           <div class="box-body">
                 <input id="token" type="hidden" name="_token" value="{{csrf_token()}}">
@@ -90,13 +90,6 @@
                       </select>
                     </div>
                   </div>
-                  <div class="form-group">
-                    <div class="col-sm-offset-2 col-sm-10">
-                      <button type="submit" class="btn btn-primary">Aceptar</button>
-                    </div>
-                  </div>
-                
-              
           </div>
 
           <div class="box-footer">

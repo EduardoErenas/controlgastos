@@ -100,5 +100,36 @@ class administradorController extends Controller{
     public function registrarUA(){
          return view('registroUA');
     }
+
+    public function guardarUA(Request $datos){
+        try{
+            $hoy = getdate();
+            $fecha = $hoy['month'].' '.$hoy['year'];
+            $password = str_random(6);   
+            $user= User::create([
+                'name' => $data['name'],
+                'email' => $data['email'],
+                'password' => bcrypt($password),
+
+                'usu_sex' => $data['usu_sex'],
+                'usu_age' => $data['usu_age'],
+                'usu_occupation' => $data['usu_occupation'],
+                'usu_address' => $data['usu_address'],
+                'usu_city' => $data['usu_city'],
+                'usu_state' => $data['usu_state'],
+                'usu_type' => 0,
+
+            ]);
+             
+            Mail::to($data['email'],$data['name'])
+            ->send(new bienvenidaEmail($data['name'],$password,$data['email'],$fecha));
+
+            flash('!Registro Correcto¡')->success();
+        }catch(\Illuminate\Database\QueryException $e){
+            flash('Error al registrar, intenta de nuevo')->success();
+        }
+
+        return redirect('listaUsuarios');
+    }
     
 }
