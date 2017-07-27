@@ -21,7 +21,7 @@ class administradorController extends Controller{
     public function home(){
       
       //dd($historialingresos);
-        return view('masterAdmin');
+        return view('inicioAdmin');
     } 
     public function perfil(){
       
