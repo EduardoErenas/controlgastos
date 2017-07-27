@@ -18,7 +18,7 @@
 									<td align="left" height="20" valign="top"><img alt="" src="http://localhost/controlgastos/public/images/correo/top-2b.png" style="display: block; width: 600px; height: 20px;" /></td>
 							  </tr>
                               <tr>
-									<td align="left" height="20" valign="top"><img alt="" src="http://localhost/controlgastos/public/images/correo/correo2.png" style="display: block; width: 600px; height: 240px;" /></td>
+									<td align="left" height="20" valign="top"><img alt="" src="http://localhost/controlgastos/public/images/correo/correo2.jpg" style="display: block; width: 600px; height: 240px;" /></td>
 							  </tr>
                               <tr>
 									<td align="left" bgcolor="#ffffff" height="15" valign="top"><img alt="" src="http://localhost/controlgastos/public/images/correo/1b.png" style="display: block; width: 600px; height: 15px;" /></td>
