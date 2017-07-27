@@ -32,7 +32,7 @@ class UsuarioController extends Controller{
         }    
         else
         {
-             flash('!Esto está mal '.Auth::user()->password)->error();
+             flash('!Ocurrió un error al cambiar contraseña. Intente de nuevo ')->error();
         }
         return redirect('configuraciones');   
     }

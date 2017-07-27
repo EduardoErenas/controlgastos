@@ -165,7 +165,7 @@
           </a>
         </li>
         <li>
-          <a href="{{url('/configuraciones')}}">
+          <a href="{{url('/configuracionesAdmin')}}">
             <i class="fa fa-cog"></i> <span>Configuraciones</span>
             
           </a>
