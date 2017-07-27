@@ -39,7 +39,7 @@
                                        	Correo: {{$email}}<br/>
 										Password: {{$password}}<br/><br/>
                                     	
-                                    	Para visitar nuestro sitio dale clic al siguiente enlace.
+                                    	Para visitar nuestro sitio dale click al siguiente enlace.
                                     </p>
                                     
                                     
@@ -63,7 +63,7 @@
                         <table align="center" border="0" cellpadding="0" cellspacing="0" width="600">
 							<tbody>
 								<tr>
-									<td align="center" valign="top" bgcolor="#045FB4" style="padding:18px 20px 10px 20px;color:#000000;font-family:Arial, Helvetica, sans-serif;font-weight:bold;font-size:18px;">Contactanos en 
+									<td align="center" valign="top" bgcolor="#045FB4" style="padding:18px 20px 10px 20px;color:#000000;font-family:Arial, Helvetica, sans-serif;font-weight:bold;font-size:18px;">Contáctanos en 
                                     </td>
 							  </tr>
 							  <tr>
