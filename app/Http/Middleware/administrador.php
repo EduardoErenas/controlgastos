@@ -3,7 +3,8 @@
 namespace App\Http\Middleware;
 
 use Closure;
-use Auth;
+use Illuminate\Support\Facades\Auth;
+
 class administrador
 {
     /**
@@ -15,7 +16,7 @@ class administrador
      */
     public function handle($request, Closure $next)
     {   
-        if (Auth::user()->usu_type==1) {
+        if (Auth::check() && Auth::user()->usu_type==1) {
             return $next($request);
         }
             return redirect('/login');

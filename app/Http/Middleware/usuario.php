@@ -17,7 +17,7 @@ class usuario
     public function handle($request, Closure $next)
     { 
         
-        if (Auth::user()->usu_type==0 && Auth::check()) {
+        if (Auth::check() && Auth::user()->usu_type==0 ) {
 
             return $next($request);
         }
