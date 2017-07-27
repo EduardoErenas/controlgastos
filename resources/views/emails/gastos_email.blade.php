@@ -37,7 +37,7 @@
                                     <p style="font-size:12px; text-align: justify;">Hola {{$nombre}}<br/></br>
                                        	Tu registro del gasto "{{$ga_concepto}}" por la cantidad de ${{$ga_monto}} se ha completado exitosamente.</br></br>
                                        	
-                                    	Para visitar nuestro sitio dale clic al siguiente enlace.
+                                    	Para visitar nuestro sitio dale click al siguiente enlace.
                                     </p>
                                     
                                     
