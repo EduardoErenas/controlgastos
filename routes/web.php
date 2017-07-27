@@ -45,7 +45,7 @@ Route::get('/tablaDatos', function () {
 
 //***************** GRUPO DE MIDDLEWARE ******************
  
-Route::group(['middleware' => 'usua'], function () {
+Route::group(['middleware' => ['usua']], function () {
     //INICIO
 	Route::get('/', 'HomeController@index');
 	Route::get('/home', 'HomeController@index')->name('home');
@@ -97,7 +97,7 @@ Route::group(['middleware' => 'usua'], function () {
 
 
 //routes administrador
-Route::group(['middleware' => 'admin'], function () {
+Route::group(['middleware' => ['admin']], function () {
 Route::get('/administrador', 'administradorController@home');
 Route::get('/perfiladministrador', 'administradorController@perfil');
 Route::post('/editarperfiladmin/{id}', 'administradorController@editarperfil');

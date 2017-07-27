@@ -18,7 +18,7 @@ class administrador
         if (Auth::user()->usu_type==1) {
             return $next($request);
         }
-            return redirect('/login');
+            return redirect('/home');
         
     }
 }
