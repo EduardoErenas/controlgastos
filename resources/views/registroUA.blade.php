@@ -1,4 +1,4 @@
-@extends('master') 
+@extends('masterAdmin') 
  
 @section('contenido')
 
@@ -9,10 +9,10 @@
   </div> 
   @include('flash::message')
 	<div class="row">
-    <div class="col-sm-4">
+    <div class="col-sm-6">
       <div class="box box-primary">
         <div class="box-header with-border">
-          <h3 class="box-title">Registrar Ingreso</h3> 
+          <h3 class="box-title">Registrar</h3> 
         </div>
         <form action="{{url('/guardarIngreso')}}" method="post">
           <input id="token" type="hidden" name="_token" value="{{csrf_token()}}">
