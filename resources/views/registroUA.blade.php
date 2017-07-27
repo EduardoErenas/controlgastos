@@ -1,18 +1,20 @@
-@extends('masteradmin')
-
+@extends('master') 
+ 
 @section('contenido')
-  <div class="callout callout-success">
+
+  <div class="callout callout-info">
     <div class="content-header" style="padding-top: 0px !important">
-      <h1>Editar Usuario<small></small></h1>
+      <h1>Registrar Usuario o Admin<small></small></h1>
     </div> 
   </div> 
-  <div class="row">
-    <div class="col-sm-6">
+  @include('flash::message')
+	<div class="row">
+    <div class="col-sm-4">
       <div class="box box-primary">
         <div class="box-header with-border">
-          <h3 class="box-title">Editar</h3> 
+          <h3 class="box-title">Registrar Ingreso</h3> 
         </div>
-        <form class="form-horizontal" action="{{url('/Actualizar')}}/{{$user->id}}" method="post">
+        <form action="{{url('/guardarIngreso')}}" method="post">
           <input id="token" type="hidden" name="_token" value="{{csrf_token()}}">
           <div class="box-body">
                 <input id="token" type="hidden" name="_token" value="{{csrf_token()}}">
@@ -94,6 +96,11 @@
                       </select>
                     </div>
                   </div>
+                  <div class="form-group">
+                    <div class="col-sm-offset-2 col-sm-10">
+                      <button type="submit" class="btn btn-primary">Aceptar</button>
+                    </div>
+                  </div>
                 
               
           </div>
@@ -115,5 +122,6 @@
   setTimeout(function(){
     $(".alert").fadeOut(1500);
   },1500);
-</script>     
+</script>
+ 
 @stop

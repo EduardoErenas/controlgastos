@@ -94,5 +94,11 @@ class administradorController extends Controller{
         }
         return redirect('listaUsuarios');
     }
+
+    // nuevo ingreso
+
+    public function registrarUA(){
+         return view('registroUA');
+    }
     
 }

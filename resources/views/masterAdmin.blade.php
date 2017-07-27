@@ -152,7 +152,7 @@
           </a>
         </li>
         <li>
-          <a href="{{url('/reportes')}}">
+          <a href="{{url('/registrarua')}}">
             <i class="fa fa-user"></i> <span>Nuevo Registro</span>
             
           </a>

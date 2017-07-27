@@ -105,5 +105,6 @@ Route::get('/listaUsuarios', 'administradorController@listaUsuarios');
 Route::get('/eliminarusuario/{id}', 'administradorController@eliminarusuario');
 Route::get('/editarusuario/{id}', 'administradorController@editarusuario');
 Route::post('/Actualizar/{id}', 'administradorController@Actualizar');
+Route::get('/registrarua', 'administradorController@registrarUA');
 });
 Auth::routes();
