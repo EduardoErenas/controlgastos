@@ -1,7 +1,51 @@
-@extends('layouts.app')
+<!DOCTYPE html>
+<html lang="en"> 
+<head>
+    <meta charset="UTF-8">
+     
+    <title>Recuperación de Contraseña</title>
+    <link rel="stylesheet" href="css/bootstrap.min.css">
+    <meta content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no" name="viewport">
+    <link rel="stylesheet" href="{{asset("css/AdminLTE.css")}}">
+    <link rel="stylesheet" href="{{asset("css/bootstrap.min.css")}}">
+    <meta name="csrf-token" content="{{ csrf_token() }}">
+    
+    <style>
+         body{
+            background-image: url("public/images/fondo.jpg");
+        }
+        .container{
+             
+            padding: 0% 1% 0% 1%;
+            border: 2px #e0f7fa;
+            border-radius: 10px;
+        }
+        h3{
+            display: block;
+            font-weight: bold;
+        }
+        .navbar{
+            font-weight: bold;
+            display: block;
+        }
+        h4{
+            font-weight: bold;
+        }
+        h5{
+            font-weight: bold;
+        }
+    </style>
+</head>
+<body>
 
-@section('content')
-<div class="container">
+    <div class="container-fluid" style="background-color: #314550; padding: 10px; margin-bottom: 15px;">
+        <div class="row">
+            <div class="col-md-12">
+                <a href="{{ route('login') }}" class="pull-right" style="margin-right: 15px; font-weight: bold; color: white;">Login</a>
+            </div>
+        </div>
+    </div>
+    <div class="container">
     <div class="row">
         <div class="col-md-8 col-md-offset-2">
             <div class="panel panel-default">
@@ -43,4 +87,11 @@
         </div>
     </div>
 </div>
-@endsection
+
+<script type="text/javascript">
+  setTimeout(function(){
+    $(".alert").fadeOut(1500);
+  },1500);
+</script> 
+</body>
+</html>

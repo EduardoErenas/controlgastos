@@ -44,7 +44,7 @@
                                     		@endforeach 
                                     	@endif
                                     	<br>
-                                    	Para visitar nuestro sitio dale clic al siguiente enlace.
+                                    	Para visitar nuestro sitio dale click al siguiente enlace.
                                     </p>
                                     
                                     
