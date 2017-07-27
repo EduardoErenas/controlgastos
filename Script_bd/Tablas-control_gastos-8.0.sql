@@ -346,7 +346,7 @@ delimiter ;
 -- trigger para insertar las categorias por default para cata usuario
 drop trigger if exists tg_create_category;
 delimiter $$
-CREATE TRIGGER tg_create_category before insert on users for each row
+CREATE TRIGGER tg_create_category after insert on users for each row
 BEGIN
 	DECLARE _user int;
 
