@@ -80,7 +80,7 @@
     });
 
     // map para obtener los datos de gastos
-    gastos.map(function(mes, index){
+    eliminados.map(function(mes, index){
       arrayEliminadosLabels.push(mes.mes_name);
       arrayEliminadosData.push(mes.total);
     });
