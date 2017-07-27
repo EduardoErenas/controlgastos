@@ -15,21 +15,17 @@
           <!-- Profile Image -->
           <div class="box box-primary">
             <div class="box-body box-profile">
-              <img class="profile-user-img img-responsive img-circle" src="images/user2-160x160.jpg" alt="User profile picture">
-
-              <h3 class="profile-username text-center">Nombre Apellido</h3>
+              @if(Auth::user()->usu_sex==1)
+                <img src="{{asset('images/usuario/h.png')}}" class="profile-user-img img-responsive img-circle" alt="User Image">
+              @else
+                <img src="{{asset('images/usuario/m.png')}}" class="profile-user-img img-responsive img-circle" alt="User Image">
+              @endif
+              
               <h1 class="profile-username text-center" style="color: red;">{{Auth::user()->name}}</h1>
 
-              <p class="text-muted text-center">{{Auth::user()->usu_occupation}}</p>
+              <p class="text-muted text-center">Administrador</p>
 
-              <ul class="list-group list-group-unbordered">
-                <li class="list-group-item">
-                  <b>Ingresos</b> <a class="pull-right"></a>
-                </li>
-                <li class="list-group-item">
-                  <b>Gastos</b> <a class="pull-right"></a>
-                </li>
-              </ul>
+              
 
               <a href="#editar" data-toggle="tab" class="btn btn-primary btn-block"><b>Editar Perfil</b></a>
             </div>

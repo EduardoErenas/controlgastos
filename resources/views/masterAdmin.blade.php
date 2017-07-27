@@ -85,7 +85,7 @@
                 @endif
 
                 <p>
-                  {{Auth::user()->name}} - {{Auth::user()->usu_occupation}}
+                  {{Auth::user()->name}} - Admin
                   <small>Miembro desde {{substr((Auth::user()->created_at), 0, 10)}}</small>
                 </p>
               </li>
