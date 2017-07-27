@@ -1,13 +1,14 @@
 @extends('master')
 
 @section('contenido')
-@include('flash::message')
+
 
 	<div class="callout callout-info">
     <div class="content-header"  style="padding-top: 0px !important">
       <h1>Configuraciones <small></small></h1>
     </div> 
   </div>
+  @include('flash::message')
 <form class="form-horizontal" action="{{url('/editarContraseña')}}/{{Auth::user()->id}}" method="post">
                 <input id="token" type="hidden" name="_token" value="{{csrf_token()}}">
   <div class="row">
