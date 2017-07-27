@@ -24,7 +24,7 @@
               <label  class="col-sm-2 control-label">Contraseña Actual</label>
 
               <div class="col-sm-10">
-                <input type="password" class="form-control" name="contra"  >
+                <input type="password" class="form-control" name="contra" placeholder="Contraseña Actual"  >
               </div>
             </div>
             <div class="form-group">
