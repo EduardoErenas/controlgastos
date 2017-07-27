@@ -51,6 +51,7 @@
         <!-- ./col -->
         
       </div>
+      <!--
       
       <div class="row">
 
@@ -74,12 +75,13 @@
               <span class="info-box-number">$ 530.00</span>
             </div>
             <!-- /.info-box-content -->
+            <!--
           </div>
         </div>
         <div class="col-sm-6">
          
         </div>
-      </div>
+      </div>-->
         
       
 

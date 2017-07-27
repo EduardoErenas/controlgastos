@@ -111,6 +111,9 @@
         </div>
       </div>
       <!-- /.row -->
+      <div class="row">
+        
+      </div>
 @stop
 <script type="text/javascript">
     var arreglo=<?echo json_encode($meses);?>;
