@@ -9,6 +9,7 @@
   </div> 
   @include('flash::message')
   <div class="row">
+      
     <div class="col-sm-12">
       <div class="box box-success">
         <div class="box-header with-border">

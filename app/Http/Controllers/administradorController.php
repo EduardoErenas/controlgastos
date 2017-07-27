@@ -50,14 +50,16 @@ class administradorController extends Controller{
         
     }
     public function listaUsuarios(){
-        $users=user::All();
+        $users=DB::table('users')->where('usu_status', '=', '1')->get();
         return view('listaUsuarios',compact('users'));
     }
     public function eliminarusuario($idusuario){
         try{
-        $usua= User::Find($idusuario);
-        $usua->delete();
-        flash('!Se elimino exitosamente el usuario ')->success();
+            DB::table('users')
+            ->where('id', $idusuario)
+            ->update(['usu_status' => 0]);
+        
+            flash('!Se elimino exitosamente el usuario ')->success();
         }catch(\Illuminate\Database\QueryException $e){
             flash('Error al eliminar usuario, intenta de nuevo¡')->error();
         }
