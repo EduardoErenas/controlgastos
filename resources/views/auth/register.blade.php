@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="en"> 
 <head>
     <meta charset="UTF-8">
      
@@ -54,6 +54,7 @@
         <div class="col-md-8 col-md-offset-2">
             <div class="panel panel-default">
                 <div class="panel-heading" ><h1>Registro de Usuario Nuevo</h1></div>
+                @include('flash::message')
                 <div class="panel-body">
                     <form class="form-horizontal" role="form" method="POST" action="{{ route('register') }}">
                         {{ csrf_field() }}
@@ -177,12 +178,13 @@
                                 @endif
                             </div>
                         </div>
-
+                        
+                        <!--
                         <div class="form-group{{ $errors->has('password') ? ' has-error' : '' }}">
-                            <label for="password" class="col-md-4 control-label">Password:</label>
+                            <label for="password" class="col-md-4 control-label"></label>
 
                             <div class="col-md-6">
-                                <input id="password" type="password" class="form-control" name="password" required>
+                                <input id="password" type="hidden" class="form-control" name="password" value='xxxxxx'>
 
                                 @if ($errors->has('password'))
                                     <span class="help-block">
@@ -191,16 +193,16 @@
                                 @endif
                             </div>
                         </div>
-
+                        
                         <div class="form-group">
-                            <label for="password-confirm" class="col-md-4 control-label">Confirm Password:</label>
+                            <label for="password-confirm" class="col-md-4 control-label"></label>
 
                             <div class="col-md-6">
-                                <input id="password-confirm" type="password" class="form-control" name="password_confirmation" required>
+                                <input id="password-confirm" type="hidden" class="form-control" name="password_confirmation" value='xxxxxx'>
                             </div>
                         </div>
-
-
+                        
+                        -->
                         <div class="form-group">
                             <div class="col-md-6 col-md-offset-4">
                                 <button type="submit" class="btn btn-primary">
@@ -208,11 +210,17 @@
                                 </button>
                             </div>
                         </div>
+
                     </form>
                 </div>
             </div>
         </div>
     </div>
 </div>
+<script type="text/javascript">
+  setTimeout(function(){
+    $(".alert").fadeOut(1500);
+  },1500);
+</script> 
 </body>
 </html>

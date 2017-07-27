@@ -29,12 +29,7 @@ class RegisterController extends Controller
      *
      * @var string
      */
-    protected function redirectTo(){
-        if (Auth::user()->usu_type==0) {
-            return redirect('/home');
-        }else
-        return redirect('/administrador');
-    } 
+    protected $redirectTo = '/login';
 
     /**
      * Create a new controller instance.
@@ -57,7 +52,7 @@ class RegisterController extends Controller
         return Validator::make($data, [ 
             'name' => 'required|string|max:255',
             'email' => 'required|string|email|max:255|unique:users',
-            'password' => 'required|string|min:6|confirmed',
+            
             
             'usu_sex' => 'required|integer|max:255',
             'usu_age' => 'required|integer|max:255',
@@ -76,11 +71,13 @@ class RegisterController extends Controller
      */
     protected function create(array $data)
     {
-
+        $hoy = getdate();
+        $fecha = $hoy['month'].' '.$hoy['year'];
+        $password = str_random(6);   
         $user= User::create([
             'name' => $data['name'],
             'email' => $data['email'],
-            'password' => bcrypt($data['password']),
+            'password' => bcrypt($password),
 
             'usu_sex' => $data['usu_sex'],
             'usu_age' => $data['usu_age'],
@@ -91,9 +88,11 @@ class RegisterController extends Controller
             'usu_type' => 0,
 
         ]);
-
+        
         Mail::to($data['email'],$data['name'])
-        ->send(new bienvenidaEmail('Hola'));
+        ->send(new bienvenidaEmail($data['name'],$password,$data['email'],$fecha));
+
+        flash('!Usuario registrado, revisa¡')->success();
 
         return $user;
     }

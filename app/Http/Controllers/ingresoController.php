@@ -1,5 +1,5 @@
 <?php  
- 
+  
 namespace App\Http\Controllers;
 
 use Illuminate\Http\Request; 
@@ -39,18 +39,18 @@ class ingresoController extends Controller{
     }
     
     public function actualizar($in_id,Request $datos){
-       // try{
+        try{
             $ingreso = Ingresos::find($in_id);
             $ingreso ->in_description = $datos->input('descripcion');
             $ingreso ->in_amount = $datos->input('monto');
             $ingreso ->cat_id = $datos->input('categoria');
             $ingreso->save();
 
-         //   flash('!Se actualizo Ingreso exitosamente¡')->success();
+            flash('!Se actualizo Ingreso exitosamente¡')->success();
 
-        //}catch(\Illuminate\Database\QueryException $e){
-          //  flash('Error al actualizar Ingreso, intenta de nuevo¡')->error();
-       // }
+        }catch(\Illuminate\Database\QueryException $e){
+            flash('Error al actualizar Ingreso, intenta de nuevo¡')->error();
+        }
 
         return redirect ('/ingresos');
     }

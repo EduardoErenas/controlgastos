@@ -48,6 +48,7 @@
         <div class="row">
             <div class="col-xs-12 col-md-6 col-md-offset-3">
                 <div class="panel panel-default">
+                @include('flash::message')
                   <div class="panel-body text-center">
                     <img src="images/logo.png" alt="" width="180px">
                   </div>
@@ -143,7 +144,11 @@
           </div>
         </div>
       </div>
-
+<script type="text/javascript">
+  setTimeout(function(){
+    $(".alert").fadeOut(1500);
+  },1500);
+</script>
 <script src="{{asset("js/jquery-3.1.1.min.js")}}"></script>
 <script src="{{asset("js/bootstrap.min.js")}}"></script>
 <script src="{{ asset('js/app.js') }}"></script>
