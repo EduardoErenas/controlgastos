@@ -159,7 +159,7 @@
         </li>
        
         <li>
-          <a href="{{url('/reportes')}}">
+          <a href="{{url('/reportesAdmin')}}">
             <i class="fa fa-bar-chart"></i> <span>Reportes</span>
             
           </a>

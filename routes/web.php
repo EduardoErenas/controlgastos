@@ -108,6 +108,9 @@ Route::post('/Actualizar/{id}', 'administradorController@Actualizar');
 Route::get('/registrarua', 'administradorController@registrarUA');
 Route::post('/registrarUA','administradorController@guardarUA');
 
+//Reportes Admin
+Route::get('/reportesAdmin', 'reportesAdminController@mostrar');
+
 //CONFIGURACIONES ADMIN
 Route::post('/editarContraseña/{id}', 'administradorController@editarContraseña');
 Route::get('/configuracionesAdmin', 'administradorController@configuraciones');
