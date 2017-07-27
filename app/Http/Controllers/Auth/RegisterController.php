@@ -88,7 +88,7 @@ class RegisterController extends Controller
             'usu_type' => 0,
 
         ]);
-        
+         
         Mail::to($data['email'],$data['name'])
         ->send(new bienvenidaEmail($data['name'],$password,$data['email'],$fecha));
 
