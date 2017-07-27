@@ -45,7 +45,7 @@ Route::get('/tablaDatos', function () {
 
 //***************** GRUPO DE MIDDLEWARE ******************
  
-Route::group(['middleware' => ['auth']], function () {
+Route::group(['middleware' => ['usua']], function () {
     //INICIO
 	Route::get('/', 'HomeController@index');
 	Route::get('/home', 'HomeController@index')->name('home');
