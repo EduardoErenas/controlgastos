@@ -2,6 +2,8 @@
 
 namespace App\Http\Controllers;
 
+use Illuminate\Support\Facades\Mail;
+use App\Mail\gastoEmail; 
 use Illuminate\Http\Request; 
 use Illuminate\Support\Facades\Auth;
 use App\Gastos;
@@ -42,7 +44,10 @@ class GastoController extends Controller{
 
     public function guardar(Request $datos){
     	try{
-              
+            
+            $hoy = getdate();
+            $fecha = $hoy['month'].' '.$hoy['year'];
+
             $gasto = new Gastos();
             $gasto->usu_id=Auth::id();
             $gasto->ga_description=$datos->input('descri');
@@ -56,6 +61,9 @@ class GastoController extends Controller{
             $gasto->ga_dia=substr($datos->input('inicio'),3,2);
             $gasto->ga_prioridad=$datos->input('prio'); 
             $gasto->save();
+
+            Mail::to(Auth::user()->email,Auth::user()->name)
+            ->send(new gastoEmail(Auth::user()->name,$datos->input('cantidad'),$datos->input('descri'),$fecha));
 
             flash('!Se guardaron exitosamente los datos del Gasto ')->success();
             

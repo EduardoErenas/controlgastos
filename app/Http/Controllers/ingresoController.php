@@ -1,7 +1,9 @@
 <?php  
   
 namespace App\Http\Controllers;
- 
+
+use Illuminate\Support\Facades\Mail;
+use App\Mail\ingresoEmail; 
 use Illuminate\Http\Request; 
 use Illuminate\Support\Facades\Auth;
 use App\Ingresos; 
@@ -54,9 +56,12 @@ class ingresoController extends Controller{
 
         return redirect ('/ingresos');
     }
-
+ 
     public function guardar(Request $datos){
     	try{
+            $hoy = getdate();
+            $fecha = $hoy['month'].' '.$hoy['year'];
+
             $ingreso = new Ingresos();
             $ingreso->usu_id=Auth::id();
             $ingreso->in_description=$datos->input('descripcion');
@@ -65,12 +70,19 @@ class ingresoController extends Controller{
             $ingreso->cat_id=$datos->input('categoria');
             $ingreso->save();
 
-            flash('!Se guardaron exitosamente los datos del Ingreso ')->success();
+            $id = Auth::id();
+            $in_monto = $datos->input('monto');
+            $pagos = DB::select(DB::raw("call sp_getPagos('$id','$in_monto')"));
+            
+            Mail::to(Auth::user()->email,Auth::user()->name)
+            ->send(new ingresoEmail(Auth::user()->name,$in_monto,$datos->input('descripcion'),$pagos,$fecha));
 
+            flash('!Se guardaron exitosamente los datos del Ingreso ')->success();
+ 
         }catch(\Illuminate\Database\QueryException $e){
             flash('Error al Registrar Ingreso, intenta de nuevo ')->error();
 
-        }
+        } 
     	 
     	return redirect('/ingresos');
     } 
