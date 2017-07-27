@@ -11,6 +11,8 @@ use App\Usuario_ingreso;
 use App\Ingresos_cliente;
 use App\Categoria_Ingreso;
 use DB;
+use Illuminate\Support\Facades\Mail;
+use App\Mail\bienvenidaEmail;
 use App\ejemplo;
 
 class administradorController extends Controller{
@@ -101,33 +103,33 @@ class administradorController extends Controller{
          return view('registroUA');
     }
 
-    public function guardarUA(Request $datos){
-        try{
+    public function guardarUA(Request $data){
+        //try{
             $hoy = getdate();
             $fecha = $hoy['month'].' '.$hoy['year'];
             $password = str_random(6);   
             $user= User::create([
-                'name' => $data['name'],
+                'name' => $data['nombre'],
                 'email' => $data['email'],
                 'password' => bcrypt($password),
 
-                'usu_sex' => $data['usu_sex'],
-                'usu_age' => $data['usu_age'],
-                'usu_occupation' => $data['usu_occupation'],
-                'usu_address' => $data['usu_address'],
-                'usu_city' => $data['usu_city'],
-                'usu_state' => $data['usu_state'],
-                'usu_type' => 0,
+                'usu_sex' => $data['sexo'],
+                'usu_age' => $data['edad'],
+                'usu_occupation' => $data['ocupacion'],
+                'usu_address' => $data['Direccion'],
+                'usu_city' => $data['Ciudad'],
+                'usu_state' => $data['Estado'],
+                'usu_type' => $data['tipo'],
 
             ]);
              
-            Mail::to($data['email'],$data['name'])
-            ->send(new bienvenidaEmail($data['name'],$password,$data['email'],$fecha));
+            Mail::to($data['email'],$data['nombre'])
+            ->send(new bienvenidaEmail($data['nombre'],$password,$data['email'],$fecha));
 
             flash('!Registro Correcto¡')->success();
-        }catch(\Illuminate\Database\QueryException $e){
-            flash('Error al registrar, intenta de nuevo')->success();
-        }
+        //}catch(\Illuminate\Database\QueryException $e){
+          //  flash('Error al registrar, intenta de nuevo')->error();
+        //}
 
         return redirect('listaUsuarios');
     }
