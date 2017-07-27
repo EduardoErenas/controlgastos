@@ -119,8 +119,8 @@
       
 @stop
 <script type="text/javascript">
-    var activos=<?echo json_encode($meses);?>;
-    var eliminados = <?echo json_encode($categoriasIngresos); ?>; 
+    var activos=<?echo json_encode($activos);?>;
+    var eliminados = <?echo json_encode($eliminados); ?>; 
     
     // arrays ingresos
     var arrayLabels = [];
@@ -138,33 +138,9 @@
 
     // map para obtener los datos de gastos
     gastos.map(function(mes, index){
-      arrayGastosLabels.push(mes.mes_name);
-      arrayGastosData.push(mes.total);
+      arrayEliminadosLabels.push(mes.mes_name);
+      arrayEliminadosData.push(mes.total);
     });
-
-    //map para obtener los datos de las categorias de los Gastos
-    catGastos.map(function(catGas){
-      hexadecimal = new Array("0","1","2","3","4","5","6","7","8","9","A","B","C","D","E","F") 
-      color_aleatorio = "#"; 
-      for (i=0;i<6;i++){ 
-         posarray = aleatorio(0,hexadecimal.length) 
-         color_aleatorio += hexadecimal[posarray] 
-      } 
-      var datos = {
-        value : catGas.total,
-        color : color_aleatorio,
-        label : catGas.cat_description
-      };
-      arrayCatGastos.push(datos);
-    });
-
-    //colores aleatorios
-    function aleatorio(inferior,superior){ 
-       numPosibilidades = superior - inferior 
-       aleat = Math.random() * numPosibilidades 
-       aleat = Math.floor(aleat) 
-       return parseInt(inferior) + aleat 
-    }
 
 </script>
 
@@ -174,7 +150,7 @@
       labels  : arrayLabels,
       datasets: [
         {
-          label               : 'Ingresos',
+          label               : 'Activos',
           fillColor           : 'rgba(210, 214, 222, 1)',
           strokeColor         : 'rgba(210, 214, 222, 1)',
           pointColor          : 'rgba(210, 214, 222, 1)',
@@ -223,52 +199,19 @@
     barChartOptions.datasetFill = false
     barChart.Bar(barChartData, barChartOptions)
 
-    //categorias de Ingresos grafica
-
-    var pieChartCanvas = $('#pieChart').get(0).getContext('2d')
-    var pieChart       = new Chart(pieChartCanvas)
-    var PieData        = arrayCatIngre;
-    var pieOptions     = {
-      //Boolean - Whether we should show a stroke on each segment
-      segmentShowStroke    : true,
-      //String - The colour of each segment stroke
-      segmentStrokeColor   : '#fff',
-      //Number - The width of each segment stroke
-      segmentStrokeWidth   : 2,
-      //Number - The percentage of the chart that we cut out of the middle
-      percentageInnerCutout: 50, // This is 0 for Pie charts
-      //Number - Amount of animation steps
-      animationSteps       : 100,
-      //String - Animation easing effect
-      animationEasing      : 'easeOutBounce',
-      //Boolean - Whether we animate the rotation of the Doughnut
-      animateRotate        : true,
-      //Boolean - Whether we animate scaling the Doughnut from the centre
-      animateScale         : false,
-      //Boolean - whether to make the chart responsive to window resizing
-      responsive           : true,
-      // Boolean - whether to maintain the starting aspect ratio or not when responsive, if set to false, will take up entire container
-      maintainAspectRatio  : true,
-      //String - A legend template
-      legendTemplate       : '<ul class="<%=name.toLowerCase()%>-legend"><% for (var i=0; i<segments.length; i++){%><li><span style="background-color:<%=segments[i].fillColor%>"></span><%if(segments[i].label){%><%=segments[i].label%><%}%></li><%}%></ul>'
-    }
-    //Create pie or douhnut chart
-    // You can switch between pie and douhnut using the method below.
-    pieChart.Doughnut(PieData, pieOptions)
-
     //GASTOS
     var areaChartData2 = {
-      labels  : arrayGastosLabels,
+      labels  : arrayEliminadosLabels,
       datasets: [
         {
-          label               : 'Gastos',
+          label               : 'Eliminados',
           fillColor           : 'rgba(210, 214, 222, 1)',
           strokeColor         : 'rgba(210, 214, 222, 1)',
           pointColor          : 'rgba(210, 214, 222, 1)',
           pointStrokeColor    : '#c1c7d1',
           pointHighlightFill  : '#fff',
           pointHighlightStroke: 'rgba(220,220,220,1)',
-          data                : arrayGastosData
+          data                : arrayEliminadosData
         }
       ]
     }
@@ -310,111 +253,4 @@
     barChartOptions2.datasetFill = false
     barChart2.Bar(barChartData2, barChartOptions2)
 
-    // categorias gastos grafica
-
-    var pieChartCanvas2 = $('#pieChart2').get(0).getContext('2d')
-    var pieChart2       = new Chart(pieChartCanvas2)
-    var PieData2        = arrayCatGastos;
-    var pieOptions2     = {
-      //Boolean - Whether we should show a stroke on each segment
-      segmentShowStroke    : true,
-      //String - The colour of each segment stroke
-      segmentStrokeColor   : '#fff',
-      //Number - The width of each segment stroke
-      segmentStrokeWidth   : 2,
-      //Number - The percentage of the chart that we cut out of the middle
-      percentageInnerCutout: 50, // This is 0 for Pie charts
-      //Number - Amount of animation steps
-      animationSteps       : 100,
-      //String - Animation easing effect
-      animationEasing      : 'easeOutBounce',
-      //Boolean - Whether we animate the rotation of the Doughnut
-      animateRotate        : true,
-      //Boolean - Whether we animate scaling the Doughnut from the centre
-      animateScale         : false,
-      //Boolean - whether to make the chart responsive to window resizing
-      responsive           : true,
-      // Boolean - whether to maintain the starting aspect ratio or not when responsive, if set to false, will take up entire container
-      maintainAspectRatio  : true,
-      //String - A legend template
-      legendTemplate       : '<ul class="<%=name.toLowerCase()%>-legend"><% for (var i=0; i<segments.length; i++){%><li><span style="background-color:<%=segments[i].fillColor%>"></span><%if(segments[i].label){%><%=segments[i].label%><%}%></li><%}%></ul>'
-    }
-    //Create pie or douhnut chart
-    // You can switch between pie and douhnut using the method below.
-    pieChart2.Doughnut(PieData2, pieOptions2)
-
-
-    // Ingresos vs Gastos
-    // Get context with jQuery - using jQuery's .get() method.
-    var areaChartCanvas3 = $('#areaChart3').get(0).getContext('2d')
-    // This will get the first returned node in the jQuery collection.
-    var areaChart3       = new Chart(areaChartCanvas3)
-
-    var areaChartData3 = {
-      labels  : arrayLabels,
-      datasets: [
-        {
-          label               : 'Ingresos',
-          fillColor           : 'rgba(0, 14, 222, 1)',
-          strokeColor         : 'rgba(0, 14, 222, 1)',
-          pointColor          : 'rgba(0, 14, 222, 1)',
-          pointStrokeColor    : '#c1c7d1',
-          pointHighlightFill  : '#fff',
-          pointHighlightStroke: 'rgba(220,220,220,1)',
-          data                : arrayData
-        },
-        {
-          label               : 'Gastos',
-          fillColor           : 'rgba(60,141,188,0.9)',
-          strokeColor         : 'rgba(60,141,188,0.8)',
-          pointColor          : '#3b8bba',
-          pointStrokeColor    : 'rgba(60,141,188,1)',
-          pointHighlightFill  : '#fff',
-          pointHighlightStroke: 'rgba(60,141,188,1)',
-          data                : arrayGastosData
-        }
-      ]
-    }
-
-    var areaChartOptions3 = {
-      //Boolean - If we should show the scale at all
-      showScale               : true,
-      //Boolean - Whether grid lines are shown across the chart
-      scaleShowGridLines      : false,
-      //String - Colour of the grid lines
-      scaleGridLineColor      : 'rgba(0,0,0,.05)',
-      //Number - Width of the grid lines
-      scaleGridLineWidth      : 1,
-      //Boolean - Whether to show horizontal lines (except X axis)
-      scaleShowHorizontalLines: true,
-      //Boolean - Whether to show vertical lines (except Y axis)
-      scaleShowVerticalLines  : true,
-      //Boolean - Whether the line is curved between points
-      bezierCurve             : true,
-      //Number - Tension of the bezier curve between points
-      bezierCurveTension      : 0.3,
-      //Boolean - Whether to show a dot for each point
-      pointDot                : false,
-      //Number - Radius of each point dot in pixels
-      pointDotRadius          : 4,
-      //Number - Pixel width of point dot stroke
-      pointDotStrokeWidth     : 1,
-      //Number - amount extra to add to the radius to cater for hit detection outside the drawn point
-      pointHitDetectionRadius : 20,
-      //Boolean - Whether to show a stroke for datasets
-      datasetStroke           : true,
-      //Number - Pixel width of dataset stroke
-      datasetStrokeWidth      : 2,
-      //Boolean - Whether to fill the dataset with a color
-      datasetFill             : true,
-      //String - A legend template
-      legendTemplate          : '<ul class="<%=name.toLowerCase()%>-legend"><% for (var i=0; i<datasets.length; i++){%><li><span style="background-color:<%=datasets[i].lineColor%>"></span><%if(datasets[i].label){%><%=datasets[i].label%><%}%></li><%}%></ul>',
-      //Boolean - whether to maintain the starting aspect ratio or not when responsive, if set to false, will take up entire container
-      maintainAspectRatio     : true,
-      //Boolean - whether to make the chart responsive to window resizing
-      responsive              : true
-    }
-
-    //Create the line chart
-    areaChart3.Line(areaChartData3, areaChartOptions3)
 @stop
