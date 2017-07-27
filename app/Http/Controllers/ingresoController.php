@@ -1,7 +1,7 @@
 <?php  
   
 namespace App\Http\Controllers;
-
+ 
 use Illuminate\Http\Request; 
 use Illuminate\Support\Facades\Auth;
 use App\Ingresos; 
@@ -14,7 +14,7 @@ use App\ejemplo;
 class ingresoController extends Controller{
     
     public function registrar(){
-        $categorias = Categoria_Ingreso::all();
+        $categorias = Categoria_Ingreso::where('cat_status','<>',0)->where('usu_id',Auth::id())->get();
         $ingresos = Ingresos_cliente::where('usu_id',Auth::id())->where('in_status',1)->get();
         $agotados = Ingresos_cliente::where('usu_id',Auth::id())->where('in_status',2)->get();
         

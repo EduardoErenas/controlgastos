@@ -8,17 +8,17 @@ use App\Gastos;
 use App\Pagos;
 use App\Categoria_Gasto;
 use App\Frecuencia_Gasto; 
-use DB;
+use DB; 
 
 class GastoController extends Controller{
     
     public function registrar(){
-        $categorias = Categoria_Gasto::all();
+        $categorias = Categoria_Gasto::where('cat_status', '<>', 0)->where('usu_id',Auth::id())->get();
         $frecuencia = Frecuencia_Gasto::all();
         $gastos = DB::table('gasto')
         ->where([
             ['ga_status', '=', '1'],
-            ['usu_id', '=', Auth::id()],
+            ['gasto.usu_id', '=', Auth::id()],
         ]) 
         ->join('category_gasto', 'category_gasto.cat_id', '=', 'gasto.cat_id')
         ->join('frecuency_type', 'frecuency_type.ft_id', '=', 'gasto.ft_id')
@@ -30,7 +30,7 @@ class GastoController extends Controller{
        $liquidados = DB::table('gasto')
         ->where([
             ['ga_status', '=', '2'],
-            ['usu_id', '=', Auth::id()],
+            ['gasto.usu_id', '=', Auth::id()],
         ])
         ->join('category_gasto', 'category_gasto.cat_id', '=', 'gasto.cat_id')
         ->join('frecuency_type', 'frecuency_type.ft_id', '=', 'gasto.ft_id')

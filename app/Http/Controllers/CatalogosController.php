@@ -11,12 +11,12 @@ use App\Categoria_Ingreso;
 use App\Categoria_Gasto;
 use DB;
 use App\ejemplo;
-
+ 
 class CatalogosController extends Controller{
     
     public function registrar(){
-        $catIngreso = Categoria_Ingreso::where('cat_status','<>',0)->get();
-        $catGasto = Categoria_Gasto::where('cat_status', '<>', 0)->get();
+        $catIngreso = Categoria_Ingreso::where('cat_status','<>',0)->where('usu_id',Auth::id())->get();
+        $catGasto = Categoria_Gasto::where('cat_status', '<>', 0)->where('usu_id',Auth::id())->get();
         
         return view('catalogos',compact('catIngreso', 'catGasto'));
     }
@@ -52,30 +52,30 @@ class CatalogosController extends Controller{
     }
 
     public function actualizarCatIngreso($cat_id,Request $datos){
-       // try{
+       try{
             $catIngreso = Categoria_Ingreso::find($cat_id);
             $catIngreso ->cat_description = $datos->input('description');
             $catIngreso->save();
 
-         //   flash('!Se actualizo Ingreso exitosamente¡')->success();
+            flash('!Se actualizo Ingreso exitosamente¡')->success();
 
-        //}catch(\Illuminate\Database\QueryException $e){
-          //  flash('Error al actualizar Ingreso, intenta de nuevo¡')->error();
-       // }
+        }catch(\Illuminate\Database\QueryException $e){
+            flash('Error al actualizar Ingreso, intenta de nuevo¡')->error();
+        }
 
         return redirect ('/catalogos');
     }
     public function actualizarCatGasto($cat_id,Request $datos){
-       // try{
+        try{
             $catGasto = Categoria_Gasto::find($cat_id);
             $catGasto ->cat_description = $datos->input('description');
             $catGasto->save();
 
-         //   flash('!Se actualizo Ingreso exitosamente¡')->success();
+            flash('!Se actualizo Ingreso exitosamente¡')->success();
 
-        //}catch(\Illuminate\Database\QueryException $e){
-          //  flash('Error al actualizar Ingreso, intenta de nuevo¡')->error();
-       // }
+        }catch(\Illuminate\Database\QueryException $e){
+            flash('Error al actualizar Ingreso, intenta de nuevo¡')->error();
+        }
 
         return redirect ('/catalogos');
     }
@@ -83,6 +83,7 @@ class CatalogosController extends Controller{
     public function guardarCatIngreso(Request $datos){
     	try{
             $catIngreso = new Categoria_ingreso();
+            $catIngreso->usu_id=Auth::id();
             $catIngreso->cat_description=$datos->input('descripcion');
             $catIngreso->save();
 
@@ -99,6 +100,7 @@ class CatalogosController extends Controller{
     public function guardarCatGasto(Request $datos){
         try{
             $catGasto = new Categoria_Gasto();
+            $catGasto->usu_id=Auth::id();
             $catGasto->cat_description=$datos->input('descripcion');
             $catGasto->save();
 
