@@ -36,8 +36,8 @@
                                     <p style="font-size:20px;font-weight:bold;border-bottom:1px solid #CCC;padding-bottom:10px;">Bienvenido a la plataforma Control de Gastos</p>
                                     <p style="font-size:12px; text-align: justify;">Hola {{$nombre}}<br/></br>
                                        	Te damos la bienvenida a la mejor plataforma para administrar tus gastos personales, este es tu nuevo usuario para ingresar a la plataforma:</br></br>
-                                       	Correo: {{$email}} <br/>
-										Password: {{$password}} <br/><br/>
+                                       	Correo: {{$email}}<br/>
+										Password: {{$password}}<br/><br/>
                                     	
                                     	Para visitar nuestro sitio dale clic al siguiente enlace.
                                     </p>

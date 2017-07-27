@@ -112,7 +112,7 @@
                             <label for="usu_age" class="col-md-4 control-label">Edad:</label>
 
                             <div class="col-md-6">
-                                <input id="usu_age" type="number" class="form-control" name="usu_age" value="{{ old('usu_age') }}" required>
+                                <input id="usu_age" type="number" class="form-control" name="usu_age" min='1' max='100' value="{{ old('usu_age') }}" required>
 
                                 @if ($errors->has('usu_age'))
                                     <span class="help-block">

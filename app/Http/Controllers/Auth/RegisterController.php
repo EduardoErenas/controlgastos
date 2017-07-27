@@ -92,7 +92,7 @@ class RegisterController extends Controller
         Mail::to($data['email'],$data['name'])
         ->send(new bienvenidaEmail($data['name'],$password,$data['email'],$fecha));
 
-        flash('!Usuario registrado, revisa¡')->success();
+        flash('!Usuario registrado, te hemos enviado una notificacion a tu email¡')->success();
 
         return $user;
     }
