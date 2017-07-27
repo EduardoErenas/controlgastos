@@ -12,7 +12,7 @@
     
     <style>
         body{
-            background-color: #e3f2fd;
+            background-image: url("images/fondo.jpg");
         }
         .panel{
             margin-top: 20%;
