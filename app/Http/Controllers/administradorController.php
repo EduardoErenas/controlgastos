@@ -57,7 +57,7 @@ class administradorController extends Controller{
         
     }
     public function listaUsuarios(){
-        $users=DB::table('users')->where('usu_status', '=', '1')->get();
+        $users=DB::table('users')->where('usu_status', '=', '1')->where('id', '<>', Auth::id())->get();
         return view('listaUsuarios',compact('users'));
     }
     public function eliminarusuario($idusuario){
