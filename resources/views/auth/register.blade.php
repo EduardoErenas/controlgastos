@@ -12,7 +12,7 @@
     
     <style>
          body{
-            background-color: #e3f2fd;
+            background-image: url("images/fondo.jpg");
         }
         .container{
              
@@ -20,16 +20,13 @@
             border: 2px #e0f7fa;
             border-radius: 10px;
         }
-        h1{
+        h3{
             display: block;
             font-weight: bold;
         }
         .navbar{
             font-weight: bold;
             display: block;
-        }
-         .navbar{
-            background-color: lightblue;
         }
         h4{
             font-weight: bold;
@@ -41,19 +38,19 @@
 </head>
 <body>
 
-    <div class="container-fluid" style="background-color: #f1f1f1; padding: 10px; margin-bottom: 15px;">
+    <div class="container-fluid" style="background-color: #314550; padding: 10px; margin-bottom: 15px;">
         <div class="row">
             <div class="col-md-12">
-                <a href="{{ route('login') }}" class="pull-right" style="margin-right: 15px; font-weight: bold;">Login</a>
+                <a href="{{ route('login') }}" class="pull-right" style="margin-right: 15px; font-weight: bold; color: white;">Login</a>
             </div>
         </div>
     </div>
 
 <div class="container">
     <div class="row">
-        <div class="col-md-8 col-md-offset-2">
+        <div class="col-md-6 col-md-offset-3">
             <div class="panel panel-default">
-                <div class="panel-heading" ><h1>Registro de Usuario Nuevo</h1></div>
+                <div class="panel-heading " ><h3>Registro de Usuario Nuevo</h3></div>
                 @include('flash::message')
                 <div class="panel-body">
                     <form class="form-horizontal" role="form" method="POST" action="{{ route('register') }}">
