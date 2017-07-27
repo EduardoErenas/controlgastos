@@ -98,21 +98,27 @@ Route::group(['middleware' => ['usua']], function () {
 
 //routes administrador
 Route::group(['middleware' => ['admin']], function () {
-Route::get('/administrador', 'administradorController@home');
-Route::get('/perfiladministrador', 'administradorController@perfil');
-Route::post('/editarperfiladmin/{id}', 'administradorController@editarperfil');
-Route::get('/listaUsuarios', 'administradorController@listaUsuarios');
-Route::get('/eliminarusuario/{id}', 'administradorController@eliminarusuario');
-Route::get('/editarusuario/{id}', 'administradorController@editarusuario');
-Route::post('/Actualizar/{id}', 'administradorController@Actualizar');
-Route::get('/registrarua', 'administradorController@registrarUA');
-Route::post('/registrarUA','administradorController@guardarUA');
+	Route::get('/administrador', 'administradorController@home');
 
-//Reportes Admin
-Route::get('/reportesAdmin', 'reportesAdminController@mostrar');
+	// perfil admin
+	Route::get('/perfiladministrador', 'perfilAdminController@perfil');
+	Route::post('/editarperfiladmin/{id}', 'perfilAdminController@editarperfil');
 
-//CONFIGURACIONES ADMIN
-Route::post('/editarContraseña/{id}', 'administradorController@editarContraseña');
-Route::get('/configuracionesAdmin', 'administradorController@configuraciones');
+	//lista Usuarios solo lo ve admin
+	Route::get('/listaUsuarios', 'listaUAController@listaUsuarios');
+	Route::get('/eliminarusuario/{id}', 'listaUAController@eliminarusuario');
+	Route::get('/editarusuario/{id}', 'listaUAController@editarusuario');
+	Route::post('/Actualizar/{id}', 'listaUAController@Actualizar');
+
+	// registrar  usuario admin solo lo puede hacer
+	Route::get('/registrarua', 'registrarUAController@registrarUA');
+	Route::post('/registrarUA','registrarUAController@guardarUA');
+
+	//Reportes Admin
+	Route::get('/reportesAdmin', 'reportesAdminController@mostrar');
+
+	//CONFIGURACIONES ADMIN
+	Route::post('/editarContraseña/{id}', 'administradorController@editarContraseña');
+	Route::get('/configuracionesAdmin', 'administradorController@configuraciones');
 });
 Auth::routes();
