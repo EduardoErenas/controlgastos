@@ -45,7 +45,7 @@ Route::get('/tablaDatos', function () {
 
 //***************** GRUPO DE MIDDLEWARE ******************
  
-Route::group(['middleware' => ['auth']], function () {
+Route::group(['middleware' => ['usua']], function () {
     //INICIO
 	Route::get('/', 'HomeController@index');
 	Route::get('/home', 'HomeController@index')->name('home');
@@ -97,5 +97,13 @@ Route::group(['middleware' => ['auth']], function () {
 
 
 //routes administrador
+Route::group(['middleware' => ['admin']], function () {
 Route::get('/administrador', 'administradorController@home');
+Route::get('/perfiladministrador', 'administradorController@perfil');
+Route::post('/editarperfiladmin/{id}', 'administradorController@editarperfil');
+Route::get('/listaUsuarios', 'administradorController@listaUsuarios');
+Route::get('/eliminarusuario/{id}', 'administradorController@eliminarusuario');
+Route::get('/editarusuario/{id}', 'administradorController@editarusuario');
+Route::post('/Actualizar/{id}', 'administradorController@Actualizar');
+});
 Auth::routes();
