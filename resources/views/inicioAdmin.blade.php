@@ -6,7 +6,7 @@
 @section('contenido')
   <div class="callout callout-info" style="background: rgba(120,47,85,0.6) !important;border-color: rgba(120,47,85,1) !important;">
     <div class="content-header" style="padding-top: 0px !important">
-      <h1>Administrador <small></small></h1>
+      <h1>Bienvenido Administrador <small></small></h1>
     </div> 
   </div> 
 	<div class="row">
