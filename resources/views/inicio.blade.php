@@ -75,49 +75,25 @@
                 <!-- /.box-header -->
                 <div class="box-body no-padding">
                   <ul class="users-list clearfix">
-                    <li>
-                      <img src="{{asset('images/pesos.png')}}" alt="User Image">
-                      <a class="users-list-name" href="#">Ingreso</a>
-                      <span class="users-list-date">Sueldo</span>
-                    </li>
-                    <li>
-                      <img src="{{asset('images/pesos.png')}}" alt="User Image">
-                      <a class="users-list-name" href="#">Ingreso</a>
-                      <span class="users-list-date">Beca</span>
-                    </li>
-                    <li>
-                      <img src="{{asset('images/pesos.png')}}" alt="User Image">
-                      <a class="users-list-name" href="#">Ingreso</a>
-                      <span class="users-list-date">Cundina</span>
-                    </li>
-                    <li>
-                      <img src="{{asset('images/pesos.png')}}" alt="User Image">
-                      <a class="users-list-name" href="#">Ingreso</a>
-                      <span class="users-list-date">Prestamo</span>
-                    </li>
+                    @foreach($ingresos as $i)
+                      <li>
+                        <img src="{{asset('images/pesos.png')}}" alt="User Image">
+                        <p class="users-list-name">Ingreso</p>
+                        <span class="users-list-date">{{$i->in_description}}</span>
+                      </li>
+                    @endforeach
                     
                   </ul>
+                  <hr>
                   <ul class="users-list clearfix">
-                    <li>
-                      <img src="{{asset('images/pesos.png')}}" alt="User Image">
-                      <a class="users-list-name" href="#">Gasto</a>
-                      <span class="users-list-date">Sueldo</span>
-                    </li>
-                    <li>
-                      <img src="{{asset('images/pesos.png')}}" alt="User Image">
-                      <a class="users-list-name" href="#">Gasto</a>
-                      <span class="users-list-date">Beca</span>
-                    </li>
-                    <li>
-                      <img src="{{asset('images/pesos.png')}}" alt="User Image">
-                      <a class="users-list-name" href="#">Gasto</a>
-                      <span class="users-list-date">Cundina</span>
-                    </li>
-                    <li>
-                      <img src="{{asset('images/pesos.png')}}" alt="User Image">
-                      <a class="users-list-name" href="#">Gasto</a>
-                      <span class="users-list-date">Prestamo</span>
-                    </li>
+                    @foreach($gastos as $g)
+                      <li>
+                        <img src="{{asset('images/pesos.png')}}" alt="User Image">
+                        <a class="users-list-name" href="#">Gasto</a>
+                        <span class="users-list-date">{{$g->ga_description}}</span>
+                      </li>
+                    @endforeach
+                    
                     
                   </ul>
                   <!-- /.users-list -->
@@ -139,7 +115,8 @@
 
                   <div class="info-box-content">
                     <span class="info-box-text">Ingresos</span>
-                    <span class="info-box-number">10</span>
+                    <span class="info-box-number">
+                        {{$ingreso[0]->total}}</span>  
                   </div>
                   <!-- /.info-box-content -->
                 </div>
@@ -155,7 +132,8 @@
 
                   <div class="info-box-content">
                     <span class="info-box-text">Gastos</span>
-                    <span class="info-box-number">5</span>
+                    <span class="info-box-number">
+                      {{$gasto[0]->total}}</span>  
                   </div>
                   <!-- /.info-box-content -->
                 </div>
@@ -168,7 +146,7 @@
 
                   <div class="info-box-content">
                     <span class="info-box-text">Pagos</span>
-                    <span class="info-box-number">2</span>
+                    <span class="info-box-number">{{$pago[0]->total}}</span>   
                   </div>
                   <!-- /.info-box-content -->
                 </div>
