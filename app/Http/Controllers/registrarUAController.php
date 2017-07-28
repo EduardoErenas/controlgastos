@@ -23,7 +23,7 @@ class registrarUAController extends Controller{
     }
 
     public function guardarUA(Request $data){
-        //try{
+        try{
             $hoy = getdate();
             $fecha = $hoy['month'].' '.$hoy['year'];
             $password = str_random(6);   
@@ -46,9 +46,9 @@ class registrarUAController extends Controller{
             ->send(new bienvenidaEmail($data['nombre'],$password,$data['email'],$fecha));
 
             flash('!Registro Correcto¡')->success();
-        //}catch(\Illuminate\Database\QueryException $e){
-          //  flash('Error al registrar, intenta de nuevo')->error();
-        //}
+        }catch(\Illuminate\Database\QueryException $e){
+            flash('Error al registrar, intenta de nuevo')->error();
+        }
 
         return redirect('listaUsuarios');
     }
