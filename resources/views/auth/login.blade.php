@@ -35,6 +35,9 @@
         .navbar{
             background-color: lightblue;
         }
+        h2{
+            font-weight: bold;
+        }
         h4{
             font-weight: bold;
         }
@@ -50,6 +53,7 @@
                 <div class="panel panel-default">
                 @include('flash::message')
                   <div class="panel-body text-center">
+                  <h2>Control de Gastos</h2>
                     <img src="images/logo.png" alt="" width="180px">
                   </div>
                   <div class="panel-footer fondo">

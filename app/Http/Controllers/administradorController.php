@@ -31,9 +31,9 @@ class administradorController extends Controller{
 
         */
 
-        $usuarioA = DB::select( DB::raw(" SELECT users.name from users WHERE id = '$id' and users.usu_status =1 and users.usu_type=0") );
+        $usuarioA = DB::select( DB::raw(" SELECT users.name from users WHERE users.id = '$id' and users.usu_status =1 and users.usu_type=0") );
 
-        $usuarioS = DB::select( DB::raw(" SELECT users.name, users.id  from users WHERE id = '$id' and users.usu_status =1 and users.usu_type=1 ") );
+        $usuarioS = DB::select( DB::raw(" SELECT users.name from users WHERE users.id = '$id' and users.usu_status =1 and users.usu_type=1 ") );
 
         
         return view('inicioAdmin', compact('usuarioA', 'usuarioS'));  
