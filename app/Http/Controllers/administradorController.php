@@ -29,9 +29,9 @@ class administradorController extends Controller{
 
         $usersS = DB::select( DB::raw("select COUNT(*) as total FROM users WHERE usu_type=1 and usu_status=1") );
  
-        $usuarioA = DB::select( DB::raw("select name from users where usu_status =1 and usu_type=0 limit 4 order by created_at desc") );
+        $usuarioA = DB::select( DB::raw("select name from users where usu_status =1 and usu_type=0 order by created_at desc limit 4") );
 
-        $usuarioS = DB::select( DB::raw("select name from users WHERE usu_status =1 and usu_type=1 limit 4 order by created_at desc") );
+        $usuarioS = DB::select( DB::raw("select name from users WHERE usu_status =1 and usu_type=1 order by created_at desc limit 4 ") );
 
         
         return view('inicioAdmin', compact('users','usersA','usersS','usuarioA', 'usuarioS'));  
