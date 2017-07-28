@@ -4,7 +4,7 @@
 @stop
 
 @section('contenido')
-  <div class="callout callout-info" style="background: rgba(120,47,85,0.6) !important;border-color: rgba(120,47,85,1) !important;">
+  <div class="callout callout-danger" >
     <div class="content-header" style="padding-top: 0px !important">
       <h1>GENERAL <small></small></h1>
     </div> 
@@ -50,6 +50,130 @@
         </div>
         <!-- ./col -->
         
+      </div>
+      <!-- Info boxes -->
+      <div class="row">
+      
+      </div>
+
+      <div class="row">
+        
+            <div class="col-md-6">
+              <!-- USERS LIST -->
+              <div class="box box-danger">
+                <div class="box-header with-border">
+                  <h3 class="box-title">Ultimos</h3>
+
+                  <div class="box-tools pull-right">
+                    
+                    
+                    <button type="button" class="btn btn-box-tool" data-widget="remove"><i class="fa fa-times"></i>
+                    </button>
+                  </div>
+                </div>
+                <!-- /.box-header -->
+                <div class="box-body no-padding">
+                  <ul class="users-list clearfix">
+                    <li>
+                      <img src="{{asset('images/pesos.png')}}" alt="User Image">
+                      <a class="users-list-name" href="#">Ingreso</a>
+                      <span class="users-list-date">Sueldo</span>
+                    </li>
+                    <li>
+                      <img src="{{asset('images/pesos.png')}}" alt="User Image">
+                      <a class="users-list-name" href="#">Ingreso</a>
+                      <span class="users-list-date">Beca</span>
+                    </li>
+                    <li>
+                      <img src="{{asset('images/pesos.png')}}" alt="User Image">
+                      <a class="users-list-name" href="#">Ingreso</a>
+                      <span class="users-list-date">Cundina</span>
+                    </li>
+                    <li>
+                      <img src="{{asset('images/pesos.png')}}" alt="User Image">
+                      <a class="users-list-name" href="#">Ingreso</a>
+                      <span class="users-list-date">Prestamo</span>
+                    </li>
+                    
+                  </ul>
+                  <ul class="users-list clearfix">
+                    <li>
+                      <img src="{{asset('images/pesos.png')}}" alt="User Image">
+                      <a class="users-list-name" href="#">Gasto</a>
+                      <span class="users-list-date">Sueldo</span>
+                    </li>
+                    <li>
+                      <img src="{{asset('images/pesos.png')}}" alt="User Image">
+                      <a class="users-list-name" href="#">Gasto</a>
+                      <span class="users-list-date">Beca</span>
+                    </li>
+                    <li>
+                      <img src="{{asset('images/pesos.png')}}" alt="User Image">
+                      <a class="users-list-name" href="#">Gasto</a>
+                      <span class="users-list-date">Cundina</span>
+                    </li>
+                    <li>
+                      <img src="{{asset('images/pesos.png')}}" alt="User Image">
+                      <a class="users-list-name" href="#">Gasto</a>
+                      <span class="users-list-date">Prestamo</span>
+                    </li>
+                    
+                  </ul>
+                  <!-- /.users-list -->
+                </div>
+                <!-- /.box-body -->
+                <div class="box-footer text-center">
+                  <a href="{{url('/ingresos')}}" class="uppercase btn btn-primary btn-xs">Ingresos</a>
+                  <a href="{{url('/gastos')}}" class="uppercase btn btn-success btn-xs">Gastos</a>
+                </div>
+                <!-- /.box-footer -->
+              </div>
+              <!--/.box -->
+            </div>
+
+            <div class="col-md-6">
+              
+                <div class="info-box">
+                  <span class="info-box-icon bg-aqua"><i class="fa fa-money"></i></span>
+
+                  <div class="info-box-content">
+                    <span class="info-box-text">Ingresos</span>
+                    <span class="info-box-number">10</span>
+                  </div>
+                  <!-- /.info-box-content -->
+                </div>
+                <!-- /.info-box -->
+              
+              <!-- /.col -->
+              <!-- fix for small devices only -->
+              <div class="clearfix visible-sm-block"></div>
+
+              
+                <div class="info-box">
+                  <span class="info-box-icon bg-green"><i class="fa fa-credit-card-alt"></i></span>
+
+                  <div class="info-box-content">
+                    <span class="info-box-text">Gastos</span>
+                    <span class="info-box-number">5</span>
+                  </div>
+                  <!-- /.info-box-content -->
+                </div>
+                <!-- /.info-box -->
+              
+              <!-- /.col -->
+             
+                <div class="info-box">
+                  <span class="info-box-icon bg-red"><i class=" fa fa-list-alt"></i></span>
+
+                  <div class="info-box-content">
+                    <span class="info-box-text">Pagos</span>
+                    <span class="info-box-number">2</span>
+                  </div>
+                  <!-- /.info-box-content -->
+                </div>
+                <!-- /.info-box -->
+              
+            </div>
       </div>
       <!--
       
