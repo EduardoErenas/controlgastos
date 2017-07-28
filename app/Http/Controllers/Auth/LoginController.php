@@ -33,12 +33,7 @@ class LoginController extends Controller
             return redirect('home');
         }
     }*/
-    protected function redirectTo(){
-        if (Auth::user()->usu_type==0) {
-            return redirect('/home');
-        }else
-            return redirect('/administrador');
-    } 
+    protected $redirectTo = '/home';
 
     /**
      * Create a new controller instance.
@@ -48,5 +43,12 @@ class LoginController extends Controller
     public function __construct()
     {
         $this->middleware('guest')->except('logout');
+    }
+
+    public function redirectTo(){
+    	if (Auth::user()->usu_type==0) {
+            return redirect('/home');
+        }else
+            return redirect('/administrador');
     }
 }
