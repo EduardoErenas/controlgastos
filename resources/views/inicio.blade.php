@@ -14,12 +14,13 @@
           <!-- small box -->
           <div class="small-box bg-aqua">
             <div class="inner">
-              <h3>Gastos</h3>
+              <h3>Ingresos</h3>
             </div>
             <div class="icon">
               <i class="ion ion-bag"></i>
             </div>
-            <a href="{{url('/gastos')}}" class="small-box-footer">Nuevo Gasto <i class="fa fa-arrow-circle-right"></i></a>
+            
+            <a href="{{url('/ingresos')}}" class="small-box-footer">Nuevo Ingreso <i class="fa fa-arrow-circle-right"></i></a>
           </div>
         </div>
         <!-- ./col -->
@@ -27,12 +28,12 @@
           <!-- small box -->
           <div class="small-box bg-green">
             <div class="inner">
-              <h3>Ingresos</h3>
+              <h3>Gastos</h3>
             </div>
             <div class="icon">
               <i class="ion ion-stats-bars"></i>
             </div>
-            <a href="{{url('/ingresos')}}" class="small-box-footer">Nuevo Ingreso <i class="fa fa-arrow-circle-right"></i></a>
+            <a href="{{url('/gastos')}}" class="small-box-footer">Nuevo Gasto <i class="fa fa-arrow-circle-right"></i></a>
           </div>
         </div>
         <!-- ./col -->
