@@ -26,19 +26,19 @@ class PagoController extends Controller{
             ->sum('in_restante');
             
             if($ingreso<=0){
-                flash('¡Error al relizar Pago, no tienes ingresos disponibles¡')->error();            
+                flash('¡Error al Realizar Pago, no tienes ingresos disponibles¡')->error();            
             }elseif($ingreso>0 and $ingreso<$monto){
-                flash('¡Error al relizar Pago, no tienes ingresos suficientes¡')->error();            
+                flash('¡Error al Realizar Pago, no tienes ingresos suficientes¡')->error();            
             }
             else{
                 DB::table('pago')
                 ->where('pa_id', $id)
                 ->update(['pa_estatus' => 2],['pa_fecha_pago' => 'now()']);
 
-                flash('!Se Pago Pago exitosamente¡')->success();
+                flash('!Se Realizó Pago Exitosamente¡')->success();
             }
         }catch(\Illuminate\Database\QueryException $e){
-            flash('Error al Pagar Pago, intenta de nuevo¡')->error();
+            flash('Error al Hacer Pago, intenta de nuevo¡')->error();
         }
 
         return redirect ('/pagos');

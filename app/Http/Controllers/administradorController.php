@@ -18,10 +18,25 @@ use App\ejemplo;
 
 class administradorController extends Controller{
     
-    public function home(){
-      
-      //dd($historialingresos);
-        return view('inicioAdmin');
+    public function home()
+    {
+         $id = Auth::id();
+        /*
+        $ingreso = DB::select( DB::raw("select COUNT(*) as total FROM ingreso WHERE usu_id = '$id' and ingreso.in_status=1 ") );
+        //dd($ingreso);
+
+        $gasto = DB::select( DB::raw("select COUNT(*) as total FROM gasto WHERE usu_id = '$id' and gasto.ga_status=1 ") );
+
+        $pago = DB::select( DB::raw("select COUNT(*) as total FROM pago WHERE usu_id = '$id' and pago.pa_estatus=1 and DATEDIFF(pa_fecha_pagar, CURDATE())<5 ") );
+
+        */
+
+        $usuarioA = DB::select( DB::raw(" SELECT users.name from users WHERE id = '$id' and users.usu_status =1 and users.usu_type=0") );
+
+        $usuarioS = DB::select( DB::raw(" SELECT users.name, users.id  from users WHERE id = '$id' and users.usu_status =1 and users.usu_type=1 ") );
+
+        
+        return view('inicioAdmin', compact('usuarioA', 'usuarioS'));  
     } 
     
 

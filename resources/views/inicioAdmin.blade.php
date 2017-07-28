@@ -51,7 +51,55 @@
         <!-- ./col -->
         
       </div>
+      
+<div class="col-md-6">
+              <!-- USERS LIST -->
+              <div class="box box-danger">
+                <div class="box-header with-border">
+                  <h3 class="box-title">Ultimos usuarios registrados</h3>
+
+                  <div class="box-tools pull-right">
+                    <button type="button" class="btn btn-box-tool" data-widget="collapse"><i class="fa fa-minus"></i>
+                    </button>
+                    <button type="button" class="btn btn-box-tool" data-widget="remove"><i class="fa fa-times"></i>
+                    </button>
+                  </div>
+                </div>
+                <!-- /.box-header -->
+                  <div class="box-body no-padding">
+                  <ul class="users-list clearfix">
+                    @foreach($usuarioA as $u)
+                      <li>
+                         
+                <img src="{{asset('images/usuario/h.png')}}" class="user-image" alt="User Image">
+                        <p class="users-list-name">Administrador</p>
+                        <span class="users-list-date">{{$u->name}}</span>
+                      </li>
+                    @endforeach
+                    
+                  </ul> 
+                  <hr>
+              <ul class="users-list clearfix">
+                    @foreach($usuarioS as $us)
+                      <li>
+                <img src="{{asset('images/usuario/h.png')}}" class="user-image" alt="User Image">
+                        <p class="users-list-name">Estándar</p>
+                        <span class="users-list-date">{{$us->name}}</span>
+                      </li>
+                    @endforeach
+                    
+                  </ul>
+              </div>
+
+              <!--/.box -->
+            </div>
+            <!-- /.col -->
+          </div>
+          <!-- /.row -->
+
+      
       <!--
+
       
       <div class="row">
 
