@@ -401,7 +401,7 @@ BEGIN
     pa_fecha_pagar date
     );
     
-    SELECT min(pa_id) into _x from vw_pagos_cliente where usu_id=2 and pa_estatus=1;
+    SELECT min(pa_id) into _x from vw_pagos_cliente where usu_id=_usu_id and pa_estatus=1;
     SELECT pa_monto into _pago from vw_pagos_cliente where pa_id=_x;
 	
     WHILE _x is not null and _pago<_monto DO
@@ -409,12 +409,10 @@ BEGIN
 			insert into tmp_pagos select pa_id,ga_description,pa_numpago,pa_monto,pa_fecha_pagar from vw_pagos_cliente where pa_id=_x;
 			SET _monto = _monto-_pago;
         END IF;
-        SELECT min(pa_id) into _x from vw_pagos_cliente where usu_id=2 and pa_estatus=1 and pa_id>_x;
+        SELECT min(pa_id) into _x from vw_pagos_cliente where usu_id=_usu_id and pa_estatus=1 and pa_id>_x;
 		SELECT pa_monto into _pago from vw_pagos_cliente where pa_id=_x;
     END WHILE;
     
     SELECT * FROM tmp_pagos;
 END $$
 DELIMITER ;
-
--- update users set usu_type = 0 where id=2
