@@ -9,7 +9,7 @@
     </div> 
   </div>
   @include('flash::message')
-<form class="form-horizontal" action="{{url('/editarContraseña')}}/{{Auth::user()->id}}" method="post">
+<form class="form-horizontal" action="{{url('/editarContrasena')}}/{{Auth::user()->id}}" method="post">
                 <input id="token" type="hidden" name="_token" value="{{csrf_token()}}">
   <div class="row">
     <div class="col-sm-12">

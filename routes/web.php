@@ -90,8 +90,8 @@ Route::group(['middleware' => ['usua']], function () {
 	//CONFIGURACIONES
 	Route::get('/configuraciones', function () {
 	    return view('configuraciones');
-	});
-	Route::post('/editarContraseña/{id}', 'UsuarioController@editarContraseña');
+	}); 
+	Route::post('/editarContrasena/{id}', 'UsuarioController@editarContrasena');
 	Route::post('/editarAlgoritmo/{id}', 'UsuarioController@editarAlgoritmo');
 });
 

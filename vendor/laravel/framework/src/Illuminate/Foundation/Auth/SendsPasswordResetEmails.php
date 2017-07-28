@@ -59,7 +59,7 @@ trait SendsPasswordResetEmails
     protected function sendResetLinkResponse($response)
     {
         return back()->with('status', trans($response));
-    }
+    } 
 
     /**
      * Get the response for a failed password reset link.

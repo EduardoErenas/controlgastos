@@ -14,9 +14,8 @@ use DB;
 use App\ejemplo;
 
 class UsuarioController extends Controller{
-
-    public function editarContraseña(Request $datos,$idusuario)
-    {
+ 
+    public function editarContrasena(Request $datos,$idusuario){ 
         $user= User::Find($idusuario);
          
         if (Hash::check($datos->input('contra'), Auth::user()->password)) 
@@ -30,15 +29,13 @@ class UsuarioController extends Controller{
                 flash('!Los campos no coinciden. Favor de escribir correctamente la contraseña nueva ')->error();
             }    
         }    
-        else
-        {
+        else{
              flash('!Ocurrió un error al cambiar contraseña. Intente de nuevo ')->error();
         }
         return redirect('configuraciones');   
-    }
-    public function editarAlgoritmo(Request $datos, $idusuario)
-    {
+    
+    }public function editarAlgoritmo(Request $datos, $idusuario){
         $user= User::Find($idusuario);
-        
     }
+
 }
