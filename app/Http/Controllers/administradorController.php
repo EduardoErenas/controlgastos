@@ -22,16 +22,16 @@ class administradorController extends Controller{
     {
          $id = Auth::id();
         
-        $users = DB::select( DB::raw("select COUNT(*) as total FROM users WHERE usu_status=1 ") );
+        $users = DB::select( DB::raw("select COUNT(*) as total FROM users WHERE usu_status=1") );
         //dd($ingreso);
 
         $usersA = DB::select( DB::raw("select COUNT(*) as total FROM users WHERE usu_type=0 and usu_status=1 ") );
 
         $usersS = DB::select( DB::raw("select COUNT(*) as total FROM users WHERE usu_type=1 and usu_status=1") );
  
-        $usuarioA = DB::select( DB::raw("select name from users where usu_status =1 and usu_type=0") );
+        $usuarioA = DB::select( DB::raw("select name from users where usu_status =1 and usu_type=0 limit 4 order by created_at desc") );
 
-        $usuarioS = DB::select( DB::raw("select name from users WHERE usu_status =1 and usu_type=1 ") );
+        $usuarioS = DB::select( DB::raw("select name from users WHERE usu_status =1 and usu_type=1 limit 4 order by created_at desc") );
 
         
         return view('inicioAdmin', compact('users','usersA','usersS','usuarioA', 'usuarioS'));  

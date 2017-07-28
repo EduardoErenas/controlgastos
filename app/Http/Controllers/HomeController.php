@@ -34,9 +34,9 @@ class HomeController extends Controller
 
         $pago = DB::select( DB::raw("select COUNT(*) as total FROM pago WHERE usu_id = '$id' and pago.pa_estatus=1 and DATEDIFF(pa_fecha_pagar, CURDATE())<5 ") );
 
-        $ingresos = DB::select( DB::raw(" SELECT ingreso.in_description, ingreso.in_id  from ingreso WHERE usu_id = '$id' and ingreso.in_status =1 ") );
+        $ingresos = DB::select( DB::raw(" select ingreso.in_description, ingreso.in_id  from ingreso WHERE usu_id = '$id' and ingreso.in_status =1 limit 4") );
 
-        $gastos = DB::select( DB::raw(" SELECT gasto.ga_description, gasto.ga_id  from gasto WHERE usu_id = '$id' and gasto.ga_status =1  ") );
+        $gastos = DB::select( DB::raw(" select gasto.ga_description, gasto.ga_id  from gasto WHERE usu_id = '$id' and gasto.ga_status =1 limit 4") );
 
         
         
