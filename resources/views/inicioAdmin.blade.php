@@ -10,49 +10,9 @@
     </div> 
   </div> 
 	<div class="row">
-        <div class="col-lg-4 col-xs-12 col-sm-4">
-          <!-- small box -->
-          <div class="small-box bg-aqua">
-            <div class="inner">
-              <h3>Gastos</h3>
-            </div>
-            <div class="icon">
-              <i class="ion ion-bag"></i>
-            </div>
-            <a href="{{url('/gastos')}}" class="small-box-footer">Nuevo Gasto <i class="fa fa-arrow-circle-right"></i></a>
-          </div>
-        </div>
-        <!-- ./col -->
-        <div class="col-lg-4 col-xs-12 col-sm-4">
-          <!-- small box -->
-          <div class="small-box bg-green">
-            <div class="inner">
-              <h3>Ingresos</h3>
-            </div>
-            <div class="icon">
-              <i class="ion ion-stats-bars"></i>
-            </div>
-            <a href="{{url('/ingresos')}}" class="small-box-footer">Nuevo Ingreso <i class="fa fa-arrow-circle-right"></i></a>
-          </div>
-        </div>
-        <!-- ./col -->
-        <div class="col-lg-4 col-xs-12 col-sm-4">
-          <!-- small box -->
-          <div class="small-box bg-yellow">
-            <div class="inner">
-              <h3>Pagos</h3>
-            </div>
-            <div class="icon">
-              <i class="fa fa-files-o"></i>
-            </div>
-            <a href="{{url('/pagos')}}" class="small-box-footer">Realizar Pago <i class="fa fa-arrow-circle-right"></i></a>
-          </div>
-        </div>
-        <!-- ./col -->
         
-      </div>
-      
-<div class="col-md-6">
+        <!-- ./col -->
+              <div class="col-md-6">
               <!-- USERS LIST -->
               <div class="box box-danger">
                 <div class="box-header with-border">
@@ -68,27 +28,26 @@
                 <!-- /.box-header -->
                   <div class="box-body no-padding">
                   <ul class="users-list clearfix">
-                    @foreach($usuarioA as $u)
-                      <li>
-                         
-                <img src="{{asset('images/usuario/h.png')}}" class="user-image" alt="User Image">
+                    @foreach($usuarioA as $u) 
+                <li>
+                  <img src="{{asset('images/usuario/h.png')}}" class="user-image" alt="User Image">
                         <p class="users-list-name">Administrador</p>
                         <span class="users-list-date">{{$u->name}}</span>
-                      </li>
+                </li>
                     @endforeach
                     
-                  </ul> 
-                  <hr>
-              <ul class="users-list clearfix">
+                </ul> 
+                <hr>
+                <ul class="users-list clearfix">
                     @foreach($usuarioS as $us)
-                      <li>
-                <img src="{{asset('images/usuario/h.png')}}" class="user-image" alt="User Image">
+                <li>
+                  <img src="{{asset('images/usuario/h.png')}}" class="user-image" alt="User Image">
                         <p class="users-list-name">Estándar</p>
                         <span class="users-list-date">{{$us->name}}</span>
-                      </li>
+                </li>
                     @endforeach
                     
-                  </ul>
+                </ul>
               </div>
 
               <!--/.box -->
@@ -96,8 +55,51 @@
             <!-- /.col -->
           </div>
           <!-- /.row -->
+          <div class="col-md-6">
+              
+                <div class="info-box">
+                  <span class="info-box-icon bg-aqua"><i class="fa fa-user"></i></span>
 
-      
+                  <div class="info-box-content">
+                    <span class="info-box-text">Total Usuarios</span>
+                    <span class="info-box-number">
+                        {{$users[0]->total}}</span>  
+                  </div>
+                  <!-- /.info-box-content -->
+                </div>
+                <!-- /.info-box -->
+              
+              <!-- /.col -->
+              <!-- fix for small devices only -->
+              <div class="clearfix visible-sm-block"></div>
+
+              
+                <div class="info-box">
+                  <span class="info-box-icon bg-green"><i class="fa fa-user"></i></span>
+                  <div class="info-box-content">
+                    <span class="info-box-text">Usuarios Administradores</span>
+                    <span class="info-box-number">
+                      {{$usersA[0]->total}}</span>  
+                  </div>
+                  <!-- /.info-box-content -->
+                </div>
+                <!-- /.info-box -->
+              
+              <!-- /.col -->
+             
+                <div class="info-box">
+                  <span class="info-box-icon bg-red"><i class=" fa fa-user"></i></span>
+
+                  <div class="info-box-content">
+                    <span class="info-box-text">Usuarios Estándar</span>
+                    <span class="info-box-number">{{$usersS[0]->total}}</span>   
+                  </div>
+                  <!-- /.info-box-content -->
+                </div>
+                <!-- /.info-box -->
+              
+            </div>
+      </div>
       <!--
 
       
