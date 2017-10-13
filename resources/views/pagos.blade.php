@@ -22,6 +22,8 @@
                 <th class="text-center">Concepto</th>
                 <th class="text-center">Categoria</th>
                 <th class="text-center">Monto</th>
+                <th class="text-center">Interes</th>
+                <th class="text-center">Total</th>
                 <th class="text-center">#Pago</th>
                 <th class="text-center">Fecha Maxima</th>
                 <th class="text-center">Prioridad</th>
@@ -32,12 +34,23 @@
                   <tr><td colspan="9"><center><strong>Sin Pagos</strong></center></td></tr>
               @else
               <tbody>
+
                 @foreach($pagos as $p)
-                  <tr>
+                  <?php
+                    $a = explode("-",$p->pa_fecha_pagar);
+                  ?>
+                  @if($a[2] < $hoy['mday'] and $a[1]<=$hoy['mon'] )
+                    <tr class="marcado">
+                  @else
+                    <tr>
+                  @endif
+                  
                   <td class="text-center">{{$p->pa_id}}</td>
                   <td class="text-center">{{$p->ga_description}}</td>
                   <td class="text-center">{{$p->cat_description}}</td>
                   <td class="text-center">${{$p->pa_monto}}</td>
+                  <td class="text-center">${{$p->pa_interes}}</td>
+                  <td class="text-center">${{$p->pa_total}}</td>
                   <td class="text-center">{{$p->pa_numpago}}/{{$p->ga_numpagos}}</td>
                   <td class="text-center">{{$p->pa_fecha_pagar}}</td>
                   <td class="text-center">{{$p->ga_prioridad}}</td>
@@ -74,12 +87,14 @@
         </div>
         <div class="box-body">
           <div class="table-responsive">
-            <table class="table table-hover">
+            <table id="example1" class="table table-hover">
               <thead>
                 <th class="text-center">ID</th>
                 <th class="text-center">Concepto</th>
                 <th class="text-center">Categoria</th>
                 <th class="text-center">Monto</th>
+                <th class="text-center">Interes</th>
+                <th class="text-center">Total</th>
                 <th class="text-center">#Pago</th>
                 <th class="text-center">Fecha Maxima</th>
                 <th class="text-center">Fecha Pago</th>
@@ -89,13 +104,14 @@
               @if(sizeof($liquidados)==0)
                   <tr><td colspan="9"><center><strong>Sin Pagos</strong></center></td></tr>
               @else
-              <tbody>
+              <tbody> 
                 @foreach($liquidados as $p)
-                  <tr>
                   <td class="text-center">{{$p->pa_id}}</td>
                   <td class="text-center">{{$p->ga_description}}</td>
                   <td class="text-center">{{$p->cat_description}}</td>
                   <td class="text-center">${{$p->pa_monto}}</td>
+                  <td class="text-center">{{$p->pa_interes}}</td>
+                  <td class="text-center">{{$p->pa_total}}</td>
                   <td class="text-center">{{$p->pa_numpago}}/{{$p->ga_numpagos}}</td>
                   <td class="text-center">{{$p->pa_fecha_pagar}}</td>
                   <td class="text-center">{{$p->pa_fecha_pago}}</td>
@@ -120,7 +136,6 @@
         </div>
       </div>
     </div>
-         
   </div>
   
 <script type="text/javascript">

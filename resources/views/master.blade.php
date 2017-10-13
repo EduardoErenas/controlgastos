@@ -14,7 +14,12 @@
   <link rel="stylesheet" href="{{asset("css/sweetalert.min.css")}}">
   <link rel="stylesheet" href="{{asset("css/font-awesome.min.css")}}">
   <link rel="stylesheet" href="{{asset("css/ionicons.min.css")}}">
-
+  <link rel="stylesheet" href="{{asset("css/jquery.dataTables.min.css")}}">
+  <style type="text/css">
+    .marcado td{
+      background-color: #F5B7B1;
+    }
+  </style>
   <style type="text/css">
     [ng\:cloak], [ng-cloak], [data-ng-cloak], [x-ng-cloak], .ng-cloak, x-ng-cloak, .ng-hide {
         display:none !important;
@@ -228,6 +233,9 @@
 <script src="{{asset("js/bootstrap-datepicker.js")}}"></script>
 <script src="{{asset("js/bootstrap-colorpicker.min.js")}}"></script>
 
+<!--Data table -->
+<script src="{{asset("js/jquery.dataTables.min.js")}}"></script>
+
 <!-- Resolve conflict in jQuery UI tooltip with Bootstrap tooltip -->
 @stack('scripts')
 
@@ -241,6 +249,17 @@
     $(function () {
       
     });
+      $(function () {
+    $('#example1').DataTable()
+      $('#example2').DataTable({
+        'paging'      : true,
+        'lengthChange': false,
+        'searching'   : false,
+        'ordering'    : true,
+        'info'        : true,
+        'autoWidth'   : false
+      })
+    })
 
     $(document).on('ready',function(){
       @yield('javascriptC')

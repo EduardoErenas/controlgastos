@@ -92,7 +92,8 @@ Route::group(['middleware' => ['usua']], function () {
 	    return view('configuraciones');
 	}); 
 	Route::post('/editarContrasena/{id}', 'UsuarioController@editarContrasena');
-	Route::post('/editarAlgoritmo/{id}', 'UsuarioController@editarAlgoritmo');
+	Route::post('/updateAlgoritmo/{id}', 'PagoController@updateAlgoritmo');
+	Route::post('/updateRango/{id}', 'PagoController@updateRango'); 
 });
 
 

@@ -34,7 +34,8 @@ class UsuarioController extends Controller{
         }
         return redirect('configuraciones');   
     
-    }public function editarAlgoritmo(Request $datos, $idusuario){
+    }
+    public function editarAlgoritmo(Request $datos, $idusuario){
         $user= User::Find($idusuario);
     }
 

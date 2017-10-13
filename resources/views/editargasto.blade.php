@@ -53,7 +53,11 @@
                 <option value="10">10</option>
               </select>    
             </div>
-             
+            
+            <div class="form-group">
+              <label>Interes</label>  
+              <input type="number" class="form-control" name="interes" required placeholder="Interes agregado ($)" value="{{$gasto->ga_interes}}"> 
+            </div> 
           </div>
 
           <div class="box-footer">

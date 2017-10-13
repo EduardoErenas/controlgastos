@@ -59,7 +59,7 @@ class GastoController extends Controller{
             $gasto->ga_ano=substr($datos->input('inicio'),6,9);
             $gasto->ga_mes=substr($datos->input('inicio'),0,2);
             $gasto->ga_dia=substr($datos->input('inicio'),3,2);
-            $gasto->ga_prioridad=$datos->input('prio'); 
+            $gasto->ga_prioridad=$datos->input('prio');
             $gasto->save();
 
             Mail::to(Auth::user()->email,Auth::user()->name)
@@ -100,6 +100,10 @@ class GastoController extends Controller{
             $gasto->ga_description=$datos->input('descri');
             $gasto->cat_id=$datos->input('cat');
             $gasto->ga_prioridad=$datos->input('prio');
+
+            if( $datos->input('interes') <> ''){
+                $gasto->ga_interes=$datos->input('interes');
+            }
             $gasto->save();
 
             flash('!Se Actualizaron exitosamente los datos del Gasto ')->success();            
